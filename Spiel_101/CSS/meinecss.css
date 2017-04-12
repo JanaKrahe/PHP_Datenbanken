@@ -1,0 +1,43 @@
+<style>
+
+.testklasse {
+  background-color: grey;
+
+}
+
+#kopfbereich {
+  background-color: writ;
+}
+
+#kopfbereich p {
+  color:black;
+  text-align:center;
+  font-size:2em;
+  padding:0.6em 4em 0 0;
+}
+
+#steuerung p {
+  padding-left:1em;
+}
+
+#inhalt p {
+  padding:2em;
+}
+
+* {
+  margin:0;
+  padding:0;
+  margin-left: 50;
+}
+
+#inhalt h1, h2, h3, p, ul {
+  padding-bottom:.7em;
+}
+
+#inhalt ul {
+  padding-left:2em;
+}
+
+html, body {
+  font: 100% Arial, Helvetica, sans-serif;
+}
