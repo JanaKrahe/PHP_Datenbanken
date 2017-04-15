@@ -23,10 +23,10 @@
     <legend></legend>
   <form method="post">
       <label>
-      <input type="radio" name="gender" value="registrieren"  checked="checked"> Registrieren<br>
+      <input type="radio" name="gender" value="registrieren"> Registrieren<br>
       <input type="radio" name="gender" value="anmelden"> Anmelden<br>
       <input type="radio" name="gender" value="loeschen"> Account löchen<br>
-      <input type="radio" name="gender" value="kennwortAendern"> Kennwort ändern<br>
+      <input type="radio" name="gender" value="kennwortAendern" checked="checked"> Kennwort ändern<br>
       <input type="submit" value="Auswahl">
     </label>
   </form>

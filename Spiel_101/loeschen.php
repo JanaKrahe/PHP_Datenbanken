@@ -20,9 +20,9 @@
     <legend></legend>
   <form method="post">
       <label>
-      <input type="radio" name="gender" value="registrieren"  checked="checked"> Registrieren<br>
+      <input type="radio" name="gender" value="registrieren"> Registrieren<br>
       <input type="radio" name="gender" value="anmelden" onclick="check(this.value)"> Anmelden<br>
-      <input type="radio" name="gender" value="loeschen"> Account löchen<br>
+      <input type="radio" name="gender" value="loeschen" checked="checked"> Account löchen<br>
       <input type="radio" name="gender" value="kennwortAendern"> Kennwort ändern<br>
       <input type="submit" value="Spieler löschen">
     </label>
