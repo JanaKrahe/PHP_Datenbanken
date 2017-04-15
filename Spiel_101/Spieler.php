@@ -1,7 +1,8 @@
 <?php
 /**
  * Diese Klasse definiert die Instanzen Spieler
- * Ein Spieler ist ausführende Kraft in dem Spiel
+ * Ein Spieler ist ausführende Kraft in dem Spiel,
+ * teständerung
  */
 class Spieler
 {
@@ -44,7 +45,7 @@ class Spieler
     $wuerfe = $wuerfe + 1;
   }
 
-  //Getter und Setter 
+  //Getter und Setter
 
   /**
   * Gibt gespeicherte Punkte des Spielers aus
