@@ -6,10 +6,6 @@
  */
 class Spieler
 {
-  $name = null;
-  $summeSpielzug = 0;
-  $summeGesamt = 0;
-  $wuerfe = 0;
 
   /**
   * Konstruktor: Namenszuweisung
@@ -17,6 +13,10 @@ class Spieler
   function __construct($pName)
   {
     $name = $pName;
+    $summeSpielzug = 0;
+    $summeGesamt = 0;
+    $wuerfe = 0;
+    var_dump($summeSpielzug);
   }
 
   /**
@@ -24,6 +24,7 @@ class Spieler
   */
   function wuerfeln($wuerfelergebnis)
   {
+    var_dump($summeSpielzug);
     $summeSpielzug = $summeSpielzug + $wuerfelergebnis;
   }
 
@@ -83,6 +84,10 @@ class Spieler
     return $name;
   }
 
+  function getZugSumme()
+  {
+    return $summeSpielzug;
+  }
 }
 
  ?>

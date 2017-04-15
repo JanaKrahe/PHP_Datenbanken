@@ -11,9 +11,16 @@
     <p>Sehen Sie sich den Quellcode dieser Seite an.
       <kbd>(Kontextmenu: Seitenquelltext anzeigen)</kbd></p> -->
 
-      <p>Seite abgerufen am <?php
-        echo date('d.m.Y \u\m H:i:s');
-        ?> Uhr</p>
+      <p>Seite abgerufen am
+        <?php
+          echo date('d.m.Y \u\m H:i:s');
+        ?> Uhr
+      </p>
+
+      <?php
+          include 'Spieler.php';
+          $spieler1 = new Spieler('Lars');
+      ?>
 
       <form method="post">
         <input type="submit" name="wurf" id="wurf" value="Wurf"></button>
@@ -30,7 +37,9 @@
       if(array_key_exists('test',$_POST)){
         testfun();
       }
+
       include 'includeTest.php';
+
 
       ?>
   </body>
