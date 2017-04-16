@@ -1,14 +1,11 @@
 <?php
 /**
  * Diese Klasse definiert die Instanzen Spieler
- * Ein Spieler ist ausführende Kraft in dem Spiel
+ * Ein Spieler ist ausführende Kraft in dem Spiel,
+ * teständerung
  */
 class Spieler
 {
-  $name = null;
-  $summeSpielzug = 0;
-  $summeGesamt = 0;
-  $wuerfe = 0;
 
   /**
   * Konstruktor: Namenszuweisung
@@ -16,6 +13,10 @@ class Spieler
   function __construct($pName)
   {
     $name = $pName;
+    $summeSpielzug = 0;
+    $summeGesamt = 0;
+    $wuerfe = 0;
+    var_dump($summeSpielzug);
   }
 
   /**
@@ -23,6 +24,7 @@ class Spieler
   */
   function wuerfeln($wuerfelergebnis)
   {
+    var_dump($summeSpielzug);
     $summeSpielzug = $summeSpielzug + $wuerfelergebnis;
   }
 
@@ -44,7 +46,7 @@ class Spieler
     $wuerfe = $wuerfe + 1;
   }
 
-  //Getter und Setter 
+  //Getter und Setter
 
   /**
   * Gibt gespeicherte Punkte des Spielers aus
@@ -82,6 +84,10 @@ class Spieler
     return $name;
   }
 
+  function getZugSumme()
+  {
+    return $summeSpielzug;
+  }
 }
 
  ?>
