@@ -137,3 +137,8 @@ html, body {
   right: 5px;
   top: 5px;
 }
+
+.rankingListe {
+  border-color: black;
+  border: 1px;
+}

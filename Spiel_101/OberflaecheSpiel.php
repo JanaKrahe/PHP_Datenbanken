@@ -59,7 +59,7 @@
         <form method="post">
           <input type="submit" name="rangliste" value="Ranking"></input>
         </form>
-        <table>
+        <table class="rankingListe">
           <thead>
             <tr>
               <th>Spieler</th>
