@@ -17,10 +17,13 @@
 
       <?php
           include 'Spieler.php';
+          include 'Ranking.php';
           $spieler1 = new Spieler('Lars');
           var_dump($spieler1->getZugSumme());
           $spieler2 = new Spieler('Gast');
 
+          $ran = new Ranking();
+          $ran->arrayAusgeben();
       ?>
       </div>
       <div>
@@ -56,6 +59,28 @@
         <form method="post">
           <input type="submit" name="rangliste" value="Ranking"></input>
         </form>
+        <table>
+          <thead>
+            <tr>
+              <th>Spieler</th>
+              <th>Züge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              $zaehler = 0;
+              foreach ($ran->namensSpalteAusgeben() as $v1 ) {
+                $zugArray = $ran->zugSpalteAusgeben();
+                  ?>
+                    <tr>
+                      <td> <?php echo $v2; ?> </td>
+                      <td> <?php echo $zugArray[zaehler]; ?> </td>
+                    </tr>
+                  <?php
+              }
+             ?>
+          </tbody>
+        </table>
       </div>
 
       <div class="anleitung">
@@ -74,7 +99,8 @@
             function anleitung()
             {
               ?>
-              <script>window.alert("<h4> Anleitung </h1> <br> <p> Hier wird die Anleitung stehen!</p>");
+              <script>window.alert(
+                "<h4> Anleitung </h1> <br> <p> Hier wird die Anleitung stehen!</p>");
               </script>
               <?php
             }
@@ -84,6 +110,12 @@
       <div id="infoDiv">
         <p class="infoBox" name="infoBox"> #InfoBox
         </p>
+      </div>
+
+      <div class="logoutDiv">
+        <form method="post">
+          <input type="submit" name="logout" value="logout"></input>
+        </form>
       </div>
   </body>
 </html>

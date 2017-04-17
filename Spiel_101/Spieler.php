@@ -7,7 +7,7 @@
 class Spieler
 {
   private $name = '';
-  private $summeSpielzug = 1;
+  private $summeSpielzug = 0;
   private $summeGesamt = 0;
   private $wuerfe = 0;
   /**

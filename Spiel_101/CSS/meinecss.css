@@ -131,3 +131,9 @@ html, body {
 .erzieltePktDiv {
   margin-left: 0;
 }
+
+.logoutDiv {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
