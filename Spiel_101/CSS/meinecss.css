@@ -25,14 +25,11 @@
   padding:2em;
 }
 
-* {
-  margin:0;
+div {
+  margin-top: 10px;
   padding:0;
-  margin-left: 50;
-}
-
-#inhalt h1, h2, h3, p, ul {
-  padding-bottom:.7em;
+  margin-left: 35%;
+  width: 25em;
 }
 
 #inhalt ul {
@@ -99,7 +96,6 @@ html, body {
 }
 
 #mask{
-
   background: #000;
   position: fixed;
   left: 0;
@@ -109,5 +105,35 @@ html, body {
   height: 100%;
   opacity: 0.8;
   z-index: 999;
+}
 
+.schmal {
+
+  min-height: : 10px;
+  max-height: 100em;
+  margin-top: 5px;
+}
+
+.infoBox {
+  border:1px solid lightgrey;
+  text-align: center;
+  color: grey;
+}
+
+.regler {
+  text-align: bottom;
+}
+
+.erzieltePktP {
+  border: 1px black;
+}
+
+.erzieltePktDiv {
+  margin-left: 0;
+}
+
+.logoutDiv {
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
