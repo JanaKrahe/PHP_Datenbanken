@@ -10,9 +10,11 @@
     <form method="post">
       E-Mail:<br>
       <input type="email" size="40" maxlength="250" name="email"><br>
-      Dein Passwort:<br>
+      Altes Passwort:<br>
       <input type="Password" size="40"  maxlength="250" name="passwort"><br>
-      Passwort wiederholen:<br>
+      Neues Passwort:<br>
+      <input type="Password" size="40"  maxlength="250" name="passwort"><br>
+      Neues Passwort wiederholen:<br>
       <input type="Password" size="40" maxlength="250" name="passwort2"><br><br>
 
       <input type="submit" value="Übernehmen">
@@ -23,10 +25,10 @@
     <legend></legend>
   <form method="post">
       <label>
-      <input type="radio" name="gender" value="registrieren"  checked="checked"> Registrieren<br>
+      <input type="radio" name="gender" value="registrieren"> Registrieren<br>
       <input type="radio" name="gender" value="anmelden"> Anmelden<br>
       <input type="radio" name="gender" value="loeschen"> Account löchen<br>
-      <input type="radio" name="gender" value="kennwortAendern"> Kennwort ändern<br>
+      <input type="radio" name="gender" value="kennwortAendern" checked="checked"> Kennwort ändern<br>
       <input type="submit" value="Auswahl">
     </label>
   </form>
