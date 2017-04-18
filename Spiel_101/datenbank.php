@@ -27,44 +27,57 @@ class DatenbankAufrufe
 
   function existBenutzer(){
     $pdo = new PDO('mysql:host=localhost;dbname=benutzer101','root','');
-    $sqlStatement = "SELECT * FROM user101 WHERE email = '".$_POST['email']."' AND name = '".$_POST['benutzername']."'";
+    $sqlStatement = "SELECT * FROM user101 WHERE email = '".$_POST['email']."'";
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute();
     $test = $stmt->rowCount();
     if ($test == 0) {
-      $this->benutzerAnlegen();
+      return false;
     }else {
-      echo "Der Benutzer existiert bereits.";
+      return true;
     }
   }
-
-function benutzerAnmelden(){
-  include ('PasswortSpeichern.php');
-  $pasw = new PasswortSpeichern;
-  $pasw->passwortVerschluesseln();
-  $pdo = new PDO('mysql:host=localhost;dbname=benutzer101','root','');
-  $sqlStatement = "SELECT * FROM user101 WHERE email = '".$_POST['email']."' AND passwort = '".$_POST['passwort']."'";
-  $stmt = $pdo->prepare($sqlStatement);
-  $stmt->execute();
-  $test = $stmt->rowCount();
-  echo "TEST ".$test  ;
-  echo $_POST['passwort'];
-  if ($test != 0) {
-    // header("Location: kennwortAendern.php");
-    echo "Durchgelaufen";
-  }else {
-    echo "Die Benutzerdaten stimmen nicht überein.";
-  }
-}
 
 function passwortAuslesen(){
   $pdo = new PDO('mysql:host=localhost;dbname=benutzer101','root','');
   $sqlStatement = "SELECT passwort FROM user101 WHERE email = '".$_POST['email']."'";
   $stmt = $pdo->prepare($sqlStatement);
   $stmt->execute();
-  $ergebnis = $stmt->fetch();
-  echo $ergebnis;
+  $ergebnis = $stmt->fetchColumn();
+  return $ergebnis;
 }
+
+function benutzerLoeschen(){
+  $pdo = new PDO('mysql:host=localhost;dbname=benutzer101','root','');
+  $sqlStatement = "DELETE FROM user101 WHERE email = '".$_POST['email']."'";
+  $stmt = $pdo->prepare($sqlStatement);
+  $stmt->execute();
+  echo "Der Benutzer wurde gelöscht.";
+}
+
+  function kennwortAendern($hashPasswort){
+    $pdo = new PDO('mysql:host=localhost;dbname=benutzer101','root','');
+    $sqlStatement = "UPDATE user101 SET passwort = '".$hashPasswort."' WHERE email = '".$_POST['email']."'";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute();
+    echo "Das Passwort wurde geändert.";
+  }
+
+
+
+// function test(){
+//   include ('PasswortSpeichern.php');
+//   $pasw = new PasswortSpeichern;
+//   $ergebnis = $pasw->passwortAbgleich($ergebnis);
+//   if ($ergebnis == true) {
+//     #session_start mit attributwert username
+//     #Header login
+//     echo "geschafft";
+//   }
+//   else {
+//     "ungleiche eingaben";
+//   }
+// }
 
 }
 

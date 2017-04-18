@@ -74,11 +74,27 @@ class Pruefen
 
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["passwort2"])) {
-          $passwort2Err = "Passwort2 is requiered";
+          $passwort2Err = "Passwort is requiered";
           $this->error = true;
           echo $passwort2Err;
         } else {
           $passwort2 = test_input($_POST["passwort2"]);
+        }
+      }
+    }
+
+    function pruefungPasswort3(){
+      // define variables and set to empty values
+      $passwort3Err = "";
+      $passwort3 = "";
+
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty($_POST["passwort3"])) {
+          $passwort3Err = "Passwort is requiered";
+          $this->error = true;
+          echo $passwort3Err;
+        } else {
+          $passwort3 = test_input($_POST["passwort3"]);
         }
       }
     }
@@ -90,25 +106,109 @@ class Pruefen
             $stimmenErr = "Die Passwörter müssen übereinstimmen";
             echo $stimmenErr;
           } else {
-            #Passwort wird hier verschlüsselt, indem die Methode der Klasse PasswortSpeichern aufgerufen wird.
-            include('PasswortSpeichern.php');
-            $hallo = new PasswortSpeichern;
-            $hallo->passwortVerschluesseln();
+              #Passwort wird hier verschlüsselt, indem die Methode der Klasse PasswortSpeichern aufgerufen wird.
+              include('PasswortSpeichern.php');
+              $hallo = new PasswortSpeichern;
+              $_POST['passwort'] = $hallo->passwortVerschluesseln($_POST['passwort']);
 
-            include('datenbank.php');
-            $datenbank = new DatenbankAufrufe;
-            $datenbank->existBenutzer();
+              include('datenbank.php');
+              $datenbank = new DatenbankAufrufe;
+              $result = $datenbank->existBenutzer();
+              if ($result == false) {
+                $datenbank->benutzerAnlegen();
+              } else {
+                echo "DerBenutzer existiert bereits.";
+              }
+            }
           }
         }
       }
-    }
 
     function login(){
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($this->error == false) {
           include('datenbank.php');
           $datenbank = new DatenbankAufrufe;
-          $datenbank->benutzerAnmelden();
+          #Prüfung ob der Benutzer bereits existiert
+          $result = $datenbank->existBenutzer();
+          if ($result == true) {
+            $dbPasswort = $datenbank->passwortAuslesen();
+            include('PasswortSpeichern.php');
+            $verschl = new PasswortSpeichern;
+            $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
+            if ($result2 == true) {
+              #SESSION
+              #session_start mit attributwert username
+              header("Location: OberflaecheSpiel.php");
+            }
+            else {
+              echo "Das Passwort ist nicht korrekt";
+            }
+          } else {
+            Header("Location: registrierung.php");
+            echo "Bitte zuerst Registrieren";
+          }
+        }
+      }
+    }
+
+    function loeschen(){
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($this->error == false) {
+          include('datenbank.php');
+          $datenbank = new DatenbankAufrufe;
+          #Prüfung ob der Benutzer bereits existiert
+          $result = $datenbank->existBenutzer();
+          if ($result == true) {
+            $dbPasswort = $datenbank->passwortAuslesen();
+            include('PasswortSpeichern.php');
+            $verschl = new PasswortSpeichern;
+            $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
+            if ($result2 == true) {
+              $datenbank->benutzerLoeschen();
+            }
+            else {
+              echo "Das Passwort ist nicht korrekt";
+            }
+          }
+          else {
+            echo "Der Benutzer existiert nicht.";
+          }
+          }
+        }
+      }
+
+
+      function kennwortAendern(){
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          if ($this->error == false) {
+            include('datenbank.php');
+            $datenbank = new DatenbankAufrufe;
+            #Prüfung ob der Benutzer bereits existiert
+            $result = $datenbank->existBenutzer();
+            if ($result == true) {
+              #Prüfen ob Passwort2 und Passwort3 übereinstimmen
+              if ($_POST["passwort2"] != $_POST["passwort3"]){
+                $stimmenErr = "Die Passwörter müssen übereinstimmen";
+                echo $stimmenErr;
+              } else {
+              $dbPasswort = $datenbank->passwortAuslesen();
+              include('PasswortSpeichern.php');
+              $verschl = new PasswortSpeichern;
+              $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
+              if ($result2 == true) {
+                $_POST['passwort2'] = $hashPasswort = $verschl->passwortVerschluesseln($_POST['passwort2']);
+                $datenbank->kennwortAendern($hashPasswort);
+                #hier
+              }
+              else {
+                echo "Das Passwort ist nicht korrekt";
+              }
+            }
+            }
+          else {
+            echo "Der Benutzer existiert nicht.";
+          }
         }
       }
     }

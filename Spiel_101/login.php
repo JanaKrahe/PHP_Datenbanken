@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Login</title>
+  <meta charset="utf-8">
 </head>
 <body>
   <?php
@@ -20,7 +22,7 @@
       <input type="Password" size="40"  maxlength="250" name="passwort">
       <span class="error">* <?php $feld->pruefungPasswort(); ?></span><br>
       <?php $feld->login(); ?><br>
-      
+
       <input type="submit" value="Anmelden" name="Anmelden">
   </form>
 </fieldset>

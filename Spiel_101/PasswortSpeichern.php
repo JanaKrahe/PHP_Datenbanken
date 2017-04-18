@@ -4,23 +4,21 @@
    */
   class PasswortSpeichern
   {
-    function passwortVerschluesseln(){
+    function passwortVerschluesseln($passwort){
       // $test = $_POST['passwort'];
-      $test = 'test';
       $zusatzSicherung = "PHP_Projekt";
-      $_POST['passwort'] = password_hash($test.$zusatzSicherung, PASSWORD_DEFAULT);
-      echo "passwort verschlüsselt";
-      echo $_POST['passwort'];
+      $passwort = password_hash($passwort.$zusatzSicherung, PASSWORD_DEFAULT);
+      return $passwort;
     }
 
-    function passwortAbgleich($dbPasswort){
-      $test = $_POST['passwort'];
+    function passwortAbgleich($pasw, $dbPasswort){
       $zusatzSicherung = "PHP_Projekt";
-      $passwort = $test.$zusatzSicherung
-      if(password_verify($passwort, $dbPasswort, $password_hashed)){
+      $passwort = $pasw.$zusatzSicherung;
+      if(password_verify($passwort, $dbPasswort)){
         return true;
     }else {
       return false;
     }
   }
+}//end class
  ?>

@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Registrierung</title>
+  <meta charset="utf-8">
 </head>
 <body>
         <?php
