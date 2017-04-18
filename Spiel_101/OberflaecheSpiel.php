@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/meinecss.css">
     <script src="regler.js"> </script>
     <title>Spiel101</title>
-  </head>
+  </head> 
   <body>
     <!-- http://localhost/PHP_Datenbanken/Spiel_101/Oberfl%C3%A4cheSpiel.php -->
     <!-- Sichtbarer Dokumentinhalt im body
@@ -68,7 +68,7 @@
           </thead>
           <tbody>
             <?php
-              $zaehler = true;              
+              $zaehler = true;
               foreach ($ran->rankingAusgeben() as $v1 ) {
                 var_dump($v1);
                 if ($zaehler) {
