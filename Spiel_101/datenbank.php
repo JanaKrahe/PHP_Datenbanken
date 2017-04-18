@@ -23,13 +23,4 @@ class DatenbankAufrufe
   }
 }
 
-// function existBenutzer(){
-//   $pdo = new PDO('mysql:host=localhost;dbname=benutzer101','root','');
-//   $exist = $sqlStatement = "SELECT * FROM user101 WHERE email =".$_POST['email']." AND name = ".$_POST['benutzername'];
-//   if ($exist) {
-//     echo "Der Benutzer existiert bereits.";
-//   }else {
-//     benutzerAnlegen();
-//   }
-// }
  ?>
