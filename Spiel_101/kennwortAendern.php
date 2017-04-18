@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Registrierung</title>
+  <title>Kennwort ändern</title>
 </head>
 <body>
   <h1>Spiel 101</h1>
