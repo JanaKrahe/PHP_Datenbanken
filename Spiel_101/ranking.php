@@ -5,9 +5,7 @@
   class Ranking
   {
 
-    private $rangListe = array(
-      'spielerName' => array('Otto', 'Hans'),
-      'zugSumme' => array(5, 6));
+    private $rangListe = array('Otto', 5, 'Hans', 6);
 
     function __construct()
     {
@@ -26,28 +24,16 @@
 
     public function arrayAusgeben()
     {
-      //Ausgabe soll im Styl:
-      //    1...3
-      //    2...4
       foreach ($this->rangListe as $v1) {
-        foreach ($v1 as $v2) {
-          echo "$v2\n";
-        }
+          echo "$v1\n";
       }
-      //oder Array als ganzes returnen und dann in HTML ausgeben
     }
 
-    public function namensSpalteAusgeben()
+    public function rankingAusgeben()
     {
-      $hArray = $this->rangListe[1];
-      return $hArray;
+      return $this->rangListe;
     }
 
-    public function zugSpalteAusgeben()
-    {
-      $hArray = $this->rangListe[1];
-      return $hArray;
-    }
   }
 
  ?>

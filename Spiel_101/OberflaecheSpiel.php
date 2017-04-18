@@ -68,15 +68,23 @@
           </thead>
           <tbody>
             <?php
-              $zaehler = 0;
-              foreach ($ran->namensSpalteAusgeben() as $v1 ) {
-                $zugArray = $ran->zugSpalteAusgeben();
+              $zaehler = true;              
+              foreach ($ran->rankingAusgeben() as $v1 ) {
+                var_dump($v1);
+                if ($zaehler) {
                   ?>
                     <tr>
-                      <td> <?php echo $v2; ?> </td>
-                      <td> <?php echo $zugArray[zaehler]; ?> </td>
-                    </tr>
+                      <td> <?php echo $v1; ?> </td>
                   <?php
+                    $zaehler = false;
+                  }
+                  else {
+                    ?>
+                      <td> <?php echo $v1; ?> </td>
+                      </tr>
+                    <?php
+                    $zaehler = true;
+                  }
               }
              ?>
           </tbody>
