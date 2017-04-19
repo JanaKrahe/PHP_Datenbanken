@@ -2,13 +2,13 @@
 <html lang="de">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/meinecss.css">
     <script src="regler.js"> </script>
     <title>Spiel101</title>
   </head>
   <body>
-    <!-- http://localhost/PHP_Datenbanken/Spiel_101/Oberfl%C3%A4cheSpiel.php -->
+    <!-- http://localhost/PHP_Datenbanken/Spiel_101/OberflaecheSpiel.php -->
     <!-- Sichtbarer Dokumentinhalt im body
     <p>Sehen Sie sich den Quellcode dieser Seite an.
       <kbd>(Kontextmenu: Seitenquelltext anzeigen)</kbd></p> -->
@@ -16,22 +16,23 @@
         <h1>Spiel 101</h1>
 
       <?php
+          session_start();
+          $_SESSION['summeSpielzug'] = 0;
           include 'Spieler.php';
           include 'Ranking.php';
-          $spieler1 = new Spieler('Lars');
-          var_dump($spieler1->getZugSumme());
-          $spieler2 = new Spieler('Gast');
 
+          $spieler1 = new Spieler('Lars');
+          $spieler2 = new Spieler('Gast');
           $ran = new Ranking();
-          $ran->arrayAusgeben();
+          var_dump($_SESSION);
       ?>
       </div>
       <div>
         <fieldset class="schmal">
           <form method="post">
-            <input type="submit" name="wurf" value="Wurf"></input> <br>
-            <input type="submit" name="bunkern" value="Bunkern!"></input>
-            <input type="submit" name="reset" value="neues Spiel"></input>
+            <button class="btn btn-default" type="submit" name="wurf" >Würfeln</button>
+            <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
+            <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
             <div class="erzieltePktDiv">
               <p class="erzieltePktP"> Test</p>
             </div>
@@ -57,7 +58,7 @@
 
       <div class="ranking">
         <form method="post">
-          <input type="submit" name="rangliste" value="Ranking"></input>
+          <input class="btn btn-default" type="submit" name="rangliste" value="Ranking"></input>
         </form>
         <table class="rankingListe">
           <thead>
@@ -70,7 +71,6 @@
             <?php
               $zaehler = true;
               foreach ($ran->rankingAusgeben() as $v1 ) {
-                var_dump($v1);
                 if ($zaehler) {
                   ?>
                     <tr>
@@ -92,7 +92,7 @@
       </div>
 
       <div class="anleitung">
-        <button type="button" onclick="anleitung()" name="btnAnleitung">Anleitung</button>
+        <button class="btn btn-default" type="button" onclick="anleitung()" name="btnAnleitung">Anleitung</button>
       </div>
       <div>
         <p>
@@ -116,14 +116,15 @@
         </p>
       </div>
       <div id="infoDiv">
-        <p class="infoBox" name="infoBox"> #InfoBox
-        </p>
+        <p class="infoBox" name="infoBox"> #InfoBox </p>
       </div>
 
       <div class="logoutDiv">
         <form method="post">
-          <input type="submit" name="logout" value="logout"></input>
+          <input class="btn btn-default" type="submit" name="logout" value="logout"></input>
+          <?php $spieler1->logoutAuswertung(); ?>
         </form>
       </div>
+      <?php session_destroy(); ?>
   </body>
 </html>

@@ -16,7 +16,17 @@ class Spieler
   function __construct($pName)
   {
     $name = $pName;
-
+    $test = false;
+    $i = 1;
+    while ($test == false){
+      if(isset($_SESSION["Spieler$i"])) {
+        $i++;
+      }
+      else{
+        $_SESSION["Spieler"."$i"] = $pName;
+        $test = true;
+      }
+    }
   }
 
   /**
@@ -27,7 +37,7 @@ class Spieler
     //global $summeSpielzug;
     var_dump($wuerfelergebnis);
     var_dump($this->summeSpielzug);
-    //$this->summeSpielzug = $this->summeSpielzug + $wuerfelergebnis;
+    $this->summeSpielzug == $_SESSION['summeSpielzug'] ;
     $this->summeSpielzug += $wuerfelergebnis;
     var_dump($wuerfelergebnis);
     var_dump($this->summeSpielzug);
@@ -78,7 +88,7 @@ class Spieler
   */
   function setWuerfe($pWuerfe)
   {
-    $wuerfe = $pWuerfe;
+    $this->wuerfe = $pWuerfe;
   }
 
   /**
@@ -87,13 +97,32 @@ class Spieler
   */
   function getName()
   {
-    return $name;
+
+    return $this->name;
   }
 
+  /**
+  *
+  * @return Summe der in diesem Spielzug erzielten Punkte
+  */
   function getZugSumme()
   {
 
     return $this->summeSpielzug;
+  }
+
+  public function logoutAuswertung()
+  {
+    if (isset($_POST["logout"]) && $_POST["logout"] == "logout") {
+      $this->logout();
+    }
+
+  }
+
+  private function logout()
+  {
+    session_destroy();
+    header("Location: login.php");
   }
 }
 
