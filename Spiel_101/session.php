@@ -9,19 +9,19 @@ class sessionClass
   {
     session_start();
 
-    $_Session['email'] = $_POST['email'];
-    echo $_Session['email'];
+    $_SESSION['email'] = $_POST['email'];
 
-    if (!empty($_Session['email'])) {
-      $_Session['eingeloggt'] = true;
-      $_Session['spieler1'] = $benutzername;
-      $_Session['spieler2'] = 'Gast';
-      # code...
+
+    if (!empty($_SESSION['email'])) {
+      $_SESSION['eingeloggt'] = true;
+      $_SESSION['spieler1'] = $benutzername;
+      $_SESSION['spieler2'] = 'Gast';
+      
     } else {
       echo "<b>ungültige Eingabe</b>";
       $_SESSION['eingeloggt'] = false;
     }
-    
+    var_dump($_SESSION);
   }
 
 function CookiesErzeugen(){

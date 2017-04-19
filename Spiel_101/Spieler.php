@@ -15,17 +15,6 @@ class Spieler
   function __construct($pName)
   {
     $name = $pName;
-    $test = false;
-    $i = 1;
-    while ($test == false){
-      if(isset($_SESSION["Spieler$i"])) {
-        $i++;
-      }
-      else{
-        $_SESSION["Spieler"."$i"] = $pName;
-        $test = true;
-      }
-    }
   }
 
   /**
@@ -48,22 +37,27 @@ class Spieler
   {
     //Zufallszahl generieren
     $wuerfelergebnis = random_int(1, 6);
-    var_dump($wuerfelergebnis);
-    //Überprüfen ob summeSpielzug vorhanden
-    if(!empty($_SESSION['summeSpielzug'])) {
-      var_dump($_SESSION['summeSpielzug']);
-      //Hilfsvariable zur Berechnung der neuen Summe
-      $ze = $_SESSION['summeSpielzug'];
-      $ze += $wuerfelergebnis;
-      $_SESSION['summeSpielzug'] = $ze;
-      #$_SESSION['summeSpielzug'] += $wuerfelergebnis;
-      var_dump($_SESSION['summeSpielzug']);
+
+    if($wuerfelergebnis == 1) {
+      $this->verlieren();
     }
     else {
-      //summeSpielzug erstellen und = Zufallszahl setzen
-      $_SESSION['summeSpielzug'] = 0;
-      $_SESSION['summeSpielzug'] = $wuerfelergebnis;
-      echo 'Ich war hier' . "<br>";
+      //Überprüfen ob summeSpielzug vorhanden
+      if(!empty($_SESSION['summeSpielzug'])) {
+        var_dump($_SESSION['summeSpielzug']);
+        //Hilfsvariable zur Berechnung der neuen Summe
+        $ze = $_SESSION['summeSpielzug'];
+        $ze += $wuerfelergebnis;
+        $_SESSION['summeSpielzug'] = $ze;
+        #$_SESSION['summeSpielzug'] += $wuerfelergebnis;
+        var_dump($_SESSION['summeSpielzug']);
+      }
+      else {
+        //summeSpielzug erstellen und = Zufallszahl setzen
+        $_SESSION['summeSpielzug'] = 0;
+        $_SESSION['summeSpielzug'] = $wuerfelergebnis;
+        echo 'Ich war hier' . "<br>";
+      }
     }
   }
 
@@ -84,6 +78,7 @@ class Spieler
   function verlieren()
   {
     $_SESSION['summeSpielzug'] = 0;
+    //Züge in DB erhöhen
     $zuege = $zuege + 1;
   }
 

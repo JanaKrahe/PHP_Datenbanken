@@ -65,7 +65,7 @@ function benutzerLoeschen(){
 
   function benutzernameAuslesen(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-    $sqlStatement = "SELECT benutzername FROM user101 WHERE email = '".$_POST['email']."'";
+    $sqlStatement = "SELECT name FROM user101 WHERE email = '".$_POST['email']."'";
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute();
     $ergebnis = $stmt->fetchColumn();

@@ -16,12 +16,12 @@
         <h1>Spiel 101</h1>
 
       <?php
-          //session_start();
+          session_start();
           var_dump($_SESSION);
           include 'Spieler.php';
           include 'Ranking.php';
-
-          $spieler1 = new Spieler('Lars');
+          $name = $_SESSION['spieler1'];
+          $spieler1 = new Spieler($name);
           $spieler2 = new Spieler('Gast');
           $ran = new Ranking();
       ?>
@@ -119,7 +119,6 @@
           <input class="btn btn-default" type="submit" name="logout" value="logout"></input>
           <?php $spieler1->logoutAuswertung(); ?>
         </form>
-      </div>
-      <?php session_destroy(); ?>
+      </div>      
   </body>
 </html>
