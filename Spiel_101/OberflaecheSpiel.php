@@ -16,21 +16,22 @@
         <h1>Spiel 101</h1>
 
       <?php
-          session_start();
-          $_SESSION['summeSpielzug'] = 0;
+          //session_start();
+          var_dump($_SESSION);
           include 'Spieler.php';
           include 'Ranking.php';
 
           $spieler1 = new Spieler('Lars');
           $spieler2 = new Spieler('Gast');
           $ran = new Ranking();
-          var_dump($_SESSION);
       ?>
       </div>
       <div>
         <fieldset class="schmal">
           <form method="post">
-            <button class="btn btn-default" type="submit" name="wurf" >Würfeln</button>
+            <input class="btn btn-default" type="submit" name="wurf" value="Würfeln"></input>
+            <?php $spieler1->wuerfelnAuswertung();
+            var_dump($_SESSION);?>
             <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
             <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
             <div class="erzieltePktDiv">
@@ -95,15 +96,9 @@
         <button class="btn btn-default" type="button" onclick="anleitung()" name="btnAnleitung">Anleitung</button>
       </div>
       <div>
+        <p> </p>
         <p>
           <?php
-            include 'includeTest.php';
-          ?>
-        </p>
-        <p>
-          <?php
-            var_dump($spieler1->getZugSumme());
-
             function anleitung()
             {
               ?>
