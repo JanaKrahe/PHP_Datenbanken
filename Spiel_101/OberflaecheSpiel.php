@@ -21,8 +21,7 @@
           include 'Spieler.php';
           include 'Ranking.php';
           $name = $_SESSION['spieler1'];
-          $spieler1 = new Spieler($name);
-          $spieler2 = new Spieler('Gast');
+          $spieler = new Spieler($name);
           $ran = new Ranking();
       ?>
       </div>
@@ -30,12 +29,15 @@
         <fieldset class="schmal">
           <form method="post">
             <input class="btn btn-default" type="submit" name="wurf" value="Würfeln"></input>
-            <?php $spieler1->wuerfelnAuswertung();
-            var_dump($_SESSION);?>
+            <?php $spieler->wuerfelnAuswertung(); ?>
             <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
+              <?php $spieler->sichernAuswertung(); ?>
             <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
             <div class="erzieltePktDiv">
-              <p class="erzieltePktP"> Test</p>
+              <legend> Punkte in diesem Spielzug: </legend>
+              <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p> <br>
+              <label> Runde: </label>
+              <p class="Zug"> <?php echo $_SESSION['runde'] ?> </p>
             </div>
           </form>
         </fieldset>
@@ -111,14 +113,16 @@
         </p>
       </div>
       <div id="infoDiv">
-        <p class="infoBox" name="infoBox"> #InfoBox </p>
+        <p class="infoBox" name="infoBox" value="#InfoBox">
+          <?php $spieler->anDerReihe(); ?>
+        </p>
       </div>
 
       <div class="logoutDiv">
         <form method="post">
           <input class="btn btn-default" type="submit" name="logout" value="logout"></input>
-          <?php $spieler1->logoutAuswertung(); ?>
+          <?php $spieler->logoutAuswertung(); ?>
         </form>
-      </div>      
+      </div>
   </body>
 </html>

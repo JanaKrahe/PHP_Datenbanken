@@ -8,7 +8,6 @@ class Spieler
 {
   private $name = '';
   private $summeGesamt = 0;
-  private $zuege = 0;
   /**
   * Konstruktor: Namenszuweisung
   */
@@ -25,7 +24,6 @@ class Spieler
   {
     if (isset($_POST["wurf"]) && $_POST["wurf"] == "Würfeln") {
       $this->wuerfeln();
-      var_dump($_SESSION['summeSpielzug']);
     }
 
   }
@@ -37,28 +35,27 @@ class Spieler
   {
     //Zufallszahl generieren
     $wuerfelergebnis = random_int(1, 6);
+    var_dump($wuerfelergebnis);
 
     if($wuerfelergebnis == 1) {
       $this->verlieren();
     }
     else {
-      //Überprüfen ob summeSpielzug vorhanden
-      if(!empty($_SESSION['summeSpielzug'])) {
-        var_dump($_SESSION['summeSpielzug']);
-        //Hilfsvariable zur Berechnung der neuen Summe
-        $ze = $_SESSION['summeSpielzug'];
-        $ze += $wuerfelergebnis;
-        $_SESSION['summeSpielzug'] = $ze;
-        #$_SESSION['summeSpielzug'] += $wuerfelergebnis;
-        var_dump($_SESSION['summeSpielzug']);
-      }
-      else {
-        //summeSpielzug erstellen und = Zufallszahl setzen
-        $_SESSION['summeSpielzug'] = 0;
-        $_SESSION['summeSpielzug'] = $wuerfelergebnis;
-        echo 'Ich war hier' . "<br>";
-      }
+      //Berechnung der neuen Summe
+      $_SESSION['summeSpielzug'] += $wuerfelergebnis;
     }
+  }
+
+  /**
+  * Prüfung, ob der Logout-Button gedrückt wurde
+  *
+  */
+  public function sichernAuswertung()
+  {
+    if (isset($_POST["bunkern"]) && $_POST["bunkern"] == "Bunkern!") {
+      $this->sichern();
+    }
+
   }
 
   /**
@@ -66,10 +63,18 @@ class Spieler
   */
   function sichern()
   {
-    // Wert in DB speichern!
-    $summeGesamt = $summeGesamt + $_SESSION['summeSpielzug'];
-    //Züge in DB erhöhen
-    $zuege = $zuege + 1;
+    // Prüfung welcher Spieler dran ist
+    if ($_SESSION['amZug'] == true)
+    {
+      $_SESSION['summeS1'] += $_SESSION['summeSpielzug'];
+      $_SESSION['amZug'] = false;
+    }
+    else {
+      $_SESSION['summeS2'] += $_SESSION['summeSpielzug'];
+      $_SESSION['runde'] += 1;
+      $_SESSION['amZug'] = true;
+    }
+    $_SESSION['summeSpielzug'] = 0;
   }
 
   /**
@@ -77,20 +82,36 @@ class Spieler
   */
   function verlieren()
   {
+    // Prüfung welcher Spieler dran ist
+    if ($_SESSION['amZug'] == true)
+    {
+      $_SESSION['amZug'] = false;
+    }
+    else {
+      $_SESSION['runde'] += 1;
+      $_SESSION['amZug'] = true;
+    }
     $_SESSION['summeSpielzug'] = 0;
-    //Züge in DB erhöhen
-    $zuege = $zuege + 1;
   }
 
   //Getter und Setter
 
   /**
-  * Gibt gespeicherte Punkte des Spielers aus
+  * Gibt gespeicherte Punkte des Spielers1 aus
   * @return
   */
-  function getGesamtPunkte()
+  function getGesamtPunkteS1()
   {
-    return $summeGesamt;
+    return $_SESSION['summeS1'];
+  }
+
+  /**
+  * Gibt gespeicherte Punkte des Spielers2 aus
+  * @return
+  */
+  function getGesamtPunkteS2()
+  {
+    return $_SESSION['summeS2'];
   }
 
   /**
@@ -99,16 +120,24 @@ class Spieler
   */
   function getWuerfe()
   {
-    return $zuege;
+    //eventuell andersrum^^
+    if ($_SESSION['amZug'] == true)
+    {
+      return $_SESSION['runde'];
+    }
+    else {
+      return $_SESSION['runde'] + 1;
+    }
+
   }
 
   /**
   * Setzt eine Anzahl Wuerfe
-  * @param Zuganzahl
+  * @param runde
   */
   function setWuerfe($pZuege)
   {
-    $this->zuege = $pZuege;
+    $_SESSION['runde'] = $pZuege;
   }
 
   /**
@@ -118,7 +147,7 @@ class Spieler
   function getName()
   {
 
-    return $this->name;
+    return $_SESSION['spieler1'];
   }
 
   /**
@@ -156,6 +185,19 @@ class Spieler
     session_unset();
     session_destroy();
     header("Location: login.php");
+  }
+
+  /**
+  * Zerstört die aktuelle Session und
+  * leitet den Nutzer auf die Login-Seite weiter
+  */
+  public function anDerReihe()  {
+    if ($_SESSION['amZug'] == true) {
+      echo $_SESSION['spieler1'] . ' ist am Zug!';
+    }
+    else {
+      echo $_SESSION['spieler2'] . ' ist am Zug!';
+    }
   }
 }
 
