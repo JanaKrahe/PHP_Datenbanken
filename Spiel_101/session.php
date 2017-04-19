@@ -5,30 +5,27 @@
 class sessionClass
 {
 
-  function SessionStart()
+  function SessionStart($benutzername)
   {
     session_start();
 
-    include ('datenbank.php');
-    $db = new DatenbankAufrufe;
-    $benutzername = $db->benutzernameAuslesen();
-
     $_Session['email'] = $_POST['email'];
+    echo $_Session['email'];
 
-    if (!isset($_Session['email'])) {
-      $_SESSION['eingeloggt'] = true;
-      $_Session['benutzername'] = $benutzername;
-      echo "<h1>Hallo ". $_SESSION['benutzername'] . "</h1>";
+    if (!empty($_Session['email'])) {
+      $_Session['eingeloggt'] = true;
+      $_Session['spieler1'] = $benutzername;
+      $_Session['spieler2'] = 'Gast';
       # code...
     } else {
       echo "<b>ungültige Eingabe</b>";
       $_SESSION['eingeloggt'] = false;
     }
-    exit;
+    
   }
 
 function CookiesErzeugen(){
-  setcookie("nameDesCookies", (Wie folgend zu sehen den Inhalt des Cookies)$_SESSION['gdusername'], (Wie folgend zu sehen die Lebenszeit des Cookies)time()+60*60*24*100, "/");
+#  setcookie("nameDesCookies", (Wie folgend zu sehen den Inhalt des Cookies)$_SESSION['gdusername'], (Wie folgend zu sehen die Lebenszeit des Cookies)time()+60*60*24*100, "/");
 }
 
 
@@ -39,6 +36,8 @@ function clearsessionscookies()
     session_destroy();
     setcookie ("gdusername", "",time()-60*60*24*100, "/");
 
+
+}
 
 }
  ?>

@@ -138,7 +138,9 @@ class Pruefen
             $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
             if ($result2 == true) {
               #SESSION
-              #session_start mit attributwert username
+              include ('session.php');
+              $session = new sessionClass;
+              $session->SessionStart($datenbank->benutzernameAuslesen());
               header("Location: OberflaecheSpiel.php");
             }
             else {
