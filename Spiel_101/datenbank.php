@@ -63,21 +63,15 @@ function benutzerLoeschen(){
     echo "Das Passwort wurde geändert.";
   }
 
+  function benutzernameAuslesen(){
+    $pdo = new PDO('mysql:host=localhost;dbname=benutzer101','root','');
+    $sqlStatement = "SELECT benutzername FROM user101 WHERE email = '".$_POST['email']."'";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute();
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
 
-
-// function test(){
-//   include ('PasswortSpeichern.php');
-//   $pasw = new PasswortSpeichern;
-//   $ergebnis = $pasw->passwortAbgleich($ergebnis);
-//   if ($ergebnis == true) {
-//     #session_start mit attributwert username
-//     #Header login
-//     echo "geschafft";
-//   }
-//   else {
-//     "ungleiche eingaben";
-//   }
-// }
 
 }
 
