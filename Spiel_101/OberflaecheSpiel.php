@@ -32,7 +32,10 @@
             <?php $spieler->wuerfelnAuswertung(); ?>
             <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
               <?php $spieler->sichernAuswertung(); ?>
+              <?php $test = $_SESSION['summeS1'] ?>
+            <p hidden="hidden" id="ts"><?php echo $test ; ?></p>
             <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
+              <?php $spieler->resetAuswertung(); ?>
             <div class="erzieltePktDiv">
               <legend> Punkte in diesem Spielzug: </legend>
               <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p> <br>
@@ -47,7 +50,8 @@
         <fieldset class="schmal">
           <label for="score">Spieler1: </label>
 	        <input type="range" id="score" class="regler" value="0"> </input>
-	        <output id="output" for="score">0</output> <br>
+          <script>document.getElementById("regler").value(document.getElementById("ts").value);</script>
+          <output id="output" for="score">0</output> <br>
         </fieldset>
       </div>
 

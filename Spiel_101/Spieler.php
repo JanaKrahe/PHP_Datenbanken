@@ -199,6 +199,30 @@ class Spieler
       echo $_SESSION['spieler2'] . ' ist am Zug!';
     }
   }
+
+  /**
+  * Prüfung, ob der Reset-Button gedrückt wurde
+  *
+  */
+  public function resetAuswertung()
+  {
+    if (isset($_POST["reset"]) && $_POST["reset"] == "neues Spiel") {
+      $this->reset();
+    }
+
+  }
+
+  /**
+  * Setzt alle Werte auf Anfang zurück
+  */
+  private function reset()
+  {
+    $_SESSION['summeSpielzug'] = 0;
+    $_SESSION['runde'] = 1;
+    $_SESSION['summeS1'] = 0;
+    $_SESSION['summeS2'] = 0;
+    $_SESSION['amZug'] = true;
+  }
 }
 
  ?>
