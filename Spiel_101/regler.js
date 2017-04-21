@@ -15,3 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('scoreG')
 		.addEventListener('input', ausgeben);
 });
+
+function aktualisiere_progressbar() {
+	var anteil = document.getElementById('eineID').value;
+	window.alert(anteil);
+	document.getElementById('fortschritt').value = anteil;
+ }

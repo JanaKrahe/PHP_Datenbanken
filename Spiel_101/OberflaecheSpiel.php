@@ -14,10 +14,9 @@
       <kbd>(Kontextmenu: Seitenquelltext anzeigen)</kbd></p> -->
       <div>
         <h1>Spiel 101</h1>
-
+        <!--<script> alert("machwas"); </script>-->
       <?php
           session_start();
-          var_dump($_SESSION);
           include 'Spiel.php';
           include 'Ranking.php';
           $name = $_SESSION['spieler1'];
@@ -56,18 +55,23 @@
 
       <div class="Spielerscores">
         <fieldset class="schmal">
-          <label for="score">Spieler1: </label>
-	        <input type="range" id="score" class="regler" value="0"> </input>
-          <script>document.getElementById("regler").value(document.getElementById("ts").value);</script>
-          <output id="output" for="score">0</output> <br>
+          <label>Spieler 1:
+            <progress id="fortschritt" value="<?php echo $_SESSION['summeS1'] ?>" max="100"></progress>
+            <output type="text" onchange="aktualisiere_progressbar()" id="eineID">
+              <?php echo $_SESSION['summeS1'] ?>
+            </output>
+          </label>
         </fieldset>
       </div>
 
       <div class="Spielerscores">
         <fieldset class="schmal">
-          <label for="scoreG">Spieler2:</label>
-  	      <input type="range" id="scoreG" class="regler" value="0"> </input>
-  	      <output id="outputG" for="scoreG">0</output>
+          <label>Spieler 2:
+            <progress id="fortschritt" value="<?php echo $_SESSION['summeS2'] ?>" max="100"></progress>
+            <output type="text" onchange="aktualisiere_progressbar()" id="eineID">
+              <?php echo $_SESSION['summeS2'] ?>
+            </output>
+          </label>
         </fieldset>
       </div>
 
