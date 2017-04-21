@@ -4,7 +4,7 @@
  * Ein Spieler ist ausführende Kraft in dem Spiel,
  * teständerung
  */
-class Spieler
+class Spiel
 {
   private $name = '';
   private $summeGesamt = 0;
@@ -75,6 +75,7 @@ class Spieler
       $_SESSION['amZug'] = true;
     }
     $_SESSION['summeSpielzug'] = 0;
+    $this->siegerAuswertung();
   }
 
   /**
@@ -222,6 +223,23 @@ class Spieler
     $_SESSION['summeS1'] = 0;
     $_SESSION['summeS2'] = 0;
     $_SESSION['amZug'] = true;
+  }
+
+  public function siegerAuswertung()
+  {
+    if ($_SESSION['summeS1'] >= 101) {
+      $_SESSION['Sieger'] = $_SESSION['spieler1'];
+      //Spiel an DB übermitteln
+
+      header("Location: Sieg.php");
+    }
+    elseif ($_SESSION['summeS2'] >= 101) {
+      $_SESSION['Sieger'] = $_SESSION['spieler1'];
+      //Spiel an DB übermitteln
+
+      header("Location: Sieg.php");
+    }
+
   }
 }
 

@@ -18,24 +18,32 @@
       <?php
           session_start();
           var_dump($_SESSION);
-          include 'Spieler.php';
+          include 'Spiel.php';
           include 'Ranking.php';
           $name = $_SESSION['spieler1'];
-          $spieler = new Spieler($name);
+          $spiel = new Spiel($name);
           $ran = new Ranking();
       ?>
       </div>
+
+      </div>
+      <div id="infoDiv">
+        <p class="infoBox" name="infoBox" value="#InfoBox">
+          <?php $spiel->anDerReihe(); ?>
+        </p>
+      </div>
+
       <div>
         <fieldset class="schmal">
           <form method="post">
             <input class="btn btn-default" type="submit" name="wurf" value="Würfeln"></input>
-            <?php $spieler->wuerfelnAuswertung(); ?>
+            <?php $spiel->wuerfelnAuswertung(); ?>
             <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
-              <?php $spieler->sichernAuswertung(); ?>
+              <?php $spiel->sichernAuswertung(); ?>
               <?php $test = $_SESSION['summeS1'] ?>
             <p hidden="hidden" id="ts"><?php echo $test ; ?></p>
             <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
-              <?php $spieler->resetAuswertung(); ?>
+              <?php $spiel->resetAuswertung(); ?>
             <div class="erzieltePktDiv">
               <legend> Punkte in diesem Spielzug: </legend>
               <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p> <br>
@@ -115,17 +123,11 @@
             }
           ?>
         </p>
-      </div>
-      <div id="infoDiv">
-        <p class="infoBox" name="infoBox" value="#InfoBox">
-          <?php $spieler->anDerReihe(); ?>
-        </p>
-      </div>
 
       <div class="logoutDiv">
         <form method="post">
           <input class="btn btn-default" type="submit" name="logout" value="logout"></input>
-          <?php $spieler->logoutAuswertung(); ?>
+          <?php $spiel->logoutAuswertung(); ?>
         </form>
       </div>
   </body>
