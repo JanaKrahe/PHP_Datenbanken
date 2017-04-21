@@ -32,11 +32,15 @@
   <fieldset>
   <form method="post">
       <label>
-      <input type="radio" name="gender" value="registrieren"> Registrieren<br>
-      <input type="radio" name="gender" value="anmelden" onclick="check(this.value)"> Anmelden<br>
-      <input type="radio" name="gender" value="loeschen" checked="checked"> Account löchen<br>
-      <input type="radio" name="gender" value="kennwortAendern"> Kennwort ändern<br>
-      <input type="submit" value="Spieler löschen">
+        <input type="radio" name="gender" id="registrieren" value="registrieren">
+        <label name="reglab" for="registrieren">Registrieren</label> <br>
+        <input type="radio" name="gender" id="anmelden" value="anmelden">
+        <label name="anmlab" for="anmelden">Anmelden</label> <br>
+        <input type="radio" name="gender" id="loeschen" value="loeschen" checked="checked">
+        <label name="loelab" for="loeschen">Account löchen</label><br>
+        <input type="radio" name="gender" id="kennwortAendern" value="kennwortAendern">
+        <label name="kenlab" for="kennwortAendern" >Kennwort ändern</label><br>
+        <input type="submit" value="Auswahl">
     </label>
   </form>
 </legend>

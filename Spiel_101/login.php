@@ -31,11 +31,15 @@
   <fieldset>
   <form method="post">
       <label>
-      <input type="radio" name="gender" value="registrieren"> Registrieren<br>
-      <input type="radio" name="gender" value="anmelden" checked="checked""> Anmelden<br>
-      <input type="radio" name="gender" value="loeschen"> Account löchen<br>
-      <input type="radio" name="gender" value="kennwortAendern"> Kennwort ändern<br>
-      <input type="submit" value="Auswahl">
+        <input type="radio" name="gender" id="registrieren" value="registrieren">
+        <label name="reglab" for="registrieren">Registrieren</label> <br>
+        <input type="radio" name="gender" id="anmelden" value="anmelden" checked="checked">
+        <label name="anmlab" for="anmelden">Anmelden</label> <br>
+        <input type="radio" name="gender" id="loeschen" value="loeschen">
+        <label name="loelab" for="loeschen">Account löchen</label><br>
+        <input type="radio" name="gender" id="kennwortAendern" value="kennwortAendern">
+        <label name="kenlab" for="kennwortAendern" >Kennwort ändern</label><br>
+        <input type="submit" value="Auswahl">
     </label>
   </form>
 </legend>
