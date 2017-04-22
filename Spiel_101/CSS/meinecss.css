@@ -1,112 +1,67 @@
 <style>
 
-.testklasse {
-  background-color: grey;
-
-}
-
-
-#kopfbereich {
-  background-color: writ;
-}
-
-#kopfbereich p {
-  color:black;
-  text-align:center;
-  font-size:2em;
-  padding:0.6em 4em 0 0;
-}
-
-#steuerung p {
-  padding-left:1em;
-}
-
-#inhalt p {
-  padding:2em;
-}
-
-div {
-  margin-top: 10px;
-  padding:0;
-  margin-left: 35%;
-  width: 25em;
-}
-
-#inhalt ul {
-  padding-left:2em;
-}
-
-html, body {
-  font: 100% Arial, Helvetica, sans-serif;
-}
-
-.input{
-  border:1px solid #333;
-}
-.required{
-  color:red;
-  font-size:12px;
-}
-
-#registerDiv{
-  display:none;
-  margin-top:10px;
-  margin-left:20px;
-  border:2px solid #333;
-  padding:3px;
-  background:#cdcdcd;
-  width:280px;
-  text-align:center;
-}
-#popup{
-  display:none;
-  padding:10px;
-  background:#969696;
-  position:absolute;
-  top:25%;
-  left:25%;
-  z-index: 99999;
-  opacity:100%;
-
-}
-#popupinfo{
-  padding:2px;
-  text-align:center;
-  background:#cfcfcf;
-}
-#popupinfo p{
-  font-size:14px;
-}
-
-#popupinfo .button {
-  text-align:center;
-}
-#popupinfo .button a{
-  text-decoration:none;
-  border:1px solid #333;
-  width:20px;
-  padding:5px;
-  background:#1A1A1A;
-  color:#eee;
-}
-
-#popupinfo .button a:hover{
-  background:#eee;
-  color:#1a1a1a;
-}
-
-#mask{
-  background: #000;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  width: 100%;
+html {
   height: 100%;
-  opacity: 0.8;
-  z-index: 999;
+ 	background-repeat: no-repeat;
+ 	background-color: #d3d3d3;
+ 	font-family: 'Oxygen', sans-serif;
 }
 
+
+h1.title {
+	font-size: 50px;
+	font-family: 'Passion One', cursive;
+	font-weight: 400;
+}
+
+hr{
+	width: 20%;
+	color: #fff;
+}
+
+.form-group{
+	margin-bottom: 15px;
+}
+
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+
+.main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 330px;
+    padding: 40px 40px;
+
+}
+
+.login-button{
+	margin-top: 5px;
+}
+
+.login-register{
+	font-size: 11px;
+	text-align: center;
+}
+
+/**
+* Ab hier meins
+*/
 .schmal {
 
   min-height: : 10px;
@@ -141,4 +96,25 @@ html, body {
 .rankingListe {
   border-color: black;
   border: 1px;
+}
+
+.page-header {
+  margin-top: 10px;
+  padding:0;
+  margin-left: 33%;
+  width: 35em;
+}
+
+.radioB {
+  margin-top: 10px;
+  padding:0;
+  margin-left: 33%;
+  width: 35em;
+}
+
+#registrierung {
+  margin-top: 10px;
+  padding:0;
+  margin-left: 33%;
+  width: 35em;
 }

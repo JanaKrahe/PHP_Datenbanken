@@ -1,69 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registrierung</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/meinecss.css">
+  <!-- Website Font style  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+  <title>Registrierung</title>
 </head>
 <body>
-        <?php
-        include ('FelderInhalt.php');
-        $feld = new Pruefen;
-          ?>
-
-  <h1>Spiel 101</h1>
-
-  <fieldset>
-    <legend>Bitte registrieren Sie sich für das Spiel 101</legend>
-
-    <p><span class="error">* Pflichtfelder</span></p>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-      Benutzername:<br>
-      <input type="name" size="40" maxlength="250" name="benutzername" >
-      <span class="error">* <?php $feld->pruefungBenutzername(); ?></span>
-      <br>
-
-      E-Mail:<br>
-      <input type="email" size="40" maxlength="250" name="email">
-      <span class="error">* <?php $feld->pruefungEmail(); ?></span>
-
-      <br>Dein Passwort:<br>
-      <input type="Password" size="40"  maxlength="250" name="passwort">
-      <span class="error">* <?php $feld->pruefungPasswort(); ?></span>
-      <br>
-
-      Passwort wiederholen:<br>
-      <input type="Password" size="40" maxlength="250" name="passwort2">
-      <span class="error">*
-        <?php $feld->pruefungPasswort2();
-          $feld->passwortStimmenUeberein();
-        ?>
-      </span>
-      <br><br>
-      <input type="submit" value="Registrieren" name="Registrieren">
-    </form>
-  </fieldset>
-  <fieldset>
-  <form method="post">
-      <label>
-      <input type="radio" name="gender" id="registrieren" value="registrieren" checked="checked">
-      <label name="reglab" for="registrieren">Registrieren</label> <br>
-      <input type="radio" name="gender" id="anmelden" value="anmelden">
-      <label name="anmlab" for="anmelden">Anmelden</label> <br>
-      <input type="radio" name="gender" id="loeschen" value="loeschen">
-      <label name="loelab" for="loeschen">Account löchen</label><br>
-      <input type="radio" name="gender" id="kennwortAendern" value="kennwortAendern">
-      <label name="kenlab" for="kennwortAendern" >Kennwort ändern</label><br>
-      <input type="submit" value="Auswahl">
-    </label>
-  </form>
-</legend>
-</fieldset>
-
   <?php
-    ini_set('display_errors', 0);
-    include('radioCheck.php');
-    $test = new RadiobuttonAuswerten;
-    $test->auswertung();
+    include ('FelderInhalt.php');
+    $feld = new Pruefen;
+    $feld->error = false;
   ?>
+
+  <div class="container">
+			<div class="row main">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">Spiel 101 <br>
+                    <small>Registrierung.</small> </h1>
+	               		<hr />
+	               	</div>
+	            </div>
+				<div class="main-login main-center">
+					<form class="form-horizontal" method="post" action="#">
+
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Benutzername:</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="benutzername" id="name"  placeholder="Enter your Name"/>
+								</div>
+                <?php $feld->pruefungBenutzername(); ?>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">E-Mail:</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+                </div>
+                <?php $feld->pruefungEmail(); ?>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Dein Passwort:</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="passwort" id="password"  placeholder="Enter your Password"/>
+                </div>
+                <?php $feld->pruefungPasswort(); ?>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Passwort wiederholen:</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="passwort2" id="confirm"  placeholder="Confirm your Password"/>
+                </div>
+                <?php $feld->pruefungPasswort2();
+                ?>
+							</div>
+						</div>
+            <?php  $feld->passwortStimmenUeberein(); ?>
+						<div class="form-group ">
+              <input type="submit" value="Registrieren" name="Registrieren" class="btn btn-primary btn-lg btn-block login-button">
+            </div>
+					</form>
+
+          <hr />
+
+          <fieldset class="form-group">
+            <form class="form-horizontal" method="post" action="#">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="gender" value="registrieren" checked>
+                  Registrieren
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="gender" value="anmelden" >
+                  Anmelden
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="gender" value="loeschen" >
+                  Account löschen
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="gender" value="kennwortAendern" >
+                  Kennwort ändern
+                </label>
+              </div>
+              <input type="submit" value="Auswahl" class="btn btn-default">
+            </form>
+            <?php
+              ini_set('display_errors', 0);
+              include('radioCheck.php');
+              $test = new RadiobuttonAuswerten;
+              $test->auswertung();
+            ?>
+          </fieldset>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

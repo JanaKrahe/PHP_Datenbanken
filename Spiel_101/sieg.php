@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/meinecss.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="regler.js"> </script>
     <title>Spiel101</title>
   </head>
   <body>
     <?php session_start(); ?>
     <div id="siegesDiv">
-      <p> <?php echo $_SESSION['Sieger']; ?>
+      <p> <?php echo 'Gewonnen hat: '.$_SESSION['Sieger']; ?>
     </div>
     <div id="neuesSpiel">
       <fieldset class="schmal">

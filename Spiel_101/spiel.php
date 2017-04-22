@@ -35,7 +35,6 @@ class Spiel
   {
     //Zufallszahl generieren
     $wuerfelergebnis = random_int(1, 6);
-    var_dump($wuerfelergebnis);
 
     if($wuerfelergebnis == 1) {
       $this->verlieren();
@@ -234,7 +233,7 @@ class Spiel
       header("Location: Sieg.php");
     }
     elseif ($_SESSION['summeS2'] >= 101) {
-      $_SESSION['Sieger'] = $_SESSION['spieler1'];
+      $_SESSION['Sieger'] = $_SESSION['spieler2'];
       //Spiel an DB übermitteln
 
       header("Location: Sieg.php");

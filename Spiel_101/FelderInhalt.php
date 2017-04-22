@@ -117,7 +117,7 @@ class Pruefen
               if ($result == false) {
                 $datenbank->benutzerAnlegen();
               } else {
-                echo "DerBenutzer existiert bereits.";
+                echo "Der Benutzer existiert bereits.";
               }
             }
           }
