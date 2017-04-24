@@ -6,9 +6,6 @@
     $spiel = new Spiel($name);
     $ran = new Ranking();
 
-    $spiel->wuerfelnAuswertung();
-    $spiel->sichernAuswertung();
-    $spiel->resetAuswertung();
     $spiel->logoutAuswertung();
 ?>
 
@@ -37,7 +34,7 @@
   				<div class="panel-heading">
   	               <div class="panel-title text-center">
   	               		<h1 class="title">Spiel 101 <br>
-                      <small>Spielen.</small> </h1>
+                      <small>Spielen</small> </h1>
   	               		<hr />
   	               	</div>
   	            </div>
@@ -46,11 +43,11 @@
             <fieldset class="form-group">
               <form class="form-horizontal" method="post">
                 <input class="btn btn-default" type="submit" name="wurf" value="Würfeln"></input>
-
+                <?php $spiel->wuerfelnAuswertung(); ?>
                 <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
-
+                <?php $spiel->sichernAuswertung(); ?>
                 <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
-
+                <?php $spiel->resetAuswertung(); ?>
                 <hr />
                 <div class="erzieltePktDiv">
                   <legend> Punkte in diesem Spielzug: </legend>
@@ -134,10 +131,6 @@
       <div class="logoutDiv">
         <form method="post">
           <input class="btn btn-default" type="submit" name="logout" value="logout"></input>
-          <?php
-          //if (!headers_sent()) {
-
-          //} ?>
         </form>
       </div>
   </body>

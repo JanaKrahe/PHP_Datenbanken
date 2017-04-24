@@ -31,7 +31,7 @@ $test->auswertung();
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
 	               		<h1 class="title">Spiel 101 <br>
-                    <small>Account löschen.</small> </h1>
+                    <small>Account löschen</small> </h1>
 	               		<hr />
 	               	</div>
 	            </div>
