@@ -30,7 +30,7 @@
 	               		<hr />
 	               	</div>
 	            </div>
-				<div class="main-login main-center">
+				<div class="main-l main-center">
 					<form class="form-horizontal" method="post" action="#">
 
 						<div class="form-group">
