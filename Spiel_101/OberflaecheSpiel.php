@@ -126,6 +126,10 @@
               <button class="btn btn-default" type="button" onclick="anleitung()" name="btnAnleitung">Anleitung</button>
             </div>
           </div>
+          <div class="mai-center">
+            <hr />
+            <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>
+          </div>
         </div>
       </div>
       <div class="logoutDiv">
