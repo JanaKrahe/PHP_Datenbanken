@@ -151,7 +151,7 @@ class Pruefen
               echo "Das Passwort ist nicht korrekt";
             }
           } else {
-            Header("Location: registrierung.php");
+            header("Location: registrierung.php");
             echo "Bitte zuerst Registrieren";
           }
         }

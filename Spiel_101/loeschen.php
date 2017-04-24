@@ -62,7 +62,7 @@ $test->auswertung();
             <?php $feld->loeschen(); ?>
 
 						<div class="form-group ">
-              <input type="submit" value="Löschen" name="loeschen" class="btn btn-primary btn-lg btn-block login-button">
+              <input type="submit" value="Löschen" name="loeschen" class="btn btn-primary btn-lg btn-block login-button" onclick="return confirm('Sind sie sicher?')">
 						</div>
 					</form>
 
@@ -94,7 +94,7 @@ $test->auswertung();
                   Kennwort ändern
                 </label>
               </div>
-              <input type="submit" value="Auswahl" class="btn btn-default">
+              <input type="submit" value="Auswahl" class="btn btn-default" >
             </form>
           </fieldset>
 				</div>
