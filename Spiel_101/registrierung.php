@@ -74,10 +74,9 @@
 									<input type="password" class="form-control" name="passwort2" id="confirm"  placeholder="Confirm your Password"/>
                 </div>
                 <?php $feld->pruefungPasswort2();
-                ?>
+                $feld->passwortStimmenUeberein(); ?>
 							</div>
 						</div>
-            <?php  $feld->passwortStimmenUeberein(); ?>
 						<div class="form-group ">
               <input type="submit" value="Registrieren" name="Registrieren" class="btn btn-primary btn-lg btn-block login-button">
             </div>

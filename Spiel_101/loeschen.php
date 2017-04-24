@@ -57,7 +57,7 @@
             <?php $feld->loeschen(); ?>
 
 						<div class="form-group ">
-              <input type="submit" value="Weiter" name="loeschen" class="btn btn-primary btn-lg btn-block login-button">
+              <input type="submit" value="Löschen" name="loeschen" class="btn btn-primary btn-lg btn-block login-button">
 						</div>
 					</form>
 

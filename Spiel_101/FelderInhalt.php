@@ -18,7 +18,7 @@ class Pruefen
         $this->error = true;
         echo $nameErr;
       } else {
-        $name = test_input($_POST["benutzername"]);
+        $name = $this->test_input($_POST["benutzername"]);
         // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
           $nameErr = "Only letters and white space allowed";
@@ -40,7 +40,7 @@ class Pruefen
         $this->error = true;
         echo $emailErr;
       } else {
-        $email = test_input($_POST["email"]);
+        $email = $this->test_input($_POST["email"]);
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
           $emailErr = "Invalid email format";
@@ -62,7 +62,7 @@ class Pruefen
           $this->error = true;
           echo $passwortErr;
         } else {
-          $passwort = test_input($_POST["passwort"]);
+          $passwort = $this->test_input($_POST["passwort"]);
         }
       }
     }
@@ -78,7 +78,7 @@ class Pruefen
           $this->error = true;
           echo $passwort2Err;
         } else {
-          $passwort2 = test_input($_POST["passwort2"]);
+          $passwort2 = $this->test_input($_POST["passwort2"]);
         }
       }
     }
@@ -94,7 +94,7 @@ class Pruefen
           $this->error = true;
           echo $passwort3Err;
         } else {
-          $passwort3 = test_input($_POST["passwort3"]);
+          $passwort3 = $this->test_input($_POST["passwort3"]);
         }
       }
     }
@@ -217,15 +217,12 @@ class Pruefen
       }
     }
 
+    function test_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
 
   } //end class
-
-
-
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
 ?>
