@@ -119,6 +119,10 @@
             </form>
           </fieldset>
 				</div>
+        <div>
+          <hr />
+          <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>
+        </div>
 			</div>
 		</div>
 </body>

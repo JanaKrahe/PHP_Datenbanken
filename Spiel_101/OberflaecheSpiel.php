@@ -68,8 +68,8 @@
             <div class="Spielerscores">
               <fieldset class="schmal">
                 <label><?php echo $_SESSION['spieler1'] ?>:
-                  <progress id="fortschritt" value="<?php echo $_SESSION['summeS1'] ?>" max="101"></progress>
-                  <output type="text" onchange="aktualisiere_progressbar()" id="eineID">
+                  <progress id="fortschritt1" value="<?php echo $_SESSION['summeS1'] ?>" max="101"></progress>
+                  <output type="text" id="ausgSummeS1">
                     <?php echo $_SESSION['summeS1'] ?>
                   </output>
                 </label>
@@ -78,8 +78,8 @@
             <div class="Spielerscores">
               <fieldset class="schmal">
                 <label><?php echo $_SESSION['spieler2'] ?>:
-                  <progress id="fortschritt" value="<?php echo $_SESSION['summeS2'] ?>" max="101"></progress>
-                  <output type="text" onchange="aktualisiere_progressbar()" id="eineID">
+                  <progress id="fortschritt2" value="<?php echo $_SESSION['summeS2'] ?>" max="101"></progress>
+                  <output type="text" id="ausgSummeS2">
                     <?php echo $_SESSION['summeS2'] ?>
                   </output>
                 </label>
@@ -126,7 +126,7 @@
               <button class="btn btn-default" type="button" onclick="anleitung()" name="btnAnleitung">Anleitung</button>
             </div>
           </div>
-          <div class="mai-center">
+          <div>
             <hr />
             <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>
           </div>
