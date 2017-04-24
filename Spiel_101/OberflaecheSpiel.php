@@ -1,3 +1,17 @@
+<?php
+    session_start();
+    include 'Spiel.php';
+    include 'Ranking.php';
+    $name = $_SESSION['spieler1'];
+    $spiel = new Spiel($name);
+    $ran = new Ranking();
+
+    $spiel->wuerfelnAuswertung();
+    $spiel->sichernAuswertung();
+    $spiel->resetAuswertung();
+    $spiel->logoutAuswertung();
+?>
+
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -17,14 +31,7 @@
   </head>
   <body>
     <!-- http://localhost/PHP_Datenbanken/Spiel_101/OberflaecheSpiel.php -->
-    <?php
-        session_start();
-        include 'Spiel.php';
-        include 'Ranking.php';
-        $name = $_SESSION['spieler1'];
-        $spiel = new Spiel($name);
-        $ran = new Ranking();
-    ?>
+
     <div class="container">
   			<div class="row main">
   				<div class="panel-heading">
@@ -39,13 +46,12 @@
             <fieldset class="form-group">
               <form class="form-horizontal" method="post">
                 <input class="btn btn-default" type="submit" name="wurf" value="Würfeln"></input>
-                <?php $spiel->wuerfelnAuswertung(); ?>
+
                 <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
-                <?php $spiel->sichernAuswertung(); ?>
-                <?php $test = $_SESSION['summeS1'] ?>
-                <p hidden="hidden" id="ts"><?php echo $test ; ?></p>
+
                 <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
-                <?php $spiel->resetAuswertung(); ?>
+
+                <hr />
                 <div class="erzieltePktDiv">
                   <legend> Punkte in diesem Spielzug: </legend>
                   <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p> <br>
@@ -128,7 +134,10 @@
       <div class="logoutDiv">
         <form method="post">
           <input class="btn btn-default" type="submit" name="logout" value="logout"></input>
-          <?php $spiel->logoutAuswertung(); ?>
+          <?php
+          //if (!headers_sent()) {
+
+          //} ?>
         </form>
       </div>
   </body>

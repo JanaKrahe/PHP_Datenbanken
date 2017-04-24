@@ -12,7 +12,7 @@ class Pruefen
   function pruefungBenutzername()
   {
     $name = $nameErr = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
       if (empty($_POST["benutzername"])) {
         $nameErr = "Name is required";
         $this->error = true;
@@ -34,7 +34,8 @@ class Pruefen
     $emailErr = "";
     $email = "";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
+
       if (empty($_POST["email"])) {
         $emailErr = "Email is required";
         $this->error = true;
@@ -56,7 +57,8 @@ class Pruefen
       $passwortErr = "";
       $passwort = "";
 
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
+        var_dump('3'. $_SERVER["REQUEST_METHOD"]);
         if (empty($_POST["passwort"])) {
           $passwortErr = "Passwort is requiered";
           $this->error = true;
@@ -72,7 +74,7 @@ class Pruefen
       $passwort2Err = "";
       $passwort2 = "";
 
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
         if (empty($_POST["passwort2"])) {
           $passwort2Err = "Passwort is requiered";
           $this->error = true;
@@ -100,7 +102,9 @@ class Pruefen
     }
 
     function passwortStimmenUeberein(){
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      var_dump($_POST);
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
+        var_dump('1'. $_SERVER["REQUEST_METHOD"]);
         if ($this->error == false) {
           if ($_POST["passwort"] != $_POST["passwort2"]){
             $stimmenErr = "Die Passwörter müssen übereinstimmen";
@@ -125,7 +129,9 @@ class Pruefen
       }
 
     function login(){
+
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        var_dump('2'. $_SERVER["REQUEST_METHOD"]);
         if ($this->error == false) {
           include('datenbank.php');
           $datenbank = new DatenbankAufrufe;

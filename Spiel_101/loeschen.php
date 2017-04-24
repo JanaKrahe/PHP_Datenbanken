@@ -1,3 +1,14 @@
+<?php
+include ('FelderInhalt.php');
+$feld = new Pruefen;
+$feld->error = false;
+
+ini_set('display_errors', 0);
+include('radioCheck.php');
+$test = new RadiobuttonAuswerten;
+$test->auswertung();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +26,6 @@
   <title>Benutzer löchen</title>
 </head>
 <body>
-  <?php
-  include ('FelderInhalt.php');
-  $feld = new Pruefen;
-  $feld->error = false;
-  ?>
-
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
@@ -91,12 +96,6 @@
               </div>
               <input type="submit" value="Auswahl" class="btn btn-default">
             </form>
-            <?php
-              ini_set('display_errors', 0);
-              include('radioCheck.php');
-              $test = new RadiobuttonAuswerten;
-              $test->auswertung();
-            ?>
           </fieldset>
 				</div>
 			</div>
