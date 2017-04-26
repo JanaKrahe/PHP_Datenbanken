@@ -78,7 +78,8 @@ input::-webkit-input-placeholder {
 .infoBox {
   border:1px solid lightgrey;
   text-align: center;
-  color: grey;
+  color: rgb(51, 122, 183);
+  font-weight: bold;
 }
 
 .regler {

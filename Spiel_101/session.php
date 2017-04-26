@@ -15,7 +15,7 @@ class sessionClass
     if (!empty($_SESSION['email'])) {
       $_SESSION['eingeloggt'] = true;
       $_SESSION['spieler1'] = $benutzername;
-      $_SESSION['spieler2'] = 'Gast';
+      $_SESSION['spieler2'] = $benutzername .'\'s Gast';
       $_SESSION['summeSpielzug'] = 0;
       $_SESSION['runde'] = 1;
       $_SESSION['summeS1'] = 0;

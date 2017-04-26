@@ -97,6 +97,16 @@ function benutzerLoeschen(){
     $ergebnis = $stmt->fetchColumn();
     return $ergebnis;
   }
+
+  function laden(){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT * FROM spielstand WHERE spieler = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($_SESSION['spieler1']));
+    //Hier müssten mehrere Werte ausgegeben werden
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
 }
 
  ?>

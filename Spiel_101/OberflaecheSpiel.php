@@ -50,15 +50,17 @@
                 <?php $spiel->speichernAuswertung(); ?>
                 <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
                 <?php $spiel->resetAuswertung(); ?>
-                <hr />
-                <div class="erzieltePktDiv">
-                  <legend> Punkte in diesem Spielzug: </legend>
-                  <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p> <br>
-                  <label> Runde: </label>
-                  <p class="Zug"> <?php echo $_SESSION['runde'] ?> </p>
-                </div>
               </form>
             </fieldset>
+            <hr />
+            
+            <div class="erzieltePktDiv">
+              <legend> Punkte in diesem Spielzug: </legend>
+              <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p> <br>
+              <label> Runde: </label>
+              <p class="Zug"> <?php echo $_SESSION['runde'] ?> </p>
+            </div>
+            <hr />
 
             <div id="infoDiv">
               <p class="infoBox" name="infoBox" value="#InfoBox">
@@ -67,27 +69,17 @@
             </div>
 
             <!-- Anzeige Spielerscores gesamt -->
-            <div class="Spielerscores">
-              <fieldset class="schmal">
-                <label><?php echo $_SESSION['spieler1'] ?>:
-                  <progress id="fortschritt1" value="<?php echo $_SESSION['summeS1'] ?>" max="101"></progress>
-                  <output type="text" id="ausgSummeS1">
-                    <?php echo $_SESSION['summeS1'] ?>
-                  </output>
-                </label>
-              </fieldset>
-            </div>
-            <div class="Spielerscores">
-              <fieldset class="schmal">
-                <label><?php echo $_SESSION['spieler2'] ?>:
-                  <progress id="fortschritt2" value="<?php echo $_SESSION['summeS2'] ?>" max="101"></progress>
-                  <output type="text" id="ausgSummeS2">
-                    <?php echo $_SESSION['summeS2'] ?>
-                  </output>
-                </label>
-              </fieldset>
-            </div>
+            <div>
+              <label><?php echo $_SESSION['spieler1'] ?>:</label>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <?php echo $_SESSION['summeS1'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS1'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS1'] ?></div>
+              </div>
 
+              <label><?php echo $_SESSION['spieler2'] ?>:</label>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <?php echo $_SESSION['summeS2'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS2'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS2'] ?></div>
+              </div>
+            </div>
             <div class="anleitung">
               <button class="btn btn-default" type="button" onclick="anleitung()" name="btnAnleitung">Anleitung</button>
             </div>
