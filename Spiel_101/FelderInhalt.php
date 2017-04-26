@@ -126,7 +126,6 @@ class Pruefen
       }
 
     function login(){
-
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($this->error == false) {
           include('datenbank.php');
@@ -143,7 +142,6 @@ class Pruefen
               include ('session.php');
               $session = new sessionClass;
               $name = $datenbank->benutzernameAuslesen();
-              echo "TEST: ".$name;
               $session->SessionStart($name);
               header("Location: OberflaecheSpiel.php");
             }
