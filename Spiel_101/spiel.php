@@ -226,19 +226,32 @@ class Spiel
 
   public function siegerAuswertung()
   {
+    include('datenbank.php');
+    $datenbank = new DatenbankAufrufe;
+
     if ($_SESSION['summeS1'] >= 101) {
       $_SESSION['Sieger'] = $_SESSION['spieler1'];
-      //Spiel an DB übermitteln
-
+      $datenbank->beenden();
       header("Location: Sieg.php");
     }
     elseif ($_SESSION['summeS2'] >= 101) {
       $_SESSION['Sieger'] = $_SESSION['spieler2'];
-      //Spiel an DB übermitteln
-
+      $datenbank->beenden();
       header("Location: Sieg.php");
     }
+  }
 
+  public function speichernAuswertung()
+  {
+    if (isset($_POST["speichern"]) && $_POST["speichern"] == "Speichern!") {
+      $this->speicherSpiel();
+    }
+  }
+  public function speicherSpiel()
+  {
+    include('datenbank.php');
+    $datenbank = new DatenbankAufrufe;
+    $datenbank->speichern();
   }
 }
 

@@ -152,6 +152,7 @@ class Pruefen
             }
           } else {
             header("Location: registrierung.php");
+            //wird nie erreicht/ausgegeben
             echo "Bitte zuerst Registrieren";
           }
         }
