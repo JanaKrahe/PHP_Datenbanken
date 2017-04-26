@@ -43,7 +43,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Email"/>
                 </div>
                 <?php $feld->pruefungEmail(); ?>
 							</div>
@@ -54,18 +54,18 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="passwort" id="password"  placeholder="Enter your Password"/>
+									<input type="password" class="form-control" name="passwort" id="password"  placeholder="Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort(); ?>
 							</div>
 						</div>
 
             <div class="form-group">
-							<label for="confirm" class="cols-sm-2 control-label">Passwort wiederholen:</label>
+							<label for="confirm" class="cols-sm-2 control-label">Neues Passwort:</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="passwort2" id="confirm2"  placeholder="Confirm your Password"/>
+									<input type="password" class="form-control" name="passwort2" id="confirm2"  placeholder="Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort2();
                 ?>
@@ -73,18 +73,18 @@
 						</div>
 
 				      <div class="form-group">
-  						<label for="confirm" class="cols-sm-2 control-label">Passwort wiederholen:</label>
+  						<label for="confirm" class="cols-sm-2 control-label">Neues Passwort wiederholen:</label>
   						<div class="cols-sm-10">
   							<div class="input-group">
   								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-  								<input type="password" class="form-control" name="passwort3" id="confirm3"  placeholder="Confirm your Password"/>
+  								<input type="password" class="form-control" name="passwort3" id="confirm3"  placeholder="Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort3(); ?>
   						</div>
   					</div>
             <?php $feld->kennwortAendern(); ?>
   					<div class="form-group ">
-              <input type="submit" value="Kennwort Ändern" name="kennwortAendern" class="btn btn-primary btn-lg btn-block login-button">
+              <input type="submit" value="Kennwort Ändern" name="kennwortAendern" class="btn btn-primary btn-lg btn-block login-button"  onclick="return confirm('Sind Sie sich sicher, dass Sie Ihr Passwort ändern wollen?')">
             </div>
 					</form>
 

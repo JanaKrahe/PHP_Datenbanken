@@ -62,7 +62,7 @@ $test->auswertung();
             <?php $feld->loeschen(); ?>
 
 						<div class="form-group ">
-              <input type="submit" value="Löschen" name="loeschen" class="btn btn-primary btn-lg btn-block login-button" onclick="return confirm('Sind sie sicher?')">
+              <input type="submit" value="Löschen" name="loeschen" class="btn btn-primary btn-lg btn-block login-button" onclick="return confirm('Sind Sie sich sicher, dass Sie Ihren Account löschen wollen?')">
 						</div>
 					</form>
 
