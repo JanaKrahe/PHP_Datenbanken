@@ -46,20 +46,23 @@
   </head>
   <body>
     <!-- http://localhost/PHP_Datenbanken/Spiel_101/OberflaecheSpiel.php -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-upper">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <label class="navbar-brand">Spiel 101</label>
-          <a class="navbar-brand" ><small>Spielen</small></a>
+        <div class="row">
+          <div class="col-md-5"><a class="navbar-brand" href="Anleitung.php"> Anleitung </a></div>
+          <div class="col-md-7"><a class="navbar-brand zeile">Spiel 101</a></div>
         </div>
-        <!--<div class="nav navbar-nav navbar-collapse">
-          <a class="navbar-brand" ><small>Spielen</small></a>
-        </div>-->
+        <label class="navbar-brand">Spiel 101</label>
+        <a class="navbar-brand" ><small>Spielen</small></a>
+        <a class="navbar-brand" href="Anleitung.php"> Anleitung </a>
         <ul class="nav navbar-nav navbar-right">
-          <li><a><span class="glyphicon glyphicon-user"></span> Signed in as Mark Otto</a></li>
-
+          <li><a><span class="glyphicon glyphicon-user"></span> Signed in as <?php echo $_SESSION['spieler1']; ?></a></li>
           <li><a href="?logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           <span class="glyphicons glyphicons-dice-6"></span>
+        </ul>
+        <ul class="nav navbar-upper">
+          <li><a class="navbar-brand zeile"> Spiel 101</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -67,7 +70,7 @@
   			<div class="row main">
   				<div class="panel-heading">
   	        <div class="panel-title text-center">
-              <?php if (!empty($_SESSION['spielGeladen'])) {   ?>
+              <?php if (!empty($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true) {   ?>
                 <p style="text-align: center"> Ihr alter Spielstand wurde geladen. </p>
               <?php  $_SESSION['spielGeladen']==false; }  ?>
   	       		<hr />
@@ -132,5 +135,6 @@
         </form>
       </div>
     -->
+
   </body>
 </html>

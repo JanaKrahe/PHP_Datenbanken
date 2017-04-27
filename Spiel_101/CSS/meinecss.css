@@ -125,3 +125,8 @@ input::-webkit-input-placeholder {
   margin-left: 33%;
   width: 35em;
 }
+
+
+.zeile {
+  font-size: 40px;
+}
