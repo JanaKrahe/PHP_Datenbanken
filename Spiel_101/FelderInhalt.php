@@ -142,7 +142,7 @@ class Pruefen
               include ('session.php');
               $session = new sessionClass;
               $name = $datenbank->benutzernameAuslesen();
-              $session->SessionStart($name);
+              $session->SessionStart($name, $datenbank);
               header("Location: OberflaecheSpiel.php");
             }
             else {

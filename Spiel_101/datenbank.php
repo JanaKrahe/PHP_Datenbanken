@@ -4,6 +4,7 @@
  */
 class DatenbankAufrufe
 {
+
   function datenbankVerbinden(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     if (!$pdo) {
@@ -22,7 +23,6 @@ class DatenbankAufrufe
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute(array($_POST['email'], $_POST['passwort'], $_POST['benutzername']));
     header("Location: login.php");
-    echo "Der Benutzer wurde angelegt.";
   }
 
   function existBenutzer(){
@@ -177,5 +177,4 @@ function benutzerLoeschen(){
     return $ergebnis;
   }
 }
-
  ?>
