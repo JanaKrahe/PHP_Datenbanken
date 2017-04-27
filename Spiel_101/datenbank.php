@@ -176,5 +176,16 @@ function benutzerLoeschen(){
     $ergebnis = $stmt->fetchColumn();
     return $ergebnis;
   }
+
+  //bei Start aufrufen und gucken ob ein Spielstand der nicht beendet ist mit dem Spieler existiert
+  function laden(){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT * FROM spielstand, user101 WHERE spieler = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($_SESSION['spieler1']));
+    //Hier müssten mehrere Werte ausgegeben werden
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
 }
  ?>

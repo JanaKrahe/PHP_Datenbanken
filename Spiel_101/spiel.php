@@ -170,6 +170,18 @@ class Spiel
   */
   public function logoutAuswertung()
   {
+    if (isset($_GET["logout"])) {
+      $this->logout();
+    }
+
+  }
+
+  /**
+  * Prüfung, ob der Logout-Button gedrückt wurde
+  *
+  */
+  public function logoutAuswertung2()
+  {
     if (isset($_POST["logout"]) && $_POST["logout"] == "logout") {
       $this->logout();
     }
