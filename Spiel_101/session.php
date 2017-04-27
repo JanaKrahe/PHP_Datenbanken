@@ -29,6 +29,7 @@ class sessionClass
         $_SESSION['summeS1'] = $db->punkteS1Auslesen($exist);
         $_SESSION['summeS2'] = $db->punkteS2Auslesen($exist);
         $_SESSION['amZug'] = $db->amZugAuslesen($exist);
+        $_SESSION['spielGeladen'] = true;
       }
     } else {
       echo "<b>ungültige Eingabe</b>";
