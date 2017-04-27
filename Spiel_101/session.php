@@ -5,9 +5,6 @@
 class sessionClass
 {
 
-  function SessionStart($benutzername)
-  {
-
   function SessionStart($benutzername, $db) {
     session_start();
     $_SESSION['email'] = $_POST['email'];
