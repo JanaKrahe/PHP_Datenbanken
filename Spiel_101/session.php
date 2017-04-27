@@ -7,7 +7,7 @@ class sessionClass
 
   function SessionStart($benutzername)
   {
-    session_start();
+    //session_start();
 
     $_SESSION['email'] = $_POST['email'];
 

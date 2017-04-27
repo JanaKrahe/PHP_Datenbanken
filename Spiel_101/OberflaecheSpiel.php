@@ -1,12 +1,24 @@
 <?php
-    session_start();
-    include 'Spiel.php';
-    include 'Ranking.php';
-    $name = $_SESSION['spieler1'];
-    $spiel = new Spiel($name);
-    $ran = new Ranking();
+  //Script wird nicht ausgeführt
+  session_start();
+  if (empty($_SESSION['eingeloggt'])) {
+  header("Location: Login.php");
+  }
 
-    $spiel->logoutAuswertung();
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // last request was more than 30 minutes ago
+    session_unset();     // unset $_SESSION variable for the run-time
+    session_destroy();   // destroy session data in storage
+  }
+  $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
+
+
+  include 'Spiel.php';
+  include 'Ranking.php';
+  $name = $_SESSION['spieler1'];
+  $spiel = new Spiel($name);
+  $ran = new Ranking();
+  $spiel->logoutAuswertung();
 ?>
 
 <!DOCTYPE html>

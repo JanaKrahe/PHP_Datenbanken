@@ -1,8 +1,9 @@
 <?php
 //Wenn Session existiert dann Weiterleitung auf Spiel
-/*if (session_name() == 'PHPSESSID') {
+session_start();
+if (!empty($_SESSION['eingeloggt'])) {
   header("Location: OberflaecheSpiel.php");
-}*/
+}
 include ('FelderInhalt.php');
 $feld = new Pruefen;
 $feld->error = false;
