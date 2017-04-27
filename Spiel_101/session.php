@@ -5,7 +5,6 @@
 class sessionClass
 {
 
-<<<<<<< HEAD
   function SessionStart($benutzername)
   {
 
