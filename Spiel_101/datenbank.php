@@ -4,6 +4,7 @@
  */
 class DatenbankAufrufe
 {
+
   function datenbankVerbinden(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     if (!$pdo) {
@@ -22,7 +23,6 @@ class DatenbankAufrufe
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute(array($_POST['email'], $_POST['passwort'], $_POST['benutzername']));
     header("Location: login.php");
-    echo "Der Benutzer wurde angelegt.";
   }
 
   function existBenutzer(){
@@ -72,25 +72,104 @@ function benutzerLoeschen(){
     return $ergebnis;
   }
 
+  function spielerIdAuslesen(){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT id FROM user101 WHERE email = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($_SESSION['email']));
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
+
+    function rundenAuslesen($id){
+      $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+      $sqlStatement = "SELECT zugAnzahl FROM spielstand WHERE id = ?";
+      $stmt = $pdo->prepare($sqlStatement);
+      $stmt->execute(array($id));
+      $ergebnis = $stmt->fetchColumn();
+      return $ergebnis;
+    }
+
+      function punkteS1Auslesen($id){
+        $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+        $sqlStatement = "SELECT punkteS1 FROM spielstand WHERE id = ?";
+        $stmt = $pdo->prepare($sqlStatement);
+        $stmt->execute(array($id));
+        $ergebnis = $stmt->fetchColumn();
+        return $ergebnis;
+      }
+
+      function punkteS2Auslesen($id){
+        $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+        $sqlStatement = "SELECT punkteS2 FROM spielstand WHERE id = ?";
+        $stmt = $pdo->prepare($sqlStatement);
+        $stmt->execute(array($id));
+        $ergebnis = $stmt->fetchColumn();
+        return $ergebnis;
+      }
+
+      function amZugAuslesen($id){
+        $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+        $sqlStatement = "SELECT amZug FROM spielstand WHERE id = ?";
+        $stmt = $pdo->prepare($sqlStatement);
+        $stmt->execute(array($id));
+        $ergebnis = $stmt->fetchColumn();
+        if ($ergebnis == 0) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+
+  function existSpielstand($spielerId){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT id FROM spielstand WHERE spielerId = ? AND sieger IS NULL";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($spielerId));
+    $ergebnis = $stmt->fetchColumn();
+    if (empty($ergebnis)) {
+      return NULL;
+    }else {
+      return $ergebnis;
+    }
+  }
+
+
   public function beenden()
   {
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-    $sqlStatement = "INSERT INTO spielstand (spieler, zugAnzahl, punkteS1, punkteS2, amZug, beendet, sieger) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $pdo->prepare($sqlStatement);
-    $stmt->execute(array($_SESSION['spieler1'], $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], false, $_SESSION['sieger']));
+    $spielerId = $this->spielerIdAuslesen();
+    $existSpielstand = $this->existSpielstand($spielerId);
+    if ($existSpielstand == NULL) {
+      $sqlStatement = "INSERT INTO spielstand (spielerId, zugAnzahl, punkteS1, punkteS2, amZug) VALUES (?, ?, ?, ?, ?)";
+      $stmt = $pdo->prepare($sqlStatement);
+      $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug']));
+    } else {
+      $sqlStatement = "UPDATE spielstand SET spielerId = ?, zugAnzahl = ?, punkteS1 = ?, punkteS2 = ?, amZug = ? WHERE id = ?";
+      $stmt = $pdo->prepare($sqlStatement);
+      $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], $existSpielstand));
+    }
   }
 
   public function speichern()
   {
-    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-    $sqlStatement = "INSERT INTO spielstand (spieler, zugAnzahl, punkteS1, punkteS2, amZug, beendet, sieger) VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt = $pdo->prepare($sqlStatement);
-    $stmt->execute(array($_SESSION['spieler1'], $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], false));
-  }
+      $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+      $spielerId = $this->spielerIdAuslesen();
+      $existSpielstand = $this->existSpielstand($spielerId);
+      if ($existSpielstand == NULL) {
+        $sqlStatement = "INSERT INTO spielstand (spielerId, zugAnzahl, punkteS1, punkteS2, amZug) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $pdo->prepare($sqlStatement);
+        $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug']));
+      } else {
+        $sqlStatement = "UPDATE spielstand SET spielerId = ?, zugAnzahl = ?, punkteS1 = ?, punkteS2 = ?, amZug = ? WHERE id = ?";
+        $stmt = $pdo->prepare($sqlStatement);
+        $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], $existSpielstand));
+      }
+    }
 
   function ranking(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-    $sqlStatement = "SELECT (sieger, zugAnzahl) FROM spielstand WHERE beendet = true ORDER BY zugAnzahl";
+    $sqlStatement = "SELECT (sieger, zugAnzahl) FROM spielstand WHERE sieger IS NULL ORDER BY zugAnzahl";
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute();
     //Hier müssten mehrere Werte ausgegeben werden
@@ -109,5 +188,4 @@ function benutzerLoeschen(){
     return $ergebnis;
   }
 }
-
  ?>
