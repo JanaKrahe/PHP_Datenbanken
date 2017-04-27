@@ -68,7 +68,7 @@
   				<div class="panel-heading">
   	        <div class="panel-title text-center">
               <?php if (!empty($_SESSION['spielGeladen'])) {   ?>
-                Ihr alter Spielstand wurde geladen.
+                <p style="text-align: center"> Ihr alter Spielstand wurde geladen. </p>
               <?php  $_SESSION['spielGeladen']==false; }  ?>
   	       		<hr />
   	       	</div>
