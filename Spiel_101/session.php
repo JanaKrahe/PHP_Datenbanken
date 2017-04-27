@@ -14,8 +14,6 @@ class sessionClass
       $_SESSION['spieler1'] = $benutzername;
       $_SESSION['spieler2'] = $benutzername .'\'s Gast';
       $_SESSION['summeSpielzug'] = 0;
-      // include('datenbank.php');
-      // $db = new DatenbankAufrufe;
       $sId = $db->spielerIdAuslesen();
       $exist = $db->existSpielstand($sId);
       if (empty($exist)) {
