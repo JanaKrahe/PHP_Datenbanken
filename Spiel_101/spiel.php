@@ -208,6 +208,9 @@ class Spiel
   {
     if (isset($_GET["reset"])) {
       $this->reset();
+      include('datenbank.php');
+      $datenbank = new DatenbankAufrufe;
+      $datenbank->speichern();
     }
 
   }

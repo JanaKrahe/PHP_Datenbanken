@@ -51,7 +51,7 @@
           <div class="col-md-5">
             <a class="navbar-brand" href="Anleitung.html"><span class="glyphicon glyphicon-cog"> Anleitung</a>
             <a class="navbar-brand" href="?speichern"><span class="glyphicon glyphicon-floppy-save"></span> Speichern</a>
-            <a class="navbar-brand" href="?reset"><span class="glyphicon glyphicon-plus"></span> Neues Spiel</a>
+            <a class="navbar-brand" href="?reset" onclick="return confirm('Sind Sie sich sicher, dass Sie ein neues Spiel beginnen wollen? Der alte Spielstand wird dann gelöscht.')"><span class="glyphicon glyphicon-plus"></span> Neues Spiel</a>
           </div>
           <div class="col-md-4">
             <a class="navbar-brand zeile">Spiel 101</a>
