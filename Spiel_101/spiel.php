@@ -177,18 +177,6 @@ class Spiel
   }
 
   /**
-  * Prüfung, ob der Logout-Button gedrückt wurde
-  *
-  */
-  public function logoutAuswertung2()
-  {
-    if (isset($_POST["logout"]) && $_POST["logout"] == "logout") {
-      $this->logout();
-    }
-
-  }
-
-  /**
   * Zerstört die aktuelle Session und
   * leitet den Nutzer auf die Login-Seite weiter
   */
@@ -218,7 +206,7 @@ class Spiel
   */
   public function resetAuswertung()
   {
-    if (isset($_POST["reset"]) && $_POST["reset"] == "neues Spiel") {
+    if (isset($_GET["reset"])) {
       $this->reset();
     }
 
@@ -255,7 +243,7 @@ class Spiel
 
   public function speichernAuswertung()
   {
-    if (isset($_POST["speichern"]) && $_POST["speichern"] == "Speichern!") {
+    if (isset($_GET["speichern"])) {
       $this->speicherSpiel();
     }
   }

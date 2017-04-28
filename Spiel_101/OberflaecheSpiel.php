@@ -19,6 +19,8 @@
   $spiel = new Spiel($name);
   $ran = new Ranking();
   $spiel->logoutAuswertung();
+  $spiel->speichernAuswertung();
+  $spiel->resetAuswertung();
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +30,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
     <!-- Optionales Theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
     <!-- Das neueste kompilierte und minimierte JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Website Font style  -->
@@ -40,7 +40,6 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
     <script src="regler.js"> </script>
     <title>Spiel101</title>
   </head>
@@ -49,21 +48,21 @@
     <nav class="navbar navbar-inverse navbar-upper">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-5"><a class="navbar-brand" href="Anleitung.php"> Anleitung </a></div>
-          <div class="col-md-7"><a class="navbar-brand zeile">Spiel 101</a></div>
+          <div class="col-md-5">
+            <a class="navbar-brand" href="Anleitung.html"><span class="glyphicon glyphicon-cog"> Anleitung</a>
+            <a class="navbar-brand" href="?speichern"><span class="glyphicon glyphicon-floppy-save"></span> Speichern</a>
+            <a class="navbar-brand" href="?reset"><span class="glyphicon glyphicon-plus"></span> Neues Spiel</a>
+          </div>
+          <div class="col-md-4">
+            <a class="navbar-brand zeile">Spiel 101</a>
+          </div>
+          <div class="col-md-3">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a><span class="glyphicon glyphicon-user"></span> Signed in as <?php echo $_SESSION['spieler1']; ?></a></li>
+              <li><a href="?logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+          </div>
         </div>
-        <label class="navbar-brand">Spiel 101</label>
-        <a class="navbar-brand" ><small>Spielen</small></a>
-        <a class="navbar-brand" href="Anleitung.php"> Anleitung </a>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a><span class="glyphicon glyphicon-user"></span> Signed in as <?php echo $_SESSION['spieler1']; ?></a></li>
-          <li><a href="?logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-          <span class="glyphicons glyphicons-dice-6"></span>
-        </ul>
-        <ul class="nav navbar-upper">
-          <li><a class="navbar-brand zeile"> Spiel 101</a>
-          </li>
-        </ul>
       </div>
     </nav>
     <div class="container">
@@ -84,10 +83,6 @@
                 <?php $spiel->wuerfelnAuswertung(); ?>
                 <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
                 <?php $spiel->sichernAuswertung(); ?>
-                <input class="btn btn-default" type="submit" name="speichern" value="Speichern!"></input>
-                <?php $spiel->speichernAuswertung(); ?>
-                <input class="btn btn-default" type="submit" name="reset" value="neues Spiel"></input>
-                <?php $spiel->resetAuswertung(); ?>
               </form>
             </fieldset>
             <hr />
