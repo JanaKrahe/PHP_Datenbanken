@@ -1,4 +1,5 @@
 <?php
+  include 'spiel.php';
   if (isset($_POST["newGame"]) && $_POST["newGame"] == "neues Spiel") {
 
     $_SESSION['Sieger'] = "";
@@ -7,6 +8,7 @@
     $_SESSION['amZug'] = true;
     header("Location: OberflaecheSpiel.php");
   }
+
 ?>
 
 <!DOCTYPE html>

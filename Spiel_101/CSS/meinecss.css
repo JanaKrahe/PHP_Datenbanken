@@ -126,7 +126,12 @@ input::-webkit-input-placeholder {
   width: 35em;
 }
 
-
-.zeile {
+.headline {
   font-size: 40px;
+
+
+}
+
+.navwidth {
+  margin: 0 auto;
 }
