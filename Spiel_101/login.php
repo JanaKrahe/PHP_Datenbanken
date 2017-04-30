@@ -19,11 +19,17 @@ $test->auswertung();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/meinecss.css">
+  <!-- Das neueste kompilierte und minimierte CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Optionales Theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Das neueste kompilierte und minimierte JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Website Font style  -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="css/meinecss.css">
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -31,13 +37,19 @@ $test->auswertung();
   <title>Login</title>
 </head>
 <body>
+  <nav class="navbar navbar-inverse navbar-upper">
+    <div class="navbar-header">
+      <a class="navbar-brand headline">Spiel 101</a>
+      <ul class="nav navbar-nav navbar-left">
+        <li><a>Anmelden</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
-	               		<h1 class="title">Spiel 101 <br>
-                    <small>Anmelden</small> </h1>
-	               		<hr />
 	               	</div>
 	            </div>
 				<div class="main-l main-center">

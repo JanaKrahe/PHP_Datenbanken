@@ -21,6 +21,8 @@
   $spiel->logoutAuswertung();
   $spiel->speichernAuswertung();
   $spiel->resetAuswertung();
+  $spiel->wuerfelnAuswertung();
+  $spiel->sichernAuswertung();
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +44,6 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
 
     <title>Spiel101</title>
   </head>
@@ -86,9 +87,8 @@
             <fieldset class="form-group">
               <form class="form-horizontal" method="post" action="OberflaecheSpiel.php">
                 <input class="btn btn-default" type="submit" name="wurf" value="Würfeln"></input>
-                <?php $spiel->wuerfelnAuswertung(); ?>
-                <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern!"></input>
-                <?php $spiel->sichernAuswertung(); ?>
+                Hiersollwaszwischen
+                <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern"></input>
               </form>
             </fieldset>
             <hr />
