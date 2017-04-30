@@ -126,7 +126,7 @@ function benutzerLoeschen(){
     $sqlStatement = "SELECT id FROM spielstand WHERE spielerId = ? AND sieger IS NULL";
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute(array($spielerId));
-    $ergebnis = $stmt->fetchColumn();
+    $ergebnis = $stmt->fetchColumn();  
     if (empty($ergebnis)) {
       return NULL;
     }else {

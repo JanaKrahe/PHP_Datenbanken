@@ -61,7 +61,7 @@
       </div>
       <div class="container-fluid navbar-collapse collapse" id="bs-navbar" aria-expanded="true">
         <ul class="nav navbar-nav navbar-left">
-          <li><a href="Anleitung.html"><span class="glyphicon glyphicon-cog"></span> Anleitung</a></li>
+          <li><a href="Anleitung.php"><span class="glyphicon glyphicon-cog"></span> Anleitung</a></li>
           <li><a href="?speichern"><span class="glyphicon glyphicon-floppy-save"></span> Speichern</a></li>
           <li><a href="?reset" onclick="return confirm('Sind Sie sich sicher, dass Sie ein neues Spiel beginnen wollen? Der alte Spielstand wird dann gelöscht.')">
             <span class="glyphicon glyphicon-plus"></span> Neues Spiel</a>
@@ -77,7 +77,8 @@
   			<div class="row main">
   				<div class="panel-heading">
   	        <div class="panel-title text-center">
-              <?php if (!empty($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true) {   ?>
+              <?php echo (isset($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true);
+              if (!empty($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true) {   ?>
                 <p style="text-align: center"> Ihr alter Spielstand wurde geladen. </p>
               <?php  $_SESSION['spielGeladen']==false; }  ?>
   	       	</div>
@@ -87,10 +88,48 @@
             <fieldset class="form-group">
               <form class="form-horizontal" method="post" action="OberflaecheSpiel.php">
                 <input class="btn btn-default" type="submit" name="wurf" value="Würfeln"></input>
-                Hiersollwaszwischen
+
                 <input class="btn btn-default" type="submit" name="bunkern" value="Bunkern"></input>
               </form>
             </fieldset>
+            <?php
+            if (isset($_SESSION['wuerfelErgebnis'])) {
+              switch ($_SESSION['wuerfelErgebnis']) {
+                case 1:
+                ?>
+                <img src="PNG/wuerfel1.png" alt="1">
+                <?php
+                break;
+                case 2:
+                ?>
+                <img src="PNG/wuerfel2.png" alt="2">
+                <?php
+                break;
+                case 3:
+                ?>
+                <img src="PNG/wuerfel3.png" alt="3">
+                <?php
+                break;
+                case 4:
+                ?>
+                <img src="PNG/wuerfel4.png" alt="4">
+                <?php
+                break;
+                case 5:
+                ?>
+                <img src="PNG/wuerfel5.png" alt="5">
+                <?php
+                break;
+                case 6:
+                ?>
+                <img src="PNG/wuerfel6.png" alt="6">
+                <?php
+                break;
+              }
+            }
+            $_SESSION['wuerfelErgebnis'] = 0;
+            ?>
+
             <hr />
 
             <div class="erzieltePktDiv">

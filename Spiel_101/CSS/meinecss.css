@@ -9,6 +9,7 @@ html {
 
 body {
   background-color: #d3d3d3;
+  min-width: 400px;
 }
 
 

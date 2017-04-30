@@ -35,6 +35,7 @@ class Spiel
   {
     //Zufallszahl generieren
     $wuerfelergebnis = random_int(1, 6);
+    $_SESSION['wuerfelErgebnis'] = $wuerfelergebnis;
 
     if($wuerfelergebnis == 1) {
       $this->verlieren();
@@ -51,7 +52,7 @@ class Spiel
   */
   public function sichernAuswertung()
   {
-    if (isset($_POST["bunkern"]) && $_POST["bunkern"] == "Bunkern!") {
+    if (isset($_POST["bunkern"]) && $_POST["bunkern"] == "Bunkern") {
       $this->sichern();
     }
 
