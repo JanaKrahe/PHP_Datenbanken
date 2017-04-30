@@ -34,51 +34,57 @@
   </head>
   <body>
     <?php session_start(); ?>
-    <div id="siegesDiv">
-      <p> <?php echo 'Gewonnen hat: '.$_SESSION['Sieger']; ?>
-    </div>
-    <div id="neuesSpiel">
-      <fieldset class="schmal">
-        <form method="post">
-          <input class="btn btn-default" type="submit" name="newGame" value="neues Spiel"></input>
-        </form>
-      </fieldset>
-    </div>
-    <!-- Anzeige Ranking -->
-    <div class="ranking">
-      <form method="post">
-        <input class="btn btn-default" type="submit" name="rangliste" value="Ranking"></input>
-      </form>
-      <table class="rankingListe" id="ranking">
-        <thead>
-          <tr>
-            <th>Spieler</th>
-            <th>Züge</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $zaehler = true;
-          foreach ($ran->rankingAusgeben() as $v1 ) {
-            if ($zaehler) {
-              ?>
-              <tr>
-                <td> <?php echo $v1; ?> </td>
-                <?php
-                $zaehler = false;
-              }
-              else {
-                ?>
-                <td> <?php echo $v1; ?> </td>
-              </tr>
-              <?php
-              $zaehler = true;
-            }
-          }
-          ?>
-        </tbody>
-      </table>
-    </div>
+    <nav class="navbar navbar-inverse navbar-upper">
+      <div class="navbar-header">
+        <a class="navbar-brand headline">Spiel 101</a>
+        <ul class="nav navbar-nav navbar-left">
+          <li><a>Gewonnen</a></li>
+        </ul>
+      </div>
+    </nav>
 
-  </body>
+    <div class="container">
+  			<div class="row main">
+  				<div class="panel-heading">
+  	         <div class="panel-title text-center">
+  	         </div>
+  	      </div>
+  				<div class="main-l main-center">
+            <div id="siegesDiv">
+              <legend> Gewonnen hat: </legend>
+              <h4 style=" text-align: center; color: green">
+                <span class="glyphicon glyphicon-menu-left"></span>
+                <span class="glyphicon glyphicon-menu-left"></span>
+                <span class="glyphicon glyphicon-menu-left"></span>
+                <?php echo $_SESSION['Sieger']; ?>
+                <span class="glyphicon glyphicon-menu-right"></span>
+                <span class="glyphicon glyphicon-menu-right"></span>
+                <span class="glyphicon glyphicon-menu-right"></span></h4><br> <br>
+            </div>
+            <div id="neuesSpiel">
+              <fieldset class="schmal">
+                <form method="post">
+                  <input class="btn btn-default" type="submit" name="newGame" value="neues Spiel"></input>
+                </form>
+              </fieldset>
+            </div>
+            <br>
+            <!-- Anzeige Ranking -->
+            <div class="ranking">
+              <form method="post">
+                <input class="btn btn-default" type="submit" name="rangliste" value="Ranking"></input>
+              </form>
+              <br>
+              <?php
+              include('datenbank.php');
+              $datenbank = new DatenbankAufrufe;
+              var_dump($datenbank->existSpielstand(7));
+              var_dump($datenbank->ranking());
+              echo 'test';
+              ?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
   </html>

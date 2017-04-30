@@ -61,7 +61,7 @@
       </div>
       <div class="container-fluid navbar-collapse collapse" id="bs-navbar" aria-expanded="true">
         <ul class="nav navbar-nav navbar-left">
-          <li><a href="Anleitung.php"><span class="glyphicon glyphicon-cog"></span> Anleitung</a></li>
+          <li><a href="Anleitung.php"><span class="glyphicon glyphicon-list-alt"></span> Anleitung</a></li>
           <li><a href="?speichern"><span class="glyphicon glyphicon-floppy-save"></span> Speichern</a></li>
           <li><a href="?reset" onclick="return confirm('Sind Sie sich sicher, dass Sie ein neues Spiel beginnen wollen? Der alte Spielstand wird dann gelöscht.')">
             <span class="glyphicon glyphicon-plus"></span> Neues Spiel</a>
