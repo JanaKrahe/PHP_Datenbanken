@@ -133,7 +133,7 @@ function benutzerLoeschen(){
           return $ergebnis;
         }
       }
-    }
+    
 
   function existSpielstandClose($spielerId){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
