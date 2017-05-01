@@ -78,9 +78,13 @@
               <?php
               include('datenbank.php');
               $datenbank = new DatenbankAufrufe;
-              var_dump($datenbank->existSpielstand(7));
-              var_dump($datenbank->ranking());
-              echo 'test';
+              $existSpielstand = $datenbank->existSpielstandClose(6);
+              if ($existSpielstand != NULL) {
+                # übergabe an $ranking aller gefundener beendeter Spiele
+                $ranking = array($datenbank->ranking(6));
+              }else {
+                echo "Es existiert noch kein beendetes Spiel.";
+              }
               ?>
             </div>
           </div>
