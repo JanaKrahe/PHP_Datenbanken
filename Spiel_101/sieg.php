@@ -1,11 +1,9 @@
 <?php
+  session_start();
   include 'spiel.php';
+  $spiel = new Spiel($_SESSION['spieler1']);
   if (isset($_POST["newGame"]) && $_POST["newGame"] == "neues Spiel") {
-
-    $_SESSION['Sieger'] = "";
-    $_SESSION['summeS1'] = 0;
-    $_SESSION['summeS2'] = 0;
-    $_SESSION['amZug'] = true;
+    $spiel->reset();
     header("Location: OberflaecheSpiel.php");
   }
 
@@ -33,7 +31,6 @@
     <title>Spiel101</title>
   </head>
   <body>
-    <?php session_start(); ?>
     <nav class="navbar navbar-inverse navbar-upper">
       <div class="navbar-header">
         <a class="navbar-brand headline">Spiel 101</a>
@@ -78,15 +75,23 @@
               <?php
               include('datenbank.php');
               $datenbank = new DatenbankAufrufe;
-              $existSpielstand = $datenbank->existSpielstandClose(6);
-              if ($existSpielstand != NULL) {
+              $ranking = array($datenbank->ranking());
+              if ($ranking != NULL) {
                 # übergabe an $ranking aller gefundener beendeter Spiele
-                $ranking = array($datenbank->ranking(6));
+                var_dump($ranking);
+                foreach ($ranking[0] as $key => $value) {
+                  echo $key ;
+                }
+
               }else {
                 echo "Es existiert noch kein beendetes Spiel.";
               }
               ?>
             </div>
+          </div>
+          <div>
+            <hr />
+            <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>
           </div>
         </div>
       </div>

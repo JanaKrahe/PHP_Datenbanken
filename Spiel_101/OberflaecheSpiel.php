@@ -15,8 +15,7 @@
 
   include 'Spiel.php';
   include 'Ranking.php';
-  $name = $_SESSION['spieler1'];
-  $spiel = new Spiel($name);
+  $spiel = new Spiel($_SESSION['spieler1']);
   $ran = new Ranking();
   $spiel->logoutAuswertung();
   $spiel->speichernAuswertung();
@@ -158,9 +157,6 @@
                 <div class="progress-bar" role="progressbar" style="width: <?php echo $_SESSION['summeS2'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS2'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS2'] ?></div>
               </div>
             </div>
-            <div class="anleitung">
-              <button class="btn btn-default" type="button" onclick="anleitung()" name="btnAnleitung">Anleitung</button>
-            </div>
           </div>
           <div>
             <hr />
@@ -168,13 +164,5 @@
           </div>
         </div>
       </div>
-      <!--
-      <div class="logoutDiv">
-        <form method="post">
-          <input class="btn btn-default" type="submit" name="logout" value="logout"></input>
-        </form>
-      </div>
-    -->
-
   </body>
 </html>

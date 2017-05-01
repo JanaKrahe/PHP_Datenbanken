@@ -217,7 +217,7 @@ class Spiel
   /**
   * Setzt alle Werte auf Anfang zurück
   */
-  private function reset()
+  public function reset()
   {
     $_SESSION['summeSpielzug'] = 0;
     $_SESSION['runde'] = 1;

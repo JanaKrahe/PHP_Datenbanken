@@ -133,7 +133,7 @@ function benutzerLoeschen(){
           return $ergebnis;
         }
       }
-    
+
 
   function existSpielstandClose($spielerId){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
@@ -182,11 +182,11 @@ function benutzerLoeschen(){
       }
     }
 
-  function ranking($spielerId){
+  function ranking(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-    $sqlStatement = "SELECT sieger, zugAnzahl FROM spielstand WHERE spielerId = ? AND sieger IS NOT NULL ORDER BY zugAnzahl";
+    $sqlStatement = "SELECT sieger, zugAnzahl FROM spielstand WHERE sieger IS NOT NULL ORDER BY zugAnzahl";
     $stmt = $pdo->prepare($sqlStatement);
-    $stmt->execute(array($spielerId));
+    $stmt->execute();
     $ergebnis = $stmt->fetchAll();
     return $ergebnis;
   }
