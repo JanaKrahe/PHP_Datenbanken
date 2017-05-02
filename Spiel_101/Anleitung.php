@@ -37,10 +37,34 @@
   				<div class="main-l main-center">
             <form class="form-horizontal" action="OberflaecheSpiel.php" method="post">
               <h4 style="margin-left: auto; margin-right: auto;"><span class="label label-default">Anleitung für das Spiel 101</span> <br><br>
-                Es gewinnt derjenige Spieler, der zuerst in Summe 101 Augen gesammelt hat.
-                Innerhalb eines Spielzugs werden alle Würfelaugen zusammengezählt, bis entweder eine EINS gewürfelt wird,
-                dann ist der Zug zu Ende und alle Punkte dieses Zugs sind verloren, oder der Spieler den Würfel weiterreicht.
-                Nur in diesem Fall werden die gewürfelten Augen aufsummiert und dem Konto des Spielers gutgeschrieben.
+                Spielziel: <br>
+                Beim Spiel 101 geht es darum, durch glückliches und geschicktes Würfeln und
+                überlegtes bunkern der erzielten Augensumme möglichst viele Punkte zu erzielen.
+                <br><br>
+                Würfeln <br>
+                Zu Beginn eines Zugs wird der Würfel frisch gewürfelt.
+                Du kannst diese Kombination direkt bunkern oder versuchen, noch mehr für dein Konto zu sammeln.
+                Du kannst solange Würfeln, wie du dich traust!
+                Nur Würfelst du eine "1" verlierst du alle Augen dieses Zugs.
+
+                <br><br>
+                Bunkern <br>
+                Die erwürfelten Augen kannst du mittels "bunkern" auf deinem Konto speichern.
+                Sobald du bunkerst werden die gewürfelten Augen aufsummiert auf deinem Konto gutgeschrieben
+                und können nicht mehr durch eine "1" gelöscht werden.
+
+                <br><br>
+                Spielzug <br>
+                Ein Spielzug endet, sobald der aktuelle Spieler eine "1" gewürfelt hat oder "bunkert".
+                Nach einer dieser Aktionen, ist der nächste Spieler dran.
+
+                <br><br>
+                Spielende und Gewinner <br>
+                Das Spiel endet, sobald ein Spieler 101 Augen auf seinem Konto gespeichert hat.
+                Dieser Spieler ist auch der sofortige Gewinner.
+
+
+
               </h4>
               <br>
               <button type="submit" name="zurueck">Zurück zum Spiel</button>
