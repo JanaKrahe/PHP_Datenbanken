@@ -2,7 +2,7 @@
   session_start();
   include 'spiel.php';
   $spiel = new Spiel($_SESSION['spieler1']);
-  if (isset($_POST["newGame"]) && $_POST["newGame"] == "neues Spiel") {
+  if (isset($_GET["reset"])) {
     $spiel->reset();
     header("Location: OberflaecheSpiel.php");
   }
@@ -33,9 +33,17 @@
   <body>
     <nav class="navbar navbar-inverse navbar-upper">
       <div class="navbar-header">
+        <button aria-controls=bs-navbar aria-expanded=true class="collapsed navbar-toggle" data-target="#bs-navbar" data-toggle=collapse type=button>
+          <span class=sr-only>Toggle navigation</span>
+          <span class=icon-bar></span>
+          <span class=icon-bar></span>
+          <span class=icon-bar></span>
+        </button>
         <a class="navbar-brand headline">Spiel 101</a>
+      </div>
+      <div class="container-fluid navbar-collapse collapse" id="bs-navbar" aria-expanded="true">
         <ul class="nav navbar-nav navbar-left">
-          <li><a>Gewonnen</a></li>
+          <li><a href="?reset"><span class="glyphicon glyphicon-plus"></span> Neues Spiel</a></li>
         </ul>
       </div>
     </nav>
@@ -49,7 +57,7 @@
   				<div class="main-l main-center">
             <div id="siegesDiv">
               <legend> Gewonnen hat: </legend>
-              <h4 style=" text-align: center; color: green">
+              <h4 style=" text-align: center; color: rgb(51, 122, 183)">
                 <span class="glyphicon glyphicon-menu-left"></span>
                 <span class="glyphicon glyphicon-menu-left"></span>
                 <span class="glyphicon glyphicon-menu-left"></span>
@@ -58,31 +66,58 @@
                 <span class="glyphicon glyphicon-menu-right"></span>
                 <span class="glyphicon glyphicon-menu-right"></span></h4><br> <br>
             </div>
-            <div id="neuesSpiel">
-              <fieldset class="schmal">
-                <form method="post">
-                  <input class="btn btn-default" type="submit" name="newGame" value="neues Spiel"></input>
-                </form>
-              </fieldset>
-            </div>
             <br>
             <!-- Anzeige Ranking -->
-            <div class="ranking">
-              <form method="post">
-                <input class="btn btn-default" type="submit" name="rangliste" value="Ranking"></input>
-              </form>
+            <div>
+              <legend> Ranking: </legend>
               <br>
               <?php
               include('datenbank.php');
               $datenbank = new DatenbankAufrufe;
               $ranking = array($datenbank->ranking());
               if ($ranking != NULL) {
-                # übergabe an $ranking aller gefundener beendeter Spiele
-                var_dump($ranking);
-                foreach ($ranking[0] as $key => $value) {
-                  echo $key ;
-                }
+                ?>
+                <div class="ranking">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Sieger</th>
+                        <th>Züge</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $rowcount = 1;
+                      $firstmatch = true;
+                      foreach ($ranking[0] as $key => $row) {
+                        if ($row['sieger'] == $_SESSION['sieger'] && $row['zugAnzahl'] == $_SESSION['runde'] && $firstmatch) {
+                          ?>
+                          <tr class="info">
+                            <th scope="row"><?php echo $rowcount; ?></th>
+                            <td><?php echo $row['sieger']; ?></td>
+                            <td><?php echo $row['zugAnzahl']; ?></td>
 
+                          </tr>
+                          <?php
+                          $firstmatch = false;
+                        }
+                        else {
+                          ?>
+                          <tr>
+                            <th scope="row"><?php echo $rowcount; ?></th>
+                            <td><?php echo $row['sieger']; ?></td>
+                            <td><?php echo $row['zugAnzahl']; ?></td>
+                          </tr>
+                          <?php
+                        }
+                        $rowcount += 1;
+                      }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+                <?php
               }else {
                 echo "Es existiert noch kein beendetes Spiel.";
               }

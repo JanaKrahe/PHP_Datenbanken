@@ -44,7 +44,7 @@
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
-	               <div class="panel-title text-center">	               		
+	               <div class="panel-title text-center">
 	               	</div>
 	            </div>
 				<div class="main-l main-center">
@@ -55,7 +55,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="benutzername" id="name"  placeholder="Enter your Name"/>
+									<input type="text" class="form-control" name="benutzername" id="name"  placeholder="Enter your Name" autofocus/>
 								</div>
                 <?php $feld->pruefungBenutzername(); ?>
 							</div>

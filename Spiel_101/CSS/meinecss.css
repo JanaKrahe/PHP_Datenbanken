@@ -136,3 +136,12 @@ input::-webkit-input-placeholder {
 .navwidth {
   margin: 0 auto;
 }
+
+.navbar {
+  margin-bottom: 8px;
+}
+
+.ranking {
+  height: 425px ;
+  overflow: auto;
+}
