@@ -44,7 +44,7 @@ $test->auswertung();
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
-	               <div class="panel-title text-center">	               		
+	               <div class="panel-title text-center">
 	               	</div>
 	            </div>
 				<div class="main-l main-center">
@@ -55,7 +55,7 @@ $test->auswertung();
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email" autofocus/>
                 </div>
                 <?php $feld->pruefungEmail(); ?>
 							</div>

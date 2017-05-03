@@ -224,6 +224,7 @@ class Spiel
     $_SESSION['summeS1'] = 0;
     $_SESSION['summeS2'] = 0;
     $_SESSION['amZug'] = true;
+    $_SESSION['sieger'] = NULL;
   }
 
   public function siegerAuswertung()
@@ -232,12 +233,12 @@ class Spiel
     $datenbank = new DatenbankAufrufe;
 
     if ($_SESSION['summeS1'] >= 101) {
-      $_SESSION['Sieger'] = $_SESSION['spieler1'];
+      $_SESSION['sieger'] = $_SESSION['spieler1'];
       $datenbank->beenden();
       header("Location: Sieg.php");
     }
     elseif ($_SESSION['summeS2'] >= 101) {
-      $_SESSION['Sieger'] = $_SESSION['spieler2'];
+      $_SESSION['sieger'] = $_SESSION['spieler2'];
       $datenbank->beenden();
       header("Location: Sieg.php");
     }
