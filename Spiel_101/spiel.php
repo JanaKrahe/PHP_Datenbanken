@@ -6,14 +6,11 @@
  */
 class Spiel
 {
-  private $name = '';
-  private $summeGesamt = 0;
   /**
-  * Konstruktor: Namenszuweisung
+  * Konstruktor: 
   */
-  function __construct($pName)
+  function __construct()
   {
-    $name = $pName;
   }
 
   /**
@@ -95,76 +92,6 @@ class Spiel
     $_SESSION['summeSpielzug'] = 0;
   }
 
-  //Getter und Setter
-
-  /**
-  * Gibt gespeicherte Punkte des Spielers1 aus
-  * @return
-  */
-  function getGesamtPunkteS1()
-  {
-    return $_SESSION['summeS1'];
-  }
-
-  /**
-  * Gibt gespeicherte Punkte des Spielers2 aus
-  * @return
-  */
-  function getGesamtPunkteS2()
-  {
-    return $_SESSION['summeS2'];
-  }
-
-  /**
-  * Gibt Anzahl an Wuerfe aus die der Spieler bereits hatte
-  * @return
-  */
-  function getWuerfe()
-  {
-    //eventuell andersrum^^
-    if ($_SESSION['amZug'] == true)
-    {
-      return $_SESSION['runde'];
-    }
-    else {
-      return $_SESSION['runde'] + 1;
-    }
-
-  }
-
-  /**
-  * Setzt eine Anzahl Wuerfe
-  * @param runde
-  */
-  function setWuerfe($pZuege)
-  {
-    $_SESSION['runde'] = $pZuege;
-  }
-
-  /**
-  *
-  * @return Name des Spielers
-  */
-  function getName()
-  {
-
-    return $_SESSION['spieler1'];
-  }
-
-  /**
-  *
-  * @return Summe der in diesem Spielzug erzielten Punkte
-  */
-  function getZugSumme()
-  {
-    if(isset($_SESSION['summeSpielzug'])) {
-      return $_SESSION['summeSpielzug'];
-    }
-    else {
-      echo 'Es wurde noch nicht gewürfelt in diesem Zug!';
-    }
-  }
-
   /**
   * Prüfung, ob der Logout-Button gedrückt wurde
   *
@@ -189,8 +116,8 @@ class Spiel
   }
 
   /**
-  * Zerstört die aktuelle Session und
-  * leitet den Nutzer auf die Login-Seite weiter
+  * Prüft, welcher Spieler am Zug ist
+  *
   */
   public function anDerReihe()  {
     if ($_SESSION['amZug'] == true) {
@@ -215,7 +142,8 @@ class Spiel
   }
 
   /**
-  * Setzt alle Werte auf Anfang zurück
+  * Setzt alle Session-Variablen auf Null zurück
+  *
   */
   public function reset()
   {
@@ -227,6 +155,10 @@ class Spiel
     $_SESSION['sieger'] = NULL;
   }
 
+  /**
+  * Prüfung, ob ein Spieler gewonnen hat
+  *
+  */
   public function siegerAuswertung()
   {
     include('datenbank.php');
@@ -244,12 +176,21 @@ class Spiel
     }
   }
 
+  /**
+  * Prüfung, ob der Speichern-Button gedrückt wurde
+  *
+  */
   public function speichernAuswertung()
   {
     if (isset($_GET["speichern"])) {
       $this->speicherSpiel();
     }
   }
+
+  /**
+  * Speichert das Spiel in der Datenbank
+  *
+  */
   public function speicherSpiel()
   {
     include('datenbank.php');
@@ -257,5 +198,4 @@ class Spiel
     $datenbank->speichern();
   }
 }
-
- ?>
+?>

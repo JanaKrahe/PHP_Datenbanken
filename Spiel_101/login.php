@@ -12,6 +12,8 @@ ini_set('display_errors', 0);
 include('radioCheck.php');
 $test = new RadiobuttonAuswerten;
 $test->auswertung();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +51,13 @@ $test->auswertung();
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
-	               <div class="panel-title text-center">
-	               	</div>
-	            </div>
+	         <div class="panel-title text-center">
+             <?php if (isset($_GET['automatic'])) {
+               echo 'Sie wurden automatisch Abgemeldet';
+             }
+             ?>
+           </div>
+	       </div>
 				<div class="main-l main-center">
 					<form class="form-horizontal" method="post" action="#">
 

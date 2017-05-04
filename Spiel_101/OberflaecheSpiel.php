@@ -5,18 +5,22 @@
   header("Location: Login.php");
   }
 
-  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
-    // last request was more than 30 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time
-    session_destroy();   // destroy session data in storage
-  }
-  $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
-
-
   include 'Spiel.php';
   include 'Ranking.php';
-  $spiel = new Spiel($_SESSION['spieler1']);
+  $spiel = new Spiel();
   $ran = new Ranking();
+
+  //Automatischer Logout nach 10 Minuten
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {
+    $spiel->speicherSpiel();
+    session_unset();
+    session_destroy();
+    header("Location: Login.php?automatic");
+  }
+  $_SESSION['LAST_ACTIVITY'] = time(); // Update des Aktivitätszeitstempel
+
+
+
   $spiel->logoutAuswertung();
   $spiel->speichernAuswertung();
   $spiel->resetAuswertung();
@@ -77,9 +81,9 @@
   				<div class="panel-heading">
   	        <div class="panel-title text-center">
               <?php echo (isset($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true);
-              if (!empty($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true) {   ?>
+              if (isset($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true) {   ?>
                 <p style="text-align: center"> Ihr alter Spielstand wurde geladen. </p>
-              <?php  $_SESSION['spielGeladen']==false; }  ?>
+              <?php  $_SESSION['spielGeladen'] = false; }  ?>
   	       	</div>
   	      </div>
   				<div class="main-l main-center">
@@ -131,6 +135,14 @@
 
             <hr />
 
+            <div id="infoDiv">
+              <p class="infoBox" name="infoBox" value="#InfoBox">
+                <?php $spiel->anDerReihe(); ?>
+              </p>
+            </div>
+
+            <hr />
+
             <div class="erzieltePktDiv">
               <legend> Punkte in diesem Spielzug: </legend>
               <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p> <br>
@@ -138,12 +150,6 @@
               <p class="Zug"> <?php echo $_SESSION['runde'] ?> </p>
             </div>
             <hr />
-
-            <div id="infoDiv">
-              <p class="infoBox" name="infoBox" value="#InfoBox">
-                <?php $spiel->anDerReihe(); ?>
-              </p>
-            </div>
 
             <!-- Anzeige Spielerscores gesamt -->
             <div>

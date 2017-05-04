@@ -1,7 +1,16 @@
 <?php
   session_start();
+
+  //Automatischer Logout nach 10 Minuten
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+
+    session_unset();
+    session_destroy();   
+  }
+  $_SESSION['LAST_ACTIVITY'] = time(); // Update des Aktivitätszeitstempel
+
   include 'spiel.php';
-  $spiel = new Spiel($_SESSION['spieler1']);
+  $spiel = new Spiel();
   if (isset($_GET["reset"])) {
     $spiel->reset();
     header("Location: OberflaecheSpiel.php");
@@ -61,7 +70,7 @@
                 <span class="glyphicon glyphicon-menu-left"></span>
                 <span class="glyphicon glyphicon-menu-left"></span>
                 <span class="glyphicon glyphicon-menu-left"></span>
-                <?php echo $_SESSION['Sieger']; ?>
+                <?php echo $_SESSION['sieger']; ?>
                 <span class="glyphicon glyphicon-menu-right"></span>
                 <span class="glyphicon glyphicon-menu-right"></span>
                 <span class="glyphicon glyphicon-menu-right"></span></h4><br> <br>
