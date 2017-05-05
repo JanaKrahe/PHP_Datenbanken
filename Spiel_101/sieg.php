@@ -5,17 +5,17 @@
   if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
 
     session_unset();
-    session_destroy();   
+    session_destroy();
   }
   $_SESSION['LAST_ACTIVITY'] = time(); // Update des Aktivitätszeitstempel
 
   include 'spiel.php';
   $spiel = new Spiel();
   if (isset($_GET["reset"])) {
-    $spiel->reset();
+    $spiel->resetNachSieg();
     header("Location: OberflaecheSpiel.php");
   }
-
+  $spiel->logoutAuswertung();
 ?>
 
 <!DOCTYPE html>
@@ -53,6 +53,10 @@
       <div class="container-fluid navbar-collapse collapse" id="bs-navbar" aria-expanded="true">
         <ul class="nav navbar-nav navbar-left">
           <li><a href="?reset"><span class="glyphicon glyphicon-plus"></span> Neues Spiel</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a><span class="glyphicon glyphicon-user"></span> Signed in as <?php echo $_SESSION['spieler1']; ?></a></li>
+          <li><a href="?logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
       </div>
     </nav>

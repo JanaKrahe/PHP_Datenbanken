@@ -158,11 +158,11 @@ function benutzerLoeschen(){
     if ($existSpielstand == NULL) {
       $sqlStatement = "INSERT INTO spielstand (spielerId, zugAnzahl, punkteS1, punkteS2, amZug, sieger) VALUES (?, ?, ?, ?, ?, ?)";
       $stmt = $pdo->prepare($sqlStatement);
-      $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], $_SESSION['Sieger']));
+      $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], $_SESSION['sieger']));
     } else {
       $sqlStatement = "UPDATE spielstand SET spielerId = ?, zugAnzahl = ?, punkteS1 = ?, punkteS2 = ?, amZug = ?, sieger = ? WHERE id = ?";
       $stmt = $pdo->prepare($sqlStatement);
-      $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], $_SESSION['Sieger'], $existSpielstand));
+      $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], $_SESSION['sieger'], $existSpielstand));
     }
   }
 

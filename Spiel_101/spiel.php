@@ -7,7 +7,7 @@
 class Spiel
 {
   /**
-  * Konstruktor: 
+  * Konstruktor:
   */
   function __construct()
   {
@@ -72,7 +72,6 @@ class Spiel
       $_SESSION['amZug'] = true;
     }
     $_SESSION['summeSpielzug'] = 0;
-    $this->siegerAuswertung();
   }
 
   /**
@@ -141,11 +140,16 @@ class Spiel
 
   }
 
+  public function resetNachSieg()
+  {
+      $this->reset();
+      $this->speicherSpiel();
+  }
   /**
   * Setzt alle Session-Variablen auf Null zurück
   *
   */
-  public function reset()
+  private function reset()
   {
     $_SESSION['summeSpielzug'] = 0;
     $_SESSION['runde'] = 1;
