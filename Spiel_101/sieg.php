@@ -1,20 +1,28 @@
 <?php
   session_start();
 
+  //Prüfung ob User eingeloggt ist
+  if (empty($_SESSION['eingeloggt'])) {
+  header("Location: Login.php");
+  }
+
   //Automatischer Logout nach 10 Minuten
   if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
 
     session_unset();
     session_destroy();
   }
-  $_SESSION['LAST_ACTIVITY'] = time(); // Update des Aktivitätszeitstempel
+  // Update des Aktivitätszeitstempel
+  $_SESSION['LAST_ACTIVITY'] = time();
 
   include 'spiel.php';
   $spiel = new Spiel();
+  //Prüft ob der Reset-Button gedrückt wurde
   if (isset($_GET["reset"])) {
     $spiel->resetNachSieg();
     header("Location: OberflaecheSpiel.php");
   }
+  //Prüft ob der Logout-Button gedrückt wurden
   $spiel->logoutAuswertung();
 ?>
 
@@ -40,6 +48,7 @@
     <title>Spiel101</title>
   </head>
   <body>
+    <!-- Navigationsleiste -->
     <nav class="navbar navbar-inverse navbar-upper">
       <div class="navbar-header">
         <button aria-controls=bs-navbar aria-expanded=true class="collapsed navbar-toggle" data-target="#bs-navbar" data-toggle=collapse type=button>
@@ -60,12 +69,12 @@
         </ul>
       </div>
     </nav>
-
+    <!-- Main-Content -->
     <div class="container">
   			<div class="row main">
   				<div class="panel-heading">
-  	         <div class="panel-title text-center">
-  	         </div>
+  	        <div class="panel-title text-center">
+  	        </div>
   	      </div>
   				<div class="main-l main-center">
             <div id="siegesDiv">
@@ -104,6 +113,7 @@
                       $rowcount = 1;
                       $firstmatch = true;
                       foreach ($ranking[0] as $key => $row) {
+                        //Hervorhebung des aktuellen Spielstands
                         if ($row['sieger'] == $_SESSION['sieger'] && $row['zugAnzahl'] == $_SESSION['runde'] && $firstmatch) {
                           ?>
                           <tr class="info">
@@ -137,6 +147,7 @@
               ?>
             </div>
           </div>
+          <!-- Footer -->
           <div>
             <hr />
             <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>

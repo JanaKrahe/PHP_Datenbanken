@@ -36,38 +36,44 @@
   	            </div>
   				<div class="main-l main-center">
             <form class="form-horizontal" action="OberflaecheSpiel.php" method="post">
-              <h4 style="margin-left: auto; margin-right: auto;"><span class="label label-default">Anleitung für das Spiel 101</span> <br><br>
-                Spielziel: <br>
+              <legend>Anleitung für das Spiel 101</legend>
+              <h5>
+                <label>Spielziel:</label>
+                <br>
                 Beim Spiel 101 geht es darum, durch glückliches und geschicktes Würfeln und
                 überlegtes bunkern der erzielten Augensumme möglichst viele Punkte zu erzielen.
                 <br><br>
-                Würfeln <br>
+                <label>Würfeln:</label>
+                <br>
                 Zu Beginn eines Zugs wird der Würfel frisch gewürfelt.
                 Du kannst diese Kombination direkt bunkern oder versuchen, noch mehr für dein Konto zu sammeln.
                 Du kannst solange Würfeln, wie du dich traust!
                 Nur Würfelst du eine "1" verlierst du alle Augen dieses Zugs.
 
                 <br><br>
-                Bunkern <br>
+                <label>Bunkern:</label>
+                <br>
                 Die erwürfelten Augen kannst du mittels "bunkern" auf deinem Konto speichern.
                 Sobald du bunkerst werden die gewürfelten Augen aufsummiert auf deinem Konto gutgeschrieben
                 und können nicht mehr durch eine "1" gelöscht werden.
 
                 <br><br>
-                Spielzug <br>
+                <label>Spielzug:</label>
+                <br>
                 Ein Spielzug endet, sobald der aktuelle Spieler eine "1" gewürfelt hat oder "bunkert".
                 Nach einer dieser Aktionen, ist der nächste Spieler dran.
 
                 <br><br>
-                Spielende und Gewinner <br>
+                <label>Spielende und Gewinner:</label>
+                <br>
                 Das Spiel endet, sobald ein Spieler 101 Augen auf seinem Konto gespeichert hat.
                 Dieser Spieler ist auch der sofortige Gewinner.
 
 
 
-              </h4>
+              </h5>
               <br>
-              <button type="submit" name="zurueck">Zurück zum Spiel</button>
+              <button class="btn btn-default" type="submit" name="zurueck">Zurück zum Spiel</button>
             </form>
   				</div>
           <div>

@@ -1,8 +1,8 @@
 <?php
 /**
- * Diese Klasse definiert die Instanzen Spieler
- * Ein Spieler ist ausführende Kraft in dem Spiel,
- * teständerung
+ * Diese Klasse definiert die Instanzen Spiel
+ * Ein Spiel ist ausführende Kraft,
+ * Im Spiel wird der Spielstand manipuliert
  */
 class Spiel
 {
@@ -34,6 +34,7 @@ class Spiel
     $wuerfelergebnis = random_int(1, 6);
     $_SESSION['wuerfelErgebnis'] = $wuerfelergebnis;
 
+    //Wenn 1 dann Spielzug Summe der erwürfelten Augen verlieren und Gegner ist an der Reihe
     if($wuerfelergebnis == 1) {
       $this->verlieren();
     }
@@ -104,7 +105,7 @@ class Spiel
   }
 
   /**
-  * Zerstört die aktuelle Session und
+  * Beendet die aktuelle Session und
   * leitet den Nutzer auf die Login-Seite weiter
   */
   private function logout()
@@ -129,7 +130,6 @@ class Spiel
 
   /**
   * Prüfung, ob der Reset-Button gedrückt wurde
-  *
   */
   public function resetAuswertung()
   {
@@ -140,6 +140,9 @@ class Spiel
 
   }
 
+  /**
+  * Setzt Session-Variablen zurück und
+  */
   public function resetNachSieg()
   {
       $this->reset();

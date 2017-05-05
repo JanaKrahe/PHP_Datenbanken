@@ -76,11 +76,12 @@ input::-webkit-input-placeholder {
   margin-top: 5px;
 }
 
-.infoBox {
-  border:1px solid lightgrey;
+#infoBox {
   text-align: center;
-  color: rgb(51, 122, 183);
   font-weight: bold;
+  height: 20px;
+  padding-top: 5px;
+  padding-bottom: 25px;
 }
 
 .regler {
