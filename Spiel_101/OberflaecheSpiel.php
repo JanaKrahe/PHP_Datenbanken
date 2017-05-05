@@ -26,6 +26,7 @@
   $spiel->resetAuswertung();
   $spiel->wuerfelnAuswertung();
   $spiel->sichernAuswertung();
+  $spiel->siegerAuswertung();
 ?>
 
 <!DOCTYPE html>
