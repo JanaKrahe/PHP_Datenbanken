@@ -113,7 +113,7 @@
                 switch ($_SESSION['wuerfelErgebnis']) {
                   case 0:
                   ?>
-                  <img src="PNG/wuerfel1.png" alt="0"> Eigentlich eine Null
+                  <img src="PNG/wuerfel0.png" alt="0">
                   <?php
                   break;
                   case 1:
