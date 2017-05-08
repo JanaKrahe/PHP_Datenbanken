@@ -6,10 +6,10 @@
   header("Location: Login.php");
   }
 
+  include 'datenbank.php';
   include 'Spiel.php';
-  include 'Ranking.php';
+
   $spiel = new Spiel();
-  $ran = new Ranking();
 
   //Automatischer Logout nach 10 Minuten
   if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {
@@ -23,11 +23,11 @@
 
 
   $spiel->logoutAuswertung();
-  $spiel->speichernAuswertung();
   $spiel->resetAuswertung();
   $spiel->wuerfelnAuswertung();
   $spiel->sichernAuswertung();
   $spiel->siegerAuswertung();
+  $spiel->speichernAuswertung();
 ?>
 
 <!DOCTYPE html>
@@ -81,9 +81,12 @@
     <div class="container">
   			<div class="row main">
   				<div class="panel-heading">
-  	        <div class="panel-title text-center">
+  	        <div class="panel-title text-center centerwidth">
               <?php if (isset($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true) {   ?>
-                <p style="text-align: center"> Ihr alter Spielstand wurde geladen. </p>
+                <div class="alert alert-info" role="alert">
+                  Ihr alter Spielstand wurde geladen!
+                </div>
+
               <?php  $_SESSION['spielGeladen'] = false; }  ?>
   	       	</div>
   	      </div>
@@ -108,6 +111,11 @@
               <?php
               if (isset($_SESSION['wuerfelErgebnis'])) {
                 switch ($_SESSION['wuerfelErgebnis']) {
+                  case 0:
+                  ?>
+                  <img src="PNG/wuerfel1.png" alt="0"> Eigentlich eine Null
+                  <?php
+                  break;
                   case 1:
                   ?>
                   <img src="PNG/wuerfel1.png" alt="1">
@@ -160,7 +168,9 @@
                 <div class="progress-bar " role="progressbar" style="width: <?php echo $_SESSION['summeS1'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS1'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS1'] ?></div>
               </div>
 
-              <label><?php echo $_SESSION['spieler2'] ?>:</label>
+              <div class="has-warning">
+                <label class=""  data-toggle="modal" data-target="#myModal"><?php echo $_SESSION['spieler2'] ?>:</label>
+              </div>
               <div class="progress">
                 <div class="progress-bar " role="progressbar" style="width: <?php echo $_SESSION['summeS2'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS2'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS2'] ?></div>
               </div>
@@ -173,5 +183,30 @@
           </div>
         </div>
       </div>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+      </button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
   </body>
 </html>

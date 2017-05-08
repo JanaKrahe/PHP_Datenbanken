@@ -78,7 +78,7 @@ input::-webkit-input-placeholder {
 
 #infoBox {
   text-align: center;
-  font-weight: bold;
+  font-size: 15px;
   height: 20px;
   padding-top: 5px;
   padding-bottom: 25px;
@@ -145,4 +145,9 @@ input::-webkit-input-placeholder {
 .ranking {
   height: 425px ;
   overflow: auto;
+}
+
+.centerwidth {
+  width: 370px;
+  margin: auto;
 }

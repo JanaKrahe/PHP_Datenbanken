@@ -52,10 +52,13 @@ $test->auswertung();
 			<div class="row main">
 				<div class="panel-heading">
 	         <div class="panel-title text-center">
-             <?php if (isset($_GET['automatic'])) {
-               echo 'Sie wurden automatisch Abgemeldet';
-             }
-             ?>
+             <div class="panel-title text-center centerwidth">
+               <?php if (isset($_GET['automatic'])) {  ?>
+               <div class="alert alert-info" role="alert">
+                 Sie wurden automatisch Abgemeldet
+               </div>
+               <?php } ?>
+             </div>
            </div>
 	       </div>
 				<div class="main-l main-center">

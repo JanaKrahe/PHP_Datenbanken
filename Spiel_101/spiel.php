@@ -1,4 +1,5 @@
 <?php
+    //include('datenbank.php');
 /**
  * Diese Klasse definiert die Instanzen Spiel
  * Ein Spiel ist ausführende Kraft,
@@ -168,7 +169,6 @@ class Spiel
   */
   public function siegerAuswertung()
   {
-    include('datenbank.php');
     $datenbank = new DatenbankAufrufe;
 
     if ($_SESSION['summeS1'] >= 101) {
@@ -181,6 +181,7 @@ class Spiel
       $datenbank->beenden();
       header("Location: Sieg.php");
     }
+    unset($datenbank);
   }
 
   /**
@@ -200,9 +201,9 @@ class Spiel
   */
   public function speicherSpiel()
   {
-    include('datenbank.php');
-    $datenbank = new DatenbankAufrufe;
-    $datenbank->speichern();
+    $datenbank2 = new DatenbankAufrufe;
+    $datenbank2->speichern();
+    unset($datenbank2);
   }
 }
 ?>
