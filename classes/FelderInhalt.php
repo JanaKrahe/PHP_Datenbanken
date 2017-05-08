@@ -108,15 +108,15 @@ class Pruefen
             echo $stimmenErr;
           } else {
               #Passwort wird hier verschlüsselt, indem die Methode der Klasse PasswortSpeichern aufgerufen wird.
-              include('PasswortSpeichern.php');
               $hallo = new PasswortSpeichern;
               $_POST['passwort'] = $hallo->passwortVerschluesseln($_POST['passwort']);
 
-              include('datenbank.php');
               $datenbank = new DatenbankAufrufe;
               $result = $datenbank->existBenutzer();
               if ($result == false) {
                 $datenbank->benutzerAnlegen();
+                $_SESSION['location'] = 'anmelden';
+                header("Location: index.php");
               } else {
                 echo "Der Benutzer existiert bereits.";
               }
@@ -128,28 +128,27 @@ class Pruefen
     function login(){
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($this->error == false) {
-          include('datenbank.php');
           $datenbank = new DatenbankAufrufe;
           #Prüfung ob der Benutzer bereits existiert
           $result = $datenbank->existBenutzer();
           if ($result == true) {
             $dbPasswort = $datenbank->passwortAuslesen();
-            include('PasswortSpeichern.php');
             $verschl = new PasswortSpeichern;
             $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
             if ($result2 == true) {
               #SESSION
-              include ('session.php');
               $session = new sessionClass;
               $name = $datenbank->benutzernameAuslesen();
               $session->SessionStart($name, $datenbank);
-              header("Location: OberflaecheSpiel.php");
+              $_SESSION['location'] = 'spiel';
+              header("Location: index.php");
             }
             else {
               echo "Das Passwort ist nicht korrekt";
             }
           } else {
-            header("Location: registrierung.php");
+            $_SESSION['location'] = 'registrieren';
+            header("Location: index.php");
             //wird nie erreicht/ausgegeben
             echo "Bitte zuerst Registrieren";
           }
@@ -160,13 +159,11 @@ class Pruefen
     function loeschen(){
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($this->error == false) {
-          include('datenbank.php');
           $datenbank = new DatenbankAufrufe;
           #Prüfung ob der Benutzer bereits existiert
           $result = $datenbank->existBenutzer();
           if ($result == true) {
             $dbPasswort = $datenbank->passwortAuslesen();
-            include('PasswortSpeichern.php');
             $verschl = new PasswortSpeichern;
             $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
             if ($result2 == true) {
@@ -187,7 +184,6 @@ class Pruefen
       function kennwortAendern(){
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
           if ($this->error == false) {
-            include('datenbank.php');
             $datenbank = new DatenbankAufrufe;
             #Prüfung ob der Benutzer bereits existiert
             $result = $datenbank->existBenutzer();
@@ -198,7 +194,6 @@ class Pruefen
                 echo $stimmenErr;
               } else {
               $dbPasswort = $datenbank->passwortAuslesen();
-              include('PasswortSpeichern.php');
               $verschl = new PasswortSpeichern;
               $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
               if ($result2 == true) {

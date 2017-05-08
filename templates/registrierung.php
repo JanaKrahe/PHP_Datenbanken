@@ -1,12 +1,15 @@
 <?php
-  include ('FelderInhalt.php');
-  $feld = new Pruefen;
-  $feld->error = false;
+include '../classes/datenbank.php';
+include '../classes/PasswortSpeichern.php';
+include '../classes/session.php';
+include ('../classes/FelderInhalt.php');
+$feld = new Pruefen;
+$feld->error = false;
 
-  ini_set('display_errors', 0);
-  include('radioCheck.php');
-  $test = new RadiobuttonAuswerten;
-  $test->auswertung();
+ini_set('display_errors', 0);
+include('../classes/radioCheck.php');
+$test = new RadiobuttonAuswerten;
+$test->auswertung();
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +105,7 @@
           <hr />
 
           <fieldset class="form-group">
-            <form class="form-horizontal" method="post" action="#">
+            <form class="form-horizontal" method="post">
               <div class="form-check">
                 <label class="form-check-label">
                   <input type="radio" class="form-check-input" name="gender" value="registrieren" checked>
