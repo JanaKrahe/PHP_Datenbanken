@@ -14,14 +14,14 @@ class Pruefen
     $name = $nameErr = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
       if (empty($_POST["benutzername"])) {
-        $nameErr = "Name is required";
+        $nameErr = "Ein Name muss angegeben werden";
         $this->error = true;
         echo $nameErr;
       } else {
         $name = $this->test_input($_POST["benutzername"]);
         // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-          $nameErr = "Only letters and white space allowed";
+          $nameErr = "Es dürfen nur Buchstaben und Spaces verwendet werden";
           $this->error = true;
           echo $nameErr;
         }
@@ -37,14 +37,14 @@ class Pruefen
     if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
 
       if (empty($_POST["email"])) {
-        $emailErr = "Email is required";
+        $emailErr = "Die Email muss angegeben werden";
         $this->error = true;
         echo $emailErr;
       } else {
         $email = $this->test_input($_POST["email"]);
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $emailErr = "Invalid email format";
+          $emailErr = "Ungültiges Email-Format";
           $this->error = true;
           echo $emailErr;
         }
@@ -59,7 +59,7 @@ class Pruefen
 
       if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
         if (empty($_POST["passwort"])) {
-          $passwortErr = "Passwort is requiered";
+          $passwortErr = "Das Passwort muss angegeben werden";
           $this->error = true;
           echo $passwortErr;
         } else {
@@ -75,7 +75,7 @@ class Pruefen
 
       if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
         if (empty($_POST["passwort2"])) {
-          $passwort2Err = "Passwort is requiered";
+          $passwort2Err = "Das Passwort muss angegeben werden";
           $this->error = true;
           echo $passwort2Err;
         } else {
@@ -91,7 +91,7 @@ class Pruefen
 
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["passwort3"])) {
-          $passwort3Err = "Passwort is requiered";
+          $passwort3Err = "Das Passwort muss angegeben werden";
           $this->error = true;
           echo $passwort3Err;
         } else {
