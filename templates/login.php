@@ -59,14 +59,20 @@ $test->auswertung();
              <div class="panel-title text-center centerwidth">
                <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'automatic') {   ?>
                  <div class="alert alert-info" role="alert">
-                   Sie wurden automatisch abgemeldet. <br> Ihr Spielstand wurde gespeichert!
+                   Sie wurden automatisch abgemeldet. <br> Ihr Spielstand wurde gespeichert.
                  </div>
-               <?php  $_SESSION['spielGeladen'] = NULL; }  ?>
+               <?php }  ?>
+
+               <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'logout') {   ?>
+                 <div class="alert alert-info" role="alert">
+                   Sie wurden erfolgreich abgemeldet.
+                 </div>
+               <?php  }  ?>
              </div>
            </div>
 	       </div>
 				<div class="main-l main-center">
-					<form class="form-horizontal" method="post">
+					<form class="form-horizontal" method="post" action="?">
 
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">E-Mail:</label>

@@ -23,6 +23,8 @@ if (!empty($_REQUEST['site'])) {
     include '../templates/Anleitung.php';break;
   case 'sieg':
     include '../templates/sieg.php';break;
+  case 'logout':
+    include '../templates/login.php';break;
   }
 }
 elseif (!empty($_REQUEST['Registrieren'])) {

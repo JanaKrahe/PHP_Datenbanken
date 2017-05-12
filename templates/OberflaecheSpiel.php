@@ -13,7 +13,7 @@
   $spiel = new Spiel();
 
   //Automatischer Logout nach 10 Minuten
-  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1)) {
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {
     $spiel->speicherSpiel();
     session_unset();
     session_destroy();
@@ -90,6 +90,11 @@
                   Ihr alter Spielstand wurde geladen!
                 </div>
               <?php  $_SESSION['spielGeladen'] = false; }  ?>
+              <?php if (isset($_GET["speichern"])) {   ?>
+                <div class="alert alert-info" role="alert">
+                  Ihr Spielstand wurde gespeichert!
+                </div>
+              <?php  unset($_GET["speichern"]); }  ?>
   	       	</div>
   	      </div>
   				<div class="main-l main-center">

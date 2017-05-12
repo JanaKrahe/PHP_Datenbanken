@@ -47,11 +47,16 @@ $test->auswertung();
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
-	               <div class="panel-title text-center">
+	               <div class="panel-title text-center centerwidth">
+                   <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'registrieren') {   ?>
+                     <div class="alert alert-info" role="alert">
+                       Sie wurden erfolgreich registriert.
+                     </div>
+                   <?php  }  ?>
 	               	</div>
 	            </div>
 				<div class="main-l main-center">
-					<form class="form-horizontal" method="post">
+					<form class="form-horizontal" method="post" action="?">
 
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Benutzername:</label>

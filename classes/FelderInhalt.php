@@ -117,8 +117,6 @@ class Pruefen
               if ($result == false) {
                 $datenbank->benutzerAnlegen();
 
-                echo 'hallo';
-                sleep(5);
                 //$_POST['site'] = 'login';
                 header("Location: index.php?site=registrieren");
               } else {
