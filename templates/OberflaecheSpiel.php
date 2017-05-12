@@ -13,12 +13,12 @@
   $spiel = new Spiel();
 
   //Automatischer Logout nach 10 Minuten
-  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {
+  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1)) {
     $spiel->speicherSpiel();
     session_unset();
     session_destroy();
-    $_POST['site'] = 'automatic';
-    //header("Location: login.php?automatic");
+    //$_POST['site'] = 'automatic';
+    header("Location: index.php?site=automatic");
   }
   $_SESSION['LAST_ACTIVITY'] = time(); // Update des Aktivitätszeitstempel
 
@@ -28,7 +28,7 @@
   $spiel->resetAuswertung();
   $spiel->wuerfelnAuswertung();
   $spiel->sichernAuswertung();
-  $spiel->siegerAuswertung();  
+  $spiel->siegerAuswertung();
   $spiel->speichernAuswertung();
   $spiel->logoutAuswertung();
 ?>
@@ -153,7 +153,6 @@
               $_SESSION['wuerfelErgebnis'] = 0;
               ?>
             </div>
-            <hr />
 
             <div class="erzieltePktDiv">
               <legend> Punkte in diesem Spielzug: </legend>

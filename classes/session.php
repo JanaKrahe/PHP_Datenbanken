@@ -6,7 +6,7 @@ class sessionClass
 {
 
   function SessionStart($benutzername, $db) {
-    //session_start();    
+    //session_start();
     $_SESSION['email'] = $_POST['email'];
 
     if (!empty($_SESSION['email'])) {
@@ -14,6 +14,7 @@ class sessionClass
       $_SESSION['spieler1'] = $benutzername;
       $_SESSION['spieler2'] = $benutzername .'\'s Gast';
       $_SESSION['summeSpielzug'] = 0;
+      $_SESSION['wuerfelErgebnis'] = 0;
       $sId = $db->spielerIdAuslesen();
       $exist = $db->existSpielstandOpen($sId);
       if (empty($exist)) {

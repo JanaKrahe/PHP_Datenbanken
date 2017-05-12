@@ -57,9 +57,9 @@ $test->auswertung();
 				<div class="panel-heading">
 	         <div class="panel-title text-center">
              <div class="panel-title text-center centerwidth">
-               <?php if (isset($_SESSION['Info']) && $_SESSION['Info'] == 'atomatischAbgemeldet') {   ?>
+               <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'automatic') {   ?>
                  <div class="alert alert-info" role="alert">
-                   Ihr alter Spielstand wurde geladen!
+                   Sie wurden automatisch abgemeldet. <br> Ihr Spielstand wurde gespeichert!
                  </div>
                <?php  $_SESSION['spielGeladen'] = NULL; }  ?>
              </div>
@@ -87,9 +87,10 @@ $test->auswertung();
 									<input type="password" class="form-control" name="passwort" id="password"  placeholder="Enter your Password"/>
                 </div>
                 <?php $feld->pruefungPasswort(); ?>
+                <?php $feld->login(); ?>
 							</div>
 						</div>
-            <?php $feld->login(); ?>
+
 
 						<div class="form-group ">
               <input type="submit" value="Anmelden" name="Anmelden" class="btn btn-primary btn-lg btn-block login-button">

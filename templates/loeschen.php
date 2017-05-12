@@ -72,9 +72,10 @@ $test->auswertung();
 									<input type="password" class="form-control" name="passwort" id="password"  placeholder="Enter your Password"/>
                 </div>
                 <?php $feld->pruefungPasswort(); ?>
+                <?php $feld->loeschen(); ?>
 							</div>
 						</div>
-            <?php $feld->loeschen(); ?>
+
 
 						<div class="form-group ">
               <input type="submit" value="Löschen" name="loeschen" class="btn btn-primary btn-lg btn-block login-button" onclick="return confirm('Sind Sie sich sicher, dass Sie Ihren Account löschen wollen?')">

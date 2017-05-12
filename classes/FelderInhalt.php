@@ -89,7 +89,7 @@ class Pruefen
       $passwort3Err = "";
       $passwort3 = "";
 
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["kennwortAendern"]) && $_POST["kennwortAendern"] == "Kennwort Ändern") {
         if (empty($_POST["passwort3"])) {
           $passwort3Err = "Das Passwort muss angegeben werden";
           $this->error = true;
@@ -103,6 +103,7 @@ class Pruefen
     function passwortStimmenUeberein(){
       if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
         if ($this->error == false) {
+          echo $_POST["passwort"] . $_POST["passwort2"];
           if ($_POST["passwort"] != $_POST["passwort2"]){
             $stimmenErr = "Die Passwörter müssen übereinstimmen";
             echo $stimmenErr;
@@ -115,8 +116,11 @@ class Pruefen
               $result = $datenbank->existBenutzer();
               if ($result == false) {
                 $datenbank->benutzerAnlegen();
-                $_POST['site'] = 'login';
-                //header("Location: index.php");
+
+                echo 'hallo';
+                sleep(5);
+                //$_POST['site'] = 'login';
+                header("Location: index.php?site=registrieren");
               } else {
                 echo "Der Benutzer existiert bereits.";
               }
@@ -126,7 +130,7 @@ class Pruefen
       }
 
     function login(){
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Anmelden"]) && $_POST["Anmelden"] == "Anmelden") {
         if ($this->error == false) {
           $datenbank = new DatenbankAufrufe;
           #Prüfung ob der Benutzer bereits existiert
@@ -148,17 +152,17 @@ class Pruefen
               echo "Das Passwort ist nicht korrekt";
             }
           } else {
-            $_POST['site'] = 'registrieren';
+            //$_POST['site'] = 'registrieren';
             //header("Location: index.php");
             //wird nie erreicht/ausgegeben
-            //echo "Bitte zuerst Registrieren";
+            echo "Bitte zuerst Registrieren";
           }
         }
       }
     }
 
     function loeschen(){
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["loeschen"]) && $_POST["loeschen"] == "Löschen") {
         if ($this->error == false) {
           $datenbank = new DatenbankAufrufe;
           #Prüfung ob der Benutzer bereits existiert
@@ -183,7 +187,7 @@ class Pruefen
 
 
       function kennwortAendern(){
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["kennwortAendern"]) && $_POST["kennwortAendern"] == "Kennwort Ändern") {
           if ($this->error == false) {
             $datenbank = new DatenbankAufrufe;
             #Prüfung ob der Benutzer bereits existiert
