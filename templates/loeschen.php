@@ -47,11 +47,16 @@ $test->auswertung();
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
-	               <div class="panel-title text-center">
-	               	</div>
-	            </div>
+          <div class="panel-title text-center centerwidth">
+            <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'loeschen') {   ?>
+              <div class="alert alert-info" role="alert">
+                Ihr Account wurde erfolgreich gelöscht.
+              </div>
+            <?php  }  ?>
+	        </div>
+	      </div>
 				<div class="main-l main-center">
-					<form class="form-horizontal" method="post"y>
+					<form class="form-horizontal" method="post" action="?">
 
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">E-Mail:</label>

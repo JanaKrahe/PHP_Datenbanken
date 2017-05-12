@@ -51,7 +51,6 @@ function benutzerLoeschen(){
   $sqlStatement = "DELETE FROM user101 WHERE email = ?";
   $stmt = $pdo->prepare($sqlStatement);
   $stmt->execute(array($_POST['email']));
-  echo "Der Benutzer wurde gelöscht.";
 }
 
   function kennwortAendern($hashPasswort){
@@ -59,7 +58,6 @@ function benutzerLoeschen(){
     $sqlStatement = "UPDATE user101 SET passwort = ? WHERE email = ?";
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute(array($hashPasswort, $_POST['email']));
-    echo "Das Passwort wurde geändert.";
   }
 
   function benutzernameAuslesen(){

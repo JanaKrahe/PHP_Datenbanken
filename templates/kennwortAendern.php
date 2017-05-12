@@ -27,7 +27,7 @@ $test->auswertung();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Website Font style  -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/meinecss.css">
+  <link rel="stylesheet" href="css/meinecss.css">
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -47,11 +47,16 @@ $test->auswertung();
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
-	               <div class="panel-title text-center">
-	               	</div>
-	            </div>
+          <div class="panel-title text-center centerwidth">
+            <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'kennwortAendern') {   ?>
+            <div class="alert alert-info" role="alert">
+              Ihr Kennwort wurde erfolgreich geändert.
+            </div>
+            <?php  }  ?>
+	        </div>
+	      </div>
 				<div class="main-l main-center">
-					<form class="form-horizontal" method="post">
+					<form class="form-horizontal" method="post" action="?">
 
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">E-Mail:</label>

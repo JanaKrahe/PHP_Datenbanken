@@ -117,7 +117,6 @@ class Pruefen
               if ($result == false) {
                 $datenbank->benutzerAnlegen();
 
-                //$_POST['site'] = 'login';
                 header("Location: index.php?site=registrieren");
               } else {
                 echo "Der Benutzer existiert bereits";
@@ -171,6 +170,7 @@ class Pruefen
             $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
             if ($result2 == true) {
               $datenbank->benutzerLoeschen();
+              header("Location: index.php?site=loeschen");
             }
             else {
               echo "Das Passwort ist nicht korrekt";
@@ -202,7 +202,7 @@ class Pruefen
               if ($result2 == true) {
                 $_POST['passwort2'] = $hashPasswort = $verschl->passwortVerschluesseln($_POST['passwort2']);
                 $datenbank->kennwortAendern($hashPasswort);
-                #hier
+                header("Location: index.php?site=kennwortAendern");
               }
               else {
                 echo "Das Passwort ist nicht korrekt";
