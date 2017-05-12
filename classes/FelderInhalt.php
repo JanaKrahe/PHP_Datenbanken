@@ -14,7 +14,7 @@ class Pruefen
     $name = $nameErr = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
       if (empty($_POST["benutzername"])) {
-        $nameErr = "Ein Name muss angegeben werden";
+        $nameErr = "Bitte Name angeben";
         $this->error = true;
         echo $nameErr;
       } else {
@@ -37,7 +37,7 @@ class Pruefen
     if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
 
       if (empty($_POST["email"])) {
-        $emailErr = "Die Email muss angegeben werden";
+        $emailErr = "Bitte E-mail angeben";
         $this->error = true;
         echo $emailErr;
       } else {
@@ -59,7 +59,7 @@ class Pruefen
 
       if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
         if (empty($_POST["passwort"])) {
-          $passwortErr = "Das Passwort muss angegeben werden";
+          $passwortErr = "Bitte Passwort angeben";
           $this->error = true;
           echo $passwortErr;
         } else {
@@ -75,7 +75,7 @@ class Pruefen
 
       if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
         if (empty($_POST["passwort2"])) {
-          $passwort2Err = "Das Passwort muss angegeben werden";
+          $passwort2Err = "Bitte Passwort angeben";
           $this->error = true;
           echo $passwort2Err;
         } else {
@@ -91,7 +91,7 @@ class Pruefen
 
       if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["kennwortAendern"]) && $_POST["kennwortAendern"] == "Kennwort Ändern") {
         if (empty($_POST["passwort3"])) {
-          $passwort3Err = "Das Passwort muss angegeben werden";
+          $passwort3Err = "Bitte Passwort angeben";
           $this->error = true;
           echo $passwort3Err;
         } else {
@@ -105,7 +105,7 @@ class Pruefen
         if ($this->error == false) {
           echo $_POST["passwort"] . $_POST["passwort2"];
           if ($_POST["passwort"] != $_POST["passwort2"]){
-            $stimmenErr = "Die Passwörter müssen übereinstimmen";
+            $stimmenErr = "Passwörter müssen übereinstimmen";
             echo $stimmenErr;
           } else {
               #Passwort wird hier verschlüsselt, indem die Methode der Klasse PasswortSpeichern aufgerufen wird.
@@ -122,7 +122,7 @@ class Pruefen
                 //$_POST['site'] = 'login';
                 header("Location: index.php?site=registrieren");
               } else {
-                echo "Der Benutzer existiert bereits.";
+                echo "Der Benutzer existiert bereits";
               }
             }
           }

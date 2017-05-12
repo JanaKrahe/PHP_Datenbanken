@@ -58,7 +58,7 @@ $test->auswertung();
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email" autofocus/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="max.mustermann@mail.de" autofocus/>
                 </div>
                 <?php $feld->pruefungEmail(); ?>
 							</div>
@@ -69,7 +69,7 @@ $test->auswertung();
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="passwort" id="password"  placeholder="Entern your old Password"/>
+									<input type="password" class="form-control" name="passwort" id="password"  placeholder="altes Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort(); ?>
 							</div>
@@ -80,7 +80,7 @@ $test->auswertung();
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="passwort2" id="confirm2"  placeholder="Entern your new Password"/>
+									<input type="password" class="form-control" name="passwort2" id="confirm2"  placeholder="neues Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort2();
                 ?>
@@ -92,7 +92,7 @@ $test->auswertung();
   						<div class="cols-sm-10">
   							<div class="input-group">
   								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-  								<input type="password" class="form-control" name="passwort3" id="confirm3"  placeholder="Confirm your new Password"/>
+  								<input type="password" class="form-control" name="passwort3" id="confirm3"  placeholder="neues Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort3(); ?>
   						</div>

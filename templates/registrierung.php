@@ -58,7 +58,7 @@ $test->auswertung();
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="benutzername" id="name"  placeholder="Enter your Name" autofocus/>
+									<input type="text" class="form-control" name="benutzername" id="name"  placeholder="Max Mustermann" autofocus/>
 								</div>
                 <?php $feld->pruefungBenutzername(); ?>
 							</div>
@@ -69,7 +69,7 @@ $test->auswertung();
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="max.mustermann@mail.de"/>
                 </div>
                 <?php $feld->pruefungEmail(); ?>
 							</div>
@@ -80,7 +80,7 @@ $test->auswertung();
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="passwort" id="password"  placeholder="Enter your Password"/>
+									<input type="password" class="form-control" name="passwort" id="password"  placeholder="Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort(); ?>
 							</div>
@@ -91,7 +91,7 @@ $test->auswertung();
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="passwort2" id="confirm"  placeholder="Confirm your Password"/>
+									<input type="password" class="form-control" name="passwort2" id="confirm"  placeholder="Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort2();
                 $feld->passwortStimmenUeberein(); ?>
