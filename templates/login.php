@@ -62,6 +62,21 @@ $test->auswertung();
                    Sie wurden automatisch abgemeldet. <br> Ihr Spielstand wurde gespeichert!
                  </div>
                <?php  $_SESSION['spielGeladen'] = NULL; }  ?>
+               <?php if (isset($_REQUEST['success']) && $_REQUEST['success'] == 'registrieren') {   ?>
+                 <div class="alert alert-info" role="alert">
+                   Sie wurden erfolgreich registriert.
+                 </div>
+               <?php  }  ?>
+               <?php if (isset($_REQUEST['success']) && $_REQUEST['success'] == 'loeschen') {   ?>
+                 <div class="alert alert-info" role="alert">
+                   Ihr Account wurde erfolgreich gelöscht.
+                 </div>
+               <?php  }  ?>
+               <?php if (isset($_REQUEST['success']) && $_REQUEST['success'] == 'kennwortAendern') {   ?>
+               <div class="alert alert-info" role="alert">
+                 Ihr Kennwort wurde erfolgreich geändert.
+               </div>
+               <?php  }  ?>
              </div>
            </div>
 	       </div>
@@ -103,25 +118,25 @@ $test->auswertung();
             <form class="form-horizontal" method="post">
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="site" value="registrieren" >
+                  <input type="radio" class="form-check-input" name="gender" value="registrieren" >
                   Registrieren
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="site" value="anmelden" checked>
+                  <input type="radio" class="form-check-input" name="gender" value="anmelden" checked>
                   Anmelden
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="site" value="loeschen" >
+                  <input type="radio" class="form-check-input" name="gender" value="loeschen" >
                   Account löschen
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="site" value="kennwortAendern" >
+                  <input type="radio" class="form-check-input" name="gender" value="kennwortAendern" >
                   Kennwort ändern
                 </label>
               </div>

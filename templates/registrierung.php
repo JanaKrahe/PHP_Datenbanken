@@ -47,12 +47,7 @@ $test->auswertung();
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
-          <div class="panel-title text-center centerwidth">
-            <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'registrieren') {   ?>
-              <div class="alert alert-info" role="alert">
-                Sie wurden erfolgreich registriert.
-              </div>
-            <?php  }  ?>
+          <div class="panel-title text-center centerwidth">            
 	        </div>
 	      </div>
 				<div class="main-l main-center">
@@ -113,25 +108,25 @@ $test->auswertung();
             <form class="form-horizontal" method="post">
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="site" value="registrieren" checked>
+                  <input type="radio" class="form-check-input" name="gender" value="registrieren" checked>
                   Registrieren
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="site" value="anmelden" >
+                  <input type="radio" class="form-check-input" name="gender" value="anmelden" >
                   Anmelden
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="site" value="loeschen" >
+                  <input type="radio" class="form-check-input" name="gender" value="loeschen" >
                   Account löschen
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="site" value="kennwortAendern" >
+                  <input type="radio" class="form-check-input" name="gender" value="kennwortAendern" >
                   Kennwort ändern
                 </label>
               </div>
