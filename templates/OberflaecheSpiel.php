@@ -102,7 +102,7 @@
 
             <!-- Button und Anzeige ZugAnzahl sowie summeSpielzug -->
             <fieldset class="form-group">
-              <form class="form-horizontal" method="post">
+              <form class="form-horizontal" method="post" action="?">
                 <div class="btn-group btn-group-justified" role="group" aria-label="Right Align">
                     <div class="btn-group" role="group">
                       <input class="btn btn-default" type="submit" name="wurf" value="Würfeln"></input>

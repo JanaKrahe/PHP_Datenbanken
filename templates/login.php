@@ -61,7 +61,12 @@ $test->auswertung();
                  <div class="alert alert-info" role="alert">
                    Sie wurden automatisch abgemeldet. <br> Ihr Spielstand wurde gespeichert!
                  </div>
-               <?php  $_SESSION['spielGeladen'] = NULL; }  ?>
+               <?php }  ?>
+               <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'logout') {   ?>
+                 <div class="alert alert-info" role="alert">
+                   Sie wurden erfolgreich abgemeldet.
+                 </div>
+               <?php }  ?>
                <?php if (isset($_REQUEST['success']) && $_REQUEST['success'] == 'registrieren') {   ?>
                  <div class="alert alert-info" role="alert">
                    Sie wurden erfolgreich registriert.
