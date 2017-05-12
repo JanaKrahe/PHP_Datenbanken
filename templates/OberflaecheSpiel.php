@@ -3,7 +3,8 @@
 
   //Prüfung ob User eingeloggt ist
   if (empty($_SESSION['eingeloggt'])) {
-  header("Location: Login.php");
+  $_POST['site'] = 'login';
+  //header("Location: index.php");
   }
 
   include '../classes/datenbank.php';
@@ -16,18 +17,20 @@
     $spiel->speicherSpiel();
     session_unset();
     session_destroy();
-    //header("Location: Login.php?automatic");
+    $_POST['site'] = 'automatic';
+    //header("Location: login.php?automatic");
   }
   $_SESSION['LAST_ACTIVITY'] = time(); // Update des Aktivitätszeitstempel
 
 
 
-  $spiel->logoutAuswertung();
+
   $spiel->resetAuswertung();
   $spiel->wuerfelnAuswertung();
   $spiel->sichernAuswertung();
-  $spiel->siegerAuswertung();
+  $spiel->siegerAuswertung();  
   $spiel->speichernAuswertung();
+  $spiel->logoutAuswertung();
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +48,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Website Font style  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/meinecss.css">
+    <link rel="stylesheet" href="../public/css/meinecss.css">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -66,7 +69,7 @@
       </div>
       <div class="container-fluid navbar-collapse collapse" id="bs-navbar" aria-expanded="true">
         <ul class="nav navbar-nav navbar-left">
-          <li><a href="Anleitung.php"><span class="glyphicon glyphicon-list-alt"></span> Anleitung</a></li>
+          <li><a href="?site=anleitung"><span class="glyphicon glyphicon-list-alt"></span> Anleitung</a></li>
           <li><a href="?speichern"><span class="glyphicon glyphicon-floppy-save"></span> Speichern</a></li>
           <li><a href="?reset" onclick="return confirm('Sind Sie sich sicher, dass Sie ein neues Spiel beginnen wollen? Der alte Spielstand wird dann gelöscht.')">
             <span class="glyphicon glyphicon-plus"></span> Neues Spiel</a>
@@ -86,7 +89,6 @@
                 <div class="alert alert-info" role="alert">
                   Ihr alter Spielstand wurde geladen!
                 </div>
-
               <?php  $_SESSION['spielGeladen'] = false; }  ?>
   	       	</div>
   	      </div>
@@ -183,30 +185,5 @@
           </div>
         </div>
       </div>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
-      </button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
   </body>
 </html>

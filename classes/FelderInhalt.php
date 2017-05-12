@@ -12,7 +12,7 @@ class Pruefen
   function pruefungBenutzername()
   {
     $name = $nameErr = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
       if (empty($_POST["benutzername"])) {
         $nameErr = "Name is required";
         $this->error = true;
@@ -34,7 +34,7 @@ class Pruefen
     $emailErr = "";
     $email = "";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
 
       if (empty($_POST["email"])) {
         $emailErr = "Email is required";
@@ -57,7 +57,7 @@ class Pruefen
       $passwortErr = "";
       $passwort = "";
 
-      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
         if (empty($_POST["passwort"])) {
           $passwortErr = "Passwort is requiered";
           $this->error = true;
@@ -73,7 +73,7 @@ class Pruefen
       $passwort2Err = "";
       $passwort2 = "";
 
-      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
         if (empty($_POST["passwort2"])) {
           $passwort2Err = "Passwort is requiered";
           $this->error = true;
@@ -101,7 +101,7 @@ class Pruefen
     }
 
     function passwortStimmenUeberein(){
-      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['gender']) {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
         if ($this->error == false) {
           if ($_POST["passwort"] != $_POST["passwort2"]){
             $stimmenErr = "Die Passwörter müssen übereinstimmen";
@@ -115,8 +115,8 @@ class Pruefen
               $result = $datenbank->existBenutzer();
               if ($result == false) {
                 $datenbank->benutzerAnlegen();
-                $_SESSION['location'] = 'anmelden';
-                header("Location: index.php");
+                $_POST['site'] = 'login';
+                //header("Location: index.php");
               } else {
                 echo "Der Benutzer existiert bereits.";
               }
@@ -140,17 +140,18 @@ class Pruefen
               $session = new sessionClass;
               $name = $datenbank->benutzernameAuslesen();
               $session->SessionStart($name, $datenbank);
-              $_SESSION['location'] = 'spiel';
+              $_POST['site'] = 'main';
+              $_GET['site'] = 'main';
               header("Location: index.php");
             }
             else {
               echo "Das Passwort ist nicht korrekt";
             }
           } else {
-            $_SESSION['location'] = 'registrieren';
-            header("Location: index.php");
+            $_POST['site'] = 'registrieren';
+            //header("Location: index.php");
             //wird nie erreicht/ausgegeben
-            echo "Bitte zuerst Registrieren";
+            //echo "Bitte zuerst Registrieren";
           }
         }
       }

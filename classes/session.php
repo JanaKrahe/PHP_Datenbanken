@@ -6,7 +6,7 @@ class sessionClass
 {
 
   function SessionStart($benutzername, $db) {
-    session_start();
+    //session_start();    
     $_SESSION['email'] = $_POST['email'];
 
     if (!empty($_SESSION['email'])) {

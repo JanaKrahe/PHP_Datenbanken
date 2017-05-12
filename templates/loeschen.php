@@ -27,7 +27,7 @@ $test->auswertung();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Website Font style  -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/meinecss.css">
+  <link rel="stylesheet" href="../public/css/meinecss.css">
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -51,7 +51,7 @@ $test->auswertung();
 	               	</div>
 	            </div>
 				<div class="main-l main-center">
-					<form class="form-horizontal" method="post" action="#">
+					<form class="form-horizontal" method="post"y>
 
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">E-Mail:</label>
@@ -87,25 +87,25 @@ $test->auswertung();
             <form class="form-horizontal" method="post">
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="gender" value="registrieren" >
+                  <input type="radio" class="form-check-input" name="site" value="registrieren" >
                   Registrieren
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="gender" value="anmelden" >
+                  <input type="radio" class="form-check-input" name="site" value="anmelden" >
                   Anmelden
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="gender" value="loeschen" checked>
+                  <input type="radio" class="form-check-input" name="site" value="loeschen" checked>
                   Account löschen
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="gender" value="kennwortAendern" >
+                  <input type="radio" class="form-check-input" name="site" value="kennwortAendern" >
                   Kennwort ändern
                 </label>
               </div>

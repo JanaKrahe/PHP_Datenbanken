@@ -1,18 +1,19 @@
 <?php
+// session_start();
 //Wenn Session existiert dann Weiterleitung auf Spiel
-//session_start();
-/*if (!empty($_SESSION['eingeloggt'])) {
-  header("Location: OberflaecheSpiel.php");
-}*/
+if (!empty($_SESSION['eingeloggt'])) {
+  $_POST['site'] = 'main';
+  //header("Location: index.php");
+}
 include '../classes/datenbank.php';
 include '../classes/PasswortSpeichern.php';
 include '../classes/session.php';
-include ('../classes/FelderInhalt.php');
+include '../classes/FelderInhalt.php';
+include('../classes/radioCheck.php');
 $feld = new Pruefen;
 $feld->error = false;
 
 ini_set('display_errors', 0);
-include('../classes/radioCheck.php');
 $test = new RadiobuttonAuswerten;
 $test->auswertung();
 
@@ -34,7 +35,7 @@ $test->auswertung();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Website Font style  -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/meinecss.css">
+  <link rel="stylesheet" href="../public/css/meinecss.css">
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -56,16 +57,16 @@ $test->auswertung();
 				<div class="panel-heading">
 	         <div class="panel-title text-center">
              <div class="panel-title text-center centerwidth">
-               <?php if (isset($_GET['automatic'])) {  ?>
-               <div class="alert alert-info" role="alert">
-                 Sie wurden automatisch Abgemeldet
-               </div>
-               <?php } ?>
+               <?php if (isset($_SESSION['Info']) && $_SESSION['Info'] == 'atomatischAbgemeldet') {   ?>
+                 <div class="alert alert-info" role="alert">
+                   Ihr alter Spielstand wurde geladen!
+                 </div>
+               <?php  $_SESSION['spielGeladen'] = NULL; }  ?>
              </div>
            </div>
 	       </div>
 				<div class="main-l main-center">
-					<form class="form-horizontal" method="post" action="#">
+					<form class="form-horizontal" method="post">
 
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">E-Mail:</label>
@@ -101,25 +102,25 @@ $test->auswertung();
             <form class="form-horizontal" method="post">
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="gender" value="registrieren" >
+                  <input type="radio" class="form-check-input" name="site" value="registrieren" >
                   Registrieren
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="gender" value="anmelden" checked>
+                  <input type="radio" class="form-check-input" name="site" value="anmelden" checked>
                   Anmelden
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="gender" value="loeschen" >
+                  <input type="radio" class="form-check-input" name="site" value="loeschen" >
                   Account löschen
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="gender" value="kennwortAendern" >
+                  <input type="radio" class="form-check-input" name="site" value="kennwortAendern" >
                   Kennwort ändern
                 </label>
               </div>

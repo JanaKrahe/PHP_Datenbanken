@@ -8,23 +8,23 @@ class RadiobuttonAuswerten
   public function auswertung()
   {
     if($_POST['gender'] == "registrieren") {
-      $_SESSION['location'] = 'registrieren';
-      header("Location: index.php");
+      $_POST['site'] = "registrieren";
+      //header("Location: index.php");
       exit;
     }
     else if($_POST['gender'] == "anmelden") {
-      $_SESSION['location'] = 'anmelden';
-      header("Location: index.php");
+      $_POST['site'] = "anmelden";
+      //header("Location: login.php");
       exit;
     }
     else if($_POST['gender'] == "loeschen") {
-      $_SESSION['location'] = 'loeschen';
-      header("Location: index.php");
+      $_POST['site'] = "loeschen";
+      //header("Location: loeschen.php");
       exit;
     }
     else if($_POST['gender'] == "kennwortAendern") {
-      $_SESSION['location'] = 'kennwortAendern';
-      header("Location: index.php");
+      $_POST['site'] = "kennwortAendern";
+      //header("location: kennwortAendern.php");
       exit;
     }
   }

@@ -110,8 +110,10 @@ class Spiel
   */
   private function logout()
   {
+    $_SESSION['Ich'] = 'war hier';
     session_unset();
     session_destroy();
+    //$_POST['site'] = 'anmelden';
     header("Location: index.php");
   }
 
@@ -148,7 +150,8 @@ class Spiel
     if (isset($_GET["reset"])) {
       $this->reset();
       $this->speicherSpiel();
-      $_SESSION['location'] = 'new';
+      //$_POST['site'] = 'main';
+      header("Location: index.php");
     }
   }
   /**
@@ -170,19 +173,21 @@ class Spiel
   *
   */
   public function siegerAuswertung()
-  {
+  {  
     $datenbank = new DatenbankAufrufe;
 
     if ($_SESSION['summeS1'] >= 101) {
       $_SESSION['sieger'] = $_SESSION['spieler1'];
       $datenbank->beenden();
-      $_SESSION['location'] = 'sieg';
-
+      //$_POST['site'] = 'sieg';
+      header("Location: index.php?site=sieg");
+      //var_dump($_POST);
     }
     elseif ($_SESSION['summeS2'] >= 101) {
       $_SESSION['sieger'] = $_SESSION['spieler2'];
       $datenbank->beenden();
-      $_SESSION['location'] = 'sieg';
+      //$_POST['site'] = 'sieg';
+      header("Location: index.php?site=sieg");
     }
     unset($datenbank);
   }
@@ -207,6 +212,7 @@ class Spiel
     $datenbank2 = new DatenbankAufrufe;
     $datenbank2->speichern();
     unset($datenbank2);
+    header("Location: index.php");
   }
 }
 ?>

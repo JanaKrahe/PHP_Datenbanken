@@ -1,26 +1,26 @@
 <?php
-  //session_start();
+//session_start();
 
-  //Prüfung ob User eingeloggt ist
-  /*if (empty($_SESSION['eingeloggt'])) {
-  header("Location: Login.php");
-}*/
+//Prüfung ob User eingeloggt ist
+if (empty($_SESSION['eingeloggt'])) {
+header("Location: Login.php");
+}
 
-  //Automatischer Logout nach 10 Minuten
-  if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
-    session_unset();
-    session_destroy();
-  }
-  // Update des Aktivitätszeitstempel
-  $_SESSION['LAST_ACTIVITY'] = time();
+//Automatischer Logout nach 10 Minuten
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+  session_unset();
+  session_destroy();
+}
+// Update des Aktivitätszeitstempel
+$_SESSION['LAST_ACTIVITY'] = time();
 
-  include '../classes/spiel.php';
-  include('../classes/datenbank.php');
-  $spiel = new Spiel();
-  //Prüft ob der Reset-Button gedrückt wurde
-  $spiel->resetNachSieg();
-  //Prüft ob der Logout-Button gedrückt wurden
-  $spiel->logoutAuswertung();
+include '../classes/spiel.php';
+include('../classes/datenbank.php');
+$spiel = new Spiel();
+//Prüft ob der Reset-Button gedrückt wurde
+$spiel->resetNachSieg();
+//Prüft ob der Logout-Button gedrückt wurden
+$spiel->logoutAuswertung();
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Website Font style  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/meinecss.css">
+    <link rel="stylesheet" href="../public/css/meinecss.css">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
