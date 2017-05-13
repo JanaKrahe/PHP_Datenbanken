@@ -57,7 +57,7 @@
   </head>
   <body>
     <!-- Navigationsleiste -->
-    <nav class="navbar navbar-inverse navbar-upper">
+    <nav class="navbar navbar-inverse navbar-upper sticky">
       <div class="navbar-header">
         <button aria-controls=bs-navbar aria-expanded=true class="collapsed navbar-toggle" data-target="#bs-navbar" data-toggle=collapse type=button>
           <span class=sr-only>Toggle navigation</span>
@@ -94,7 +94,12 @@
                 <div class="alert alert-info" role="alert">
                   Ihr Spielstand wurde gespeichert!
                 </div>
-              <?php  unset($_GET["speichern"]); }  ?>
+              <?php }  ?>
+              <?php if (isset($_REQUEST['safe']) && $_REQUEST['safe'] == 'npossible') {   ?>
+                <div class="alert alert-info" role="alert">
+                  Vor dem Bunkern muss gewürfelt werden!
+                </div>
+              <?php }  ?>
   	       	</div>
   	      </div>
   				<div class="main-l main-center">
@@ -160,15 +165,17 @@
             </div>
 
             <div class="erzieltePktDiv">
-              <legend> Punkte in diesem Spielzug: </legend>
-              <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p> <br>
+              <legend> Spielrunde: </legend>
+              <label> Punkte in diesem Spielzug: </label>
+              <p class="erzieltePktP"> <?php echo $_SESSION['summeSpielzug'] ?></p>
               <label> Runde: </label>
               <p class="Zug"> <?php echo $_SESSION['runde'] ?> </p>
             </div>
-            <hr />
+
 
             <!-- Anzeige Spielerscores gesamt -->
             <div>
+              <legend> Spielerpunkte: </legend>
               <label><?php echo $_SESSION['spieler1'] ?>:</label>
               <div class="progress">
                 <div class="progress-bar " role="progressbar" style="width: <?php echo $_SESSION['summeS1'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS1'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS1'] ?></div>

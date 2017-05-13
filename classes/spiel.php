@@ -51,8 +51,14 @@ class Spiel
   public function sichernAuswertung()
   {
     if (isset($_POST["bunkern"]) && $_POST["bunkern"] == "Bunkern") {
-      $this->sichern();
+      if ($_SESSION['summeSpielzug'] != 0) {
+        $this->sichern();
+      }
+      else {
+        header("Location: index.php?safe=npossible");
+      }
     }
+
 
   }
 

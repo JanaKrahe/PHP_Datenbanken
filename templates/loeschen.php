@@ -35,7 +35,7 @@ $test->auswertung();
   <title>Benutzer löchen</title>
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-upper">
+  <nav class="navbar navbar-inverse navbar-upper sticky">
     <div class="navbar-header">
       <a class="navbar-brand headline">Spiel 101</a>
       <ul class="nav navbar-nav navbar-left">
@@ -47,7 +47,7 @@ $test->auswertung();
   <div class="container">
 			<div class="row main">
 				<div class="panel-heading">
-          <div class="panel-title text-center centerwidth">            
+          <div class="panel-title text-center centerwidth">
 	        </div>
 	      </div>
 				<div class="main-l main-center">

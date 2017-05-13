@@ -43,7 +43,7 @@ $test->auswertung();
   <title>Login</title>
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-upper">
+  <nav class="navbar navbar-inverse navbar-upper sticky">
     <div class="navbar-header">
       <a class="navbar-brand headline">Spiel 101</a>
       <ul class="nav navbar-nav navbar-left">

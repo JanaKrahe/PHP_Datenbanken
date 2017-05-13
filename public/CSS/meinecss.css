@@ -22,6 +22,8 @@ h1.title {
 hr{
 	width: 20%;
 	color: #fff;
+  margin-top: 18px;
+  margin-bottom: 18px;
 }
 
 .form-group{
@@ -150,4 +152,10 @@ input::-webkit-input-placeholder {
 .centerwidth {
   width: 370px;
   margin: auto;
+}
+
+.sticky {
+  position: sticky;
+  top: 0px;
+  z-index: +5;
 }

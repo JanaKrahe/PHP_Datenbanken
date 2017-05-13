@@ -46,7 +46,7 @@ $spiel->logoutAuswertung();
   </head>
   <body>
     <!-- Navigationsleiste -->
-    <nav class="navbar navbar-inverse navbar-upper">
+    <nav class="navbar navbar-inverse navbar-upper sticky">
       <div class="navbar-header">
         <button aria-controls=bs-navbar aria-expanded=true class="collapsed navbar-toggle" data-target="#bs-navbar" data-toggle=collapse type=button>
           <span class=sr-only>Toggle navigation</span>
