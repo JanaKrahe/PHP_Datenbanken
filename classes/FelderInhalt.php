@@ -241,7 +241,7 @@ class Pruefen
     }
 
     /**
-    * Methode zum ...
+    * Methode zum Aufbereiten eines Eingabestrings
     */
     public function test_input($data) {
       $data = trim($data);
