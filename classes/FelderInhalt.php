@@ -50,7 +50,7 @@ class Pruefen
         $email = $this->test_input($_POST["email"]);
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $emailErr = "Ungültiges Email-Format";
+          $emailErr = "Ungültiges E-Mail-Format";
           $this->error = true;
           echo $emailErr;
         }
