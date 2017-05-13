@@ -103,7 +103,6 @@ class Pruefen
     function passwortStimmenUeberein(){
       if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
         if ($this->error == false) {
-          echo $_POST["passwort"] . $_POST["passwort2"];
           if ($_POST["passwort"] != $_POST["passwort2"]){
             $stimmenErr = "Passwörter müssen übereinstimmen";
             echo $stimmenErr;
