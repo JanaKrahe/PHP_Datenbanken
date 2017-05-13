@@ -1,15 +1,14 @@
 <?php
-include '../classes/datenbank.php';
+
 include '../classes/PasswortSpeichern.php';
 include '../classes/session.php';
 include ('../classes/FelderInhalt.php');
+include('../classes/radioCheck.php');
 $feld = new Pruefen;
 $feld->error = false;
 
-ini_set('display_errors', 0);
-include('../classes/radioCheck.php');
-$test = new RadiobuttonAuswerten;
-$test->auswertung();
+$radioAuswertung = new RadiobuttonAuswerten;
+$radioAuswertung->auswertung();
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +34,7 @@ $test->auswertung();
   <title>Registrierung</title>
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-upper sticky">
     <div class="navbar-header">
       <a class="navbar-brand headline">Spiel 101</a>
@@ -134,6 +134,8 @@ $test->auswertung();
             </form>
           </fieldset>
 				</div>
+        
+        <!-- Footer -->
         <div>
           <hr />
           <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>

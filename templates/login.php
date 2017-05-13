@@ -1,21 +1,18 @@
 <?php
 // session_start();
-//Wenn Session existiert dann Weiterleitung auf Spiel
+//Wenn eine Session existiert dann wird der Nutzer auf das Spiel weitergeleitet
 if (!empty($_SESSION['eingeloggt'])) {
-  $_POST['site'] = 'main';
-  //header("Location: index.php");
+  header("Location: index.php?site=main");
 }
-include '../classes/datenbank.php';
+
 include '../classes/PasswortSpeichern.php';
 include '../classes/session.php';
 include '../classes/FelderInhalt.php';
 include('../classes/radioCheck.php');
 $feld = new Pruefen;
 $feld->error = false;
-
-ini_set('display_errors', 0);
-$test = new RadiobuttonAuswerten;
-$test->auswertung();
+$radioAuswertung = new RadiobuttonAuswerten;
+$radioAuswertung->auswertung();
 
 
 ?>
@@ -43,6 +40,7 @@ $test->auswertung();
   <title>Login</title>
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-upper sticky">
     <div class="navbar-header">
       <a class="navbar-brand headline">Spiel 101</a>
@@ -57,6 +55,7 @@ $test->auswertung();
 				<div class="panel-heading">
 	         <div class="panel-title text-center">
              <div class="panel-title text-center centerwidth">
+               <!-- IOnformationen für den Nutzer -->
                <?php if (isset($_REQUEST['site']) && $_REQUEST['site'] == 'automatic') {   ?>
                  <div class="alert alert-info" role="alert">
                    Sie wurden automatisch abgemeldet. <br> Ihr Spielstand wurde gespeichert!
@@ -85,9 +84,9 @@ $test->auswertung();
              </div>
            </div>
 	       </div>
+
 				<div class="main-l main-center">
 					<form class="form-horizontal" method="post" action="?">
-
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">E-Mail:</label>
 							<div class="cols-sm-10">
@@ -110,7 +109,6 @@ $test->auswertung();
                 <?php $feld->login(); ?>
 							</div>
 						</div>
-
 
 						<div class="form-group ">
               <input type="submit" value="Anmelden" name="Anmelden" class="btn btn-primary btn-lg btn-block login-button">
@@ -149,6 +147,7 @@ $test->auswertung();
             </form>
           </fieldset>
 				</div>
+        <!-- Footer -->
         <div>
           <hr />
           <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>

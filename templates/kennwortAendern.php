@@ -1,15 +1,13 @@
 <?php
-include '../classes/datenbank.php';
+
 include '../classes/PasswortSpeichern.php';
 include '../classes/session.php';
 include ('../classes/FelderInhalt.php');
+include('../classes/radioCheck.php');
 $feld = new Pruefen;
 $feld->error = false;
-
-ini_set('display_errors', 0);
-include('../classes/radioCheck.php');
-$test = new RadiobuttonAuswerten;
-$test->auswertung();
+$radioAuswertung = new RadiobuttonAuswerten;
+$radioAuswertung->auswertung();
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +33,7 @@ $test->auswertung();
   <title>Kennwort ändern</title>
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-inverse navbar-upper sticky">
     <div class="navbar-header">
       <a class="navbar-brand headline">Spiel 101</a>
@@ -50,9 +49,9 @@ $test->auswertung();
           <div class="panel-title text-center centerwidth">
 	        </div>
 	      </div>
+
 				<div class="main-l main-center">
 					<form class="form-horizontal" method="post" action="?">
-
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">E-Mail:</label>
 							<div class="cols-sm-10">
@@ -95,11 +94,12 @@ $test->auswertung();
   								<input type="password" class="form-control" name="passwort3" id="confirm3"  placeholder="neues Passwort"/>
                 </div>
                 <?php $feld->pruefungPasswort3(); ?>
+                <?php $feld->kennwortAendern(); ?>
   						</div>
   					</div>
-            <?php $feld->kennwortAendern(); ?>
+
   					<div class="form-group ">
-              <input type="submit" value="Kennwort Ändern" name="kennwortAendern" class="btn btn-primary btn-lg btn-block login-button"  onclick="return confirm('Sind Sie sich sicher, dass Sie Ihr Passwort ändern wollen?')">
+              <input type="submit" value="Kennwort Ändern" name="kennwortAendern" class="btn btn-primary btn-lg btn-block login-button"  onclick="return confirm('Sind Sie sich sicher, dass Sie Ihr Passwort ändern wollen?')"></input>
             </div>
 					</form>
 
@@ -135,6 +135,8 @@ $test->auswertung();
             </form>
           </fieldset>
 				</div>
+
+        <!-- Footer -->
         <div>
           <hr />
           <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>

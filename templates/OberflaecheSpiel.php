@@ -3,13 +3,10 @@
 
   //Prüfung ob User eingeloggt ist
   if (empty($_SESSION['eingeloggt'])) {
-  $_POST['site'] = 'login';
-  //header("Location: index.php");
+  header("Location: index.php?site=login");
   }
 
-  include '../classes/datenbank.php';
   include '../classes/Spiel.php';
-
   $spiel = new Spiel();
 
   //Automatischer Logout nach 10 Minuten
@@ -17,13 +14,9 @@
     $spiel->speicherSpiel();
     session_unset();
     session_destroy();
-    //$_POST['site'] = 'automatic';
     header("Location: index.php?site=automatic");
   }
   $_SESSION['LAST_ACTIVITY'] = time(); // Update des Aktivitätszeitstempel
-
-
-
 
   $spiel->resetAuswertung();
   $spiel->wuerfelnAuswertung();
@@ -53,6 +46,8 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+    <!-- Script zur Befuellung des Popovers -->
     <script>
     $(function(){
     $('[rel="popover"]').popover({
@@ -67,6 +62,7 @@
     });
     });
     </script>
+
     <title>Spiel101</title>
   </head>
   <body>
@@ -81,6 +77,7 @@
         </button>
         <a class="navbar-brand headline">Spiel 101</a>
       </div>
+
       <div class="container-fluid navbar-collapse collapse" id="bs-navbar" aria-expanded="true">
         <ul class="nav navbar-nav navbar-left">
           <li><a href="?site=anleitung"><span class="glyphicon glyphicon-list-alt"></span> Anleitung</a></li>
@@ -95,6 +92,7 @@
         </ul>
       </div>
     </nav>
+
     <div class="container">
   			<div class="row main">
   				<div class="panel-heading">
@@ -117,9 +115,9 @@
               <?php }  ?>
   	       	</div>
   	      </div>
+
   				<div class="main-l main-center">
             <div class="alert alert-info" role="alert" id="infoBox"> <?php $spiel->anDerReihe(); ?> </div>
-
             <!-- Button und Anzeige ZugAnzahl sowie summeSpielzug -->
             <fieldset class="form-group">
               <form class="form-horizontal" method="post" action="?">
@@ -134,6 +132,7 @@
               </form>
             </fieldset>
 
+            <!-- Anzeige des Würfelergebnisses -->
             <div style="text-align: center;">
               <?php
               if (isset($_SESSION['wuerfelErgebnis'])) {
@@ -179,6 +178,7 @@
               ?>
             </div>
 
+            <!-- Spielstatistik -->
             <div class="erzieltePktDiv">
               <legend> Spielrunde: </legend>
               <label> Punkte in diesem Spielzug: </label>
@@ -187,7 +187,6 @@
               <p class="Zug"> <?php echo $_SESSION['runde'] ?> </p>
             </div>
 
-
             <!-- Anzeige Spielerscores gesamt -->
             <div>
               <legend> Spielerpunkte: </legend>
@@ -195,7 +194,7 @@
               <div class="progress">
                 <div class="progress-bar " role="progressbar" style="width: <?php echo $_SESSION['summeS1'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS1'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS1'] ?></div>
               </div>
-
+              
               <div>
                 <label href="#" rel="popover" data-popover-content="#myPopover"><span class="glyphicon glyphicon-pencil"></span> <?php echo $_SESSION['spieler2'] ?>:</label>
                 <div class="hide" id="myPopover">
@@ -211,6 +210,7 @@
               </div>
             </div>
           </div>
+
           <!-- Footer -->
           <div>
             <hr />

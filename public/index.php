@@ -1,8 +1,8 @@
 <?php
 session_start();
-//var_dump($_REQUEST);
-//var_dump($_POST);
-//var_dump($_SESSION);
+
+require_once '../classes/datenbank.php';
+
 if (!empty($_REQUEST['site'])) {
   switch ($_REQUEST['site']) {
   case 'login':

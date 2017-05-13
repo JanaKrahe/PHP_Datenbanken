@@ -77,7 +77,10 @@ class Pruefen
       }
     }
 
-    function pruefungPasswort2(){
+    /**
+    * Methode zum Prüfen der zweiten Passwort-Eingabe
+    */
+    public function pruefungPasswort2(){
       // define variables and set to empty values
       $passwort2Err = "";
       $passwort2 = "";
@@ -93,7 +96,10 @@ class Pruefen
       }
     }
 
-    function pruefungPasswort3(){
+    /**
+    * Methode zum Prüfen der dritten Passwort-Eingabe
+    */
+    public function pruefungPasswort3(){
       // define variables and set to empty values
       $passwort3Err = "";
       $passwort3 = "";
@@ -109,32 +115,38 @@ class Pruefen
       }
     }
 
-    function passwortStimmenUeberein(){
+    /**
+    * Methode zum Vergleichen der Passwort-Eingabe
+    */
+    public function passwortStimmenUeberein(){
       if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
         if ($this->error == false) {
           if ($_POST["passwort"] != $_POST["passwort2"]){
             $stimmenErr = "Passwörter müssen übereinstimmen";
             echo $stimmenErr;
           } else {
-              #Passwort wird hier verschlüsselt, indem die Methode der Klasse PasswortSpeichern aufgerufen wird.
-              $hallo = new PasswortSpeichern;
-              $_POST['passwort'] = $hallo->passwortVerschluesseln($_POST['passwort']);
+            #Passwort wird hier verschlüsselt, indem die Methode der Klasse PasswortSpeichern aufgerufen wird.
+            $hallo = new PasswortSpeichern;
+            $_POST['passwort'] = $hallo->passwortVerschluesseln($_POST['passwort']);
 
-              $datenbank = new DatenbankAufrufe;
-              $result = $datenbank->existBenutzer();
-              if ($result == false) {
-                $datenbank->benutzerAnlegen();
+            $datenbank = new DatenbankAufrufe;
+            $result = $datenbank->existBenutzer();
+            if ($result == false) {
+              $datenbank->benutzerAnlegen();
 
-                header("Location: index.php?success=registrieren");
+              header("Location: index.php?success=registrieren");
               } else {
-                echo "Der Benutzer existiert bereits";
-              }
+              echo "Der Benutzer existiert bereits";
             }
           }
         }
       }
+    }
 
-    function login(){
+    /**
+    * Methode zum Vergleichen der Login-Eingaben mit der Datenbank
+    */
+    public function login(){
       if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Anmelden"]) && $_POST["Anmelden"] == "Anmelden") {
         if ($this->error == false) {
           $datenbank = new DatenbankAufrufe;
@@ -165,7 +177,10 @@ class Pruefen
       }
     }
 
-    function loeschen(){
+    /**
+    * Methode zum Vergleichen der loeschen-Eingaben mit der Datenbank
+    */
+    public function loeschen(){
       if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["loeschen"]) && $_POST["loeschen"] == "Löschen") {
         if ($this->error == false) {
           $datenbank = new DatenbankAufrufe;
@@ -190,8 +205,10 @@ class Pruefen
         }
       }
 
-
-      function kennwortAendern(){
+      /**
+      * Methode zum Vergleich der kennwortAendern-Eingaben mit der Datenbank
+      */
+      public function kennwortAendern(){
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["kennwortAendern"]) && $_POST["kennwortAendern"] == "Kennwort Ändern") {
           if ($this->error == false) {
             $datenbank = new DatenbankAufrufe;
@@ -223,7 +240,10 @@ class Pruefen
       }
     }
 
-    function test_input($data) {
+    /**
+    * Methode zum ...
+    */
+    public function test_input($data) {
       $data = trim($data);
       $data = stripslashes($data);
       $data = htmlspecialchars($data);

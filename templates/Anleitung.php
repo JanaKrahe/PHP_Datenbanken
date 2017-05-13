@@ -20,6 +20,7 @@
     <title>Anleitung</title>
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-inverse navbar-upper sticky">
       <div class="navbar-header">
         <a class="navbar-brand headline">Spiel 101</a>
@@ -28,59 +29,60 @@
         </ul>
       </div>
     </nav>
+
     <div class="container">
-  			<div class="row main">
-  				<div class="panel-heading">
-  	               <div class="panel-title text-center">
-  	               	</div>
-  	            </div>
-  				<div class="main-l main-center">
-            <form class="form-horizontal" action="index.php" method="post">
-              <legend>Anleitung für das Spiel 101</legend>
-              <h5>
-                <label>Spielziel:</label>
-                <br>
-                Beim Spiel 101 geht es darum, durch glückliches und geschicktes Würfeln und
-                überlegtes bunkern der erzielten Augensumme möglichst viele Punkte zu erzielen.
-                <br><br>
-                <label>Würfeln:</label>
-                <br>
-                Zu Beginn eines Zugs wird der Würfel frisch gewürfelt.
-                Du kannst diese Kombination direkt bunkern oder versuchen, noch mehr für dein Konto zu sammeln.
-                Du kannst solange Würfeln, wie du dich traust!
-                Nur Würfelst du eine "1" verlierst du alle Augen dieses Zugs.
-
-                <br><br>
-                <label>Bunkern:</label>
-                <br>
-                Die erwürfelten Augen kannst du mittels "bunkern" auf deinem Konto speichern.
-                Sobald du bunkerst werden die gewürfelten Augen aufsummiert auf deinem Konto gutgeschrieben
-                und können nicht mehr durch eine "1" gelöscht werden.
-
-                <br><br>
-                <label>Spielzug:</label>
-                <br>
-                Ein Spielzug endet, sobald der aktuelle Spieler eine "1" gewürfelt hat oder "bunkert".
-                Nach einer dieser Aktionen, ist der nächste Spieler dran.
-
-                <br><br>
-                <label>Spielende und Gewinner:</label>
-                <br>
-                Das Spiel endet, sobald ein Spieler 101 Augen auf seinem Konto gespeichert hat.
-                Dieser Spieler ist auch der sofortige Gewinner.
-
-
-
-              </h5>
+      <div class="row main">
+        <div class="panel-heading">
+          <div class="panel-title text-center">
+  	      </div>
+        </div>
+  			<div class="main-l main-center">
+          <form class="form-horizontal" action="index.php" method="post">
+            <legend>Anleitung für das Spiel 101</legend>
+            <h5>
+              <label>Spielziel:</label>
               <br>
-              <button class="btn btn-default" type="submit" name="zurueck">Zurück zum Spiel</button>
-            </form>
-  				</div>
-          <div>
-            <hr />
-            <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>
-          </div>
+              Beim Spiel 101 geht es darum, durch glückliches und geschicktes Würfeln und
+              überlegtes bunkern der erzielten Augensumme möglichst viele Punkte zu erzielen.
+              <br><br>
+              <label>Würfeln:</label>
+              <br>
+              Zu Beginn eines Zugs wird der Würfel frisch gewürfelt.
+              Du kannst diese Kombination direkt bunkern oder versuchen, noch mehr für dein Konto zu sammeln.
+              Du kannst solange Würfeln, wie du dich traust!
+              Nur Würfelst du eine "1" verlierst du alle Augen dieses Zugs.
+
+              <br><br>
+              <label>Bunkern:</label>
+              <br>
+              Die erwürfelten Augen kannst du mittels "bunkern" auf deinem Konto speichern.
+              Sobald du bunkerst werden die gewürfelten Augen aufsummiert auf deinem Konto gutgeschrieben
+              und können nicht mehr durch eine "1" gelöscht werden.
+
+              <br><br>
+              <label>Spielzug:</label>
+              <br>
+              Ein Spielzug endet, sobald der aktuelle Spieler eine "1" gewürfelt hat oder "bunkert".
+              Nach einer dieser Aktionen, ist der nächste Spieler dran.
+
+              <br><br>
+              <label>Spielende und Gewinner:</label>
+              <br>
+              Das Spiel endet, sobald ein Spieler 101 Augen auf seinem Konto gespeichert hat.
+              Dieser Spieler ist auch der sofortige Gewinner.
+
+            </h5>
+            <br>
+            <button class="btn btn-default" type="submit" name="zurueck">Zurück zum Spiel</button>
+          </form>
   			</div>
+        
+        <!-- Footer -->
+        <div>
+          <hr />
+          <p style="text-align: center"> &copy; Jana Krahe &amp; Lars Korthing </p>
+        </div>
   		</div>
+  	</div>
   </body>
 </html>

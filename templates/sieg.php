@@ -3,19 +3,20 @@
 
 //Prüfung ob User eingeloggt ist
 if (empty($_SESSION['eingeloggt'])) {
-header("Location: Login.php");
+header("Location: index.php?site=login");
 }
 
 //Automatischer Logout nach 10 Minuten
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 600)) {
   session_unset();
   session_destroy();
+  header("Location: index.php?site=automatic");
 }
 // Update des Aktivitätszeitstempel
 $_SESSION['LAST_ACTIVITY'] = time();
 
 include '../classes/spiel.php';
-include('../classes/datenbank.php');
+
 $spiel = new Spiel();
 //Prüft ob der Reset-Button gedrückt wurde
 $spiel->resetNachSieg();
@@ -143,6 +144,7 @@ $spiel->logoutAuswertung();
               ?>
             </div>
           </div>
+          
           <!-- Footer -->
           <div>
             <hr />

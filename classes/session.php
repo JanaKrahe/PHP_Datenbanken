@@ -5,8 +5,11 @@
 class sessionClass
 {
 
+  /**
+  * Methode zum Initieren der Session-Variablen
+  */
   function SessionStart($benutzername, $db) {
-    //session_start();
+
     $_SESSION['email'] = $_POST['email'];
 
     if (!empty($_SESSION['email'])) {

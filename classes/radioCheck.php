@@ -4,7 +4,9 @@
  */
 class RadiobuttonAuswerten
 {
-
+  /**
+  * Methode zum Prüfen der Radio-Button Auswachl.
+  */
   public function auswertung()
   {
     if($_POST['gender'] == "registrieren") {
