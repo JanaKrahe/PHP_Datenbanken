@@ -61,7 +61,7 @@ $spiel->logoutAuswertung();
           <li><a href="?reset"><span class="glyphicon glyphicon-plus"></span> Neues Spiel</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a><span class="glyphicon glyphicon-user"></span> Signed in as <?php echo $_SESSION['spieler1']; ?></a></li>
+          <li><a><span class="glyphicon glyphicon-user"></span> Angemeldet als <?php echo $_SESSION['spieler1']; ?></a></li>
           <li><a href="?logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
       </div>

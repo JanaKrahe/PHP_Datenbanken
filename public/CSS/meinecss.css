@@ -1,5 +1,3 @@
-<style>
-
 html {
   height: 100%;
  	background-repeat: no-repeat;
@@ -11,7 +9,6 @@ body {
   background-color: #d3d3d3;
   min-width: 400px;
 }
-
 
 h1.title {
 	font-size: 50px;
@@ -29,7 +26,6 @@ hr{
 .form-group{
 	margin-bottom: 15px;
 }
-
 
 input,
 input::-webkit-input-placeholder {
@@ -60,22 +56,6 @@ input::-webkit-input-placeholder {
 
 .login-button{
 	margin-top: 5px;
-}
-
-.login-register{
-	font-size: 11px;
-	text-align: center;
-}
-
-
-/**
-* Ab hier meins
-*/
-.schmal {
-
-  min-height: : 10px;
-  max-height: 100em;
-  margin-top: 5px;
 }
 
 #infoBox {
@@ -132,8 +112,6 @@ input::-webkit-input-placeholder {
 
 .headline {
   font-size: 38px;
-
-
 }
 
 .navwidth {

@@ -31,6 +31,7 @@
   $spiel->siegerAuswertung();
   $spiel->speichernAuswertung();
   $spiel->logoutAuswertung();
+  $spiel->nameSpieler2Change();
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +53,20 @@
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
+    <script>
+    $(function(){
+    $('[rel="popover"]').popover({
+        container: 'body',
+        html: true,
+        content: function () {
+            var clone = $($(this).data('popover-content')).clone(true).removeClass('hide');
+            return clone;
+        }
+    }).click(function(e) {
+        e.preventDefault();
+    });
+    });
+    </script>
     <title>Spiel101</title>
   </head>
   <body>
@@ -76,7 +90,7 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a><span class="glyphicon glyphicon-user"></span> Signed in as <?php echo $_SESSION['spieler1']; ?></a></li>
+          <li><a><span class="glyphicon glyphicon-user"></span> Angemeldet als <?php echo $_SESSION['spieler1']; ?></a></li>
           <li><a href="?logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
       </div>
@@ -85,6 +99,7 @@
   			<div class="row main">
   				<div class="panel-heading">
   	        <div class="panel-title text-center centerwidth">
+              <!-- Informationen für den Spieler -->
               <?php if (isset($_SESSION['spielGeladen']) && $_SESSION['spielGeladen'] == true) {   ?>
                 <div class="alert alert-info" role="alert">
                   Ihr alter Spielstand wurde geladen!
@@ -181,8 +196,15 @@
                 <div class="progress-bar " role="progressbar" style="width: <?php echo $_SESSION['summeS1'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS1'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS1'] ?></div>
               </div>
 
-              <div class="has-warning">
-                <label class=""  data-toggle="modal" data-target="#myModal"><?php echo $_SESSION['spieler2'] ?>:</label>
+              <div>
+                <label href="#" rel="popover" data-popover-content="#myPopover"><span class="glyphicon glyphicon-pencil"></span> <?php echo $_SESSION['spieler2'] ?>:</label>
+                <div class="hide" id="myPopover">
+                  <form class="" method="post" >
+                    <input type="text" name="s2name" placeholder="<?php echo $_SESSION['spieler2'] ?>"></input>
+                    <button class="btn btn-default" type="submit" name="s2ns"><span class="glyphicon glyphicon-ok"></span></button>
+                  </form>
+                </div>
+
               </div>
               <div class="progress">
                 <div class="progress-bar " role="progressbar" style="width: <?php echo $_SESSION['summeS2'] ?>%" aria-valuenow="<?php echo $_SESSION['summeS2'] ?>" aria-valuemin="0" aria-valuemax="101"><?php echo $_SESSION['summeS2'] ?></div>

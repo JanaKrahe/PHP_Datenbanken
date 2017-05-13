@@ -4,16 +4,20 @@
  */
 class DatenbankAufrufe
 {
-
-  function datenbankVerbinden(){
+  /**
+  * Konstruktor: Erstellt eine aktive Verbindung zu der Datenbank
+  */
+  public function datenbankVerbinden(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     if (!$pdo) {
         die("Connection failed: " . mysqli_connect_error());
     }
   }
 
-  function benutzerAnlegen()
-  {
+  /**
+  * Methode zum Anlegen eines neuen Benutzers
+  */
+  public function benutzerAnlegen(){
   $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     $neuer_user = array();
     $neuer_user['email'] = $_POST['email'];
@@ -24,7 +28,10 @@ class DatenbankAufrufe
     $stmt->execute(array($_POST['email'], $_POST['passwort'], $_POST['benutzername']));
   }
 
-  function existBenutzer(){
+  /**
+  * Methode zum Prüfen, ob ein Benutzer bereits existiert
+  */
+  public function existBenutzer(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     $sqlStatement = "SELECT * FROM user101 WHERE email = ?";
     $stmt = $pdo->prepare($sqlStatement);
@@ -37,30 +44,42 @@ class DatenbankAufrufe
     }
   }
 
-function passwortAuslesen(){
-  $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-  $sqlStatement = "SELECT passwort FROM user101 WHERE email = ?";
-  $stmt = $pdo->prepare($sqlStatement);
-  $stmt->execute(array($_POST['email']));
-  $ergebnis = $stmt->fetchColumn();
-  return $ergebnis;
-}
+  /**
+  * Methode zum Auslesen des Passworts
+  */
+  public function passwortAuslesen(){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT passwort FROM user101 WHERE email = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($_POST['email']));
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
 
-function benutzerLoeschen(){
-  $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-  $sqlStatement = "DELETE FROM user101 WHERE email = ?";
-  $stmt = $pdo->prepare($sqlStatement);
-  $stmt->execute(array($_POST['email']));
-}
+  /**
+  * Methode zum Loeschen eines neuen Benutzers
+  */
+  public function benutzerLoeschen(){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "DELETE FROM user101 WHERE email = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($_POST['email']));
+  }
 
-  function kennwortAendern($hashPasswort){
+  /**
+  * Methode zum Aendern des Benutzerkennworts
+  */
+  public function kennwortAendern($hashPasswort){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     $sqlStatement = "UPDATE user101 SET passwort = ? WHERE email = ?";
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute(array($hashPasswort, $_POST['email']));
   }
 
-  function benutzernameAuslesen(){
+  /**
+  * Methode zum Auslesen des Benutzernamens
+  */
+  public function benutzernameAuslesen(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     $sqlStatement = "SELECT name FROM user101 WHERE email = ?";
     $stmt = $pdo->prepare($sqlStatement);
@@ -69,7 +88,10 @@ function benutzerLoeschen(){
     return $ergebnis;
   }
 
-  function spielerIdAuslesen(){
+  /**
+  * Methode zum Auslesen der SpielerID
+  */
+  public function spielerIdAuslesen(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     $sqlStatement = "SELECT id FROM user101 WHERE email = ?";
     $stmt = $pdo->prepare($sqlStatement);
@@ -78,61 +100,78 @@ function benutzerLoeschen(){
     return $ergebnis;
   }
 
-    function rundenAuslesen($id){
-      $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-      $sqlStatement = "SELECT zugAnzahl FROM spielstand WHERE id = ?";
-      $stmt = $pdo->prepare($sqlStatement);
-      $stmt->execute(array($id));
-      $ergebnis = $stmt->fetchColumn();
+  /**
+  * Methode zum Auslesen der Rundenanzahl
+  */
+  public function rundenAuslesen($id){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT zugAnzahl FROM spielstand WHERE id = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($id));
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
+
+  /**
+  * Methode zum Auslesen der Punkte des Spielers 1
+  */
+  public function punkteS1Auslesen($id){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT punkteS1 FROM spielstand WHERE id = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($id));
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
+
+  /**
+  * Methode zum Auslesen der Punkte des Spielers 2
+  */
+  public function punkteS2Auslesen($id){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT punkteS2 FROM spielstand WHERE id = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($id));
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
+
+  /**
+  * Methode zum Auslesen welcher Spieler am Zug ist
+  */
+  public function amZugAuslesen($id){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT amZug FROM spielstand WHERE id = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($id));
+    $ergebnis = $stmt->fetchColumn();
+    if ($ergebnis == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  /**
+  * Methode zum Prüfen, ob ein Spielstand ohne Sieger für den Spieler existiert
+  */
+  public function existSpielstandOpen($spielerId){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT id FROM spielstand WHERE spielerId = ? AND sieger IS NULL";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($spielerId));
+    $ergebnis = $stmt->fetchColumn();
+    if (empty($ergebnis)) {
+      return NULL;
+    }else {
       return $ergebnis;
     }
+  }
 
-      function punkteS1Auslesen($id){
-        $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-        $sqlStatement = "SELECT punkteS1 FROM spielstand WHERE id = ?";
-        $stmt = $pdo->prepare($sqlStatement);
-        $stmt->execute(array($id));
-        $ergebnis = $stmt->fetchColumn();
-        return $ergebnis;
-      }
-
-      function punkteS2Auslesen($id){
-        $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-        $sqlStatement = "SELECT punkteS2 FROM spielstand WHERE id = ?";
-        $stmt = $pdo->prepare($sqlStatement);
-        $stmt->execute(array($id));
-        $ergebnis = $stmt->fetchColumn();
-        return $ergebnis;
-      }
-
-      function amZugAuslesen($id){
-        $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-        $sqlStatement = "SELECT amZug FROM spielstand WHERE id = ?";
-        $stmt = $pdo->prepare($sqlStatement);
-        $stmt->execute(array($id));
-        $ergebnis = $stmt->fetchColumn();
-        if ($ergebnis == 0) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-
-      function existSpielstandOpen($spielerId){
-        $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-        $sqlStatement = "SELECT id FROM spielstand WHERE spielerId = ? AND sieger IS NULL";
-        $stmt = $pdo->prepare($sqlStatement);
-        $stmt->execute(array($spielerId));
-        $ergebnis = $stmt->fetchColumn();
-        if (empty($ergebnis)) {
-          return NULL;
-        }else {
-          return $ergebnis;
-        }
-      }
-
-
-  function existSpielstandClose($spielerId){
+  /**
+  * Methode zum Auslesen aller Spielstaende eines Spielers die bereits abgeschlossen sind
+  */
+  public function existSpielstandClose($spielerId){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     $sqlStatement = "SELECT id FROM spielstand WHERE spielerId = ? AND sieger IS NOT NULL";
     $stmt = $pdo->prepare($sqlStatement);
@@ -146,9 +185,10 @@ function benutzerLoeschen(){
     }
   }
 
-
-  public function beenden()
-  {
+  /**
+  * Methode zum Speichern eines beendeten Spiels
+  */
+  public function beenden(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     $spielerId = $this->spielerIdAuslesen();
     $existSpielstand = $this->existSpielstandOpen($spielerId);
@@ -163,23 +203,28 @@ function benutzerLoeschen(){
     }
   }
 
-  public function speichern()
-  {
-      $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
-      $spielerId = $this->spielerIdAuslesen();
-      $existSpielstand = $this->existSpielstandOpen($spielerId);
-      if ($existSpielstand == NULL) {
-        $sqlStatement = "INSERT INTO spielstand (spielerId, zugAnzahl, punkteS1, punkteS2, amZug) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sqlStatement);
-        $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug']));
-      } else {
-        $sqlStatement = "UPDATE spielstand SET spielerId = ?, zugAnzahl = ?, punkteS1 = ?, punkteS2 = ?, amZug = ? WHERE id = ?";
-        $stmt = $pdo->prepare($sqlStatement);
-        $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], $existSpielstand));
-      }
+  /**
+  * Methode zum Speichern eines angefangenen Spiels
+  */
+  public function speichern(){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $spielerId = $this->spielerIdAuslesen();
+    $existSpielstand = $this->existSpielstandOpen($spielerId);
+    if ($existSpielstand == NULL) {
+      $sqlStatement = "INSERT INTO spielstand (spielerId, zugAnzahl, punkteS1, punkteS2, amZug) VALUES (?, ?, ?, ?, ?)";
+      $stmt = $pdo->prepare($sqlStatement);
+      $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug']));
+    } else {
+      $sqlStatement = "UPDATE spielstand SET spielerId = ?, zugAnzahl = ?, punkteS1 = ?, punkteS2 = ?, amZug = ? WHERE id = ?";
+      $stmt = $pdo->prepare($sqlStatement);
+      $stmt->execute(array($spielerId, $_SESSION['runde'], $_SESSION['summeS1'], $_SESSION['summeS2'], $_SESSION['amZug'], $existSpielstand));
     }
+  }
 
-  function ranking(){
+  /**
+  * Methode zur Ausgabe des Rankings
+  */
+  public function ranking(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
     $sqlStatement = "SELECT sieger, zugAnzahl FROM spielstand WHERE sieger IS NOT NULL ORDER BY zugAnzahl";
     $stmt = $pdo->prepare($sqlStatement);

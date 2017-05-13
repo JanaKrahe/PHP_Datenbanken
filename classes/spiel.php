@@ -220,5 +220,12 @@ class Spiel
     unset($datenbank2);
     //header("Location: index.php");
   }
+
+  public function nameSpieler2Change()
+  {
+    if (isset($_POST["s2ns"])) {
+      $_SESSION['spieler2'] = $_POST['s2name'];
+    }
+  }
 }
 ?>

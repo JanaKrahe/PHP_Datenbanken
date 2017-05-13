@@ -5,11 +5,14 @@
  */
 class Pruefen
 {
-  // define variables and set to empty values
+
   public $error = false;
   public $hashpasswort;
 
-  function pruefungBenutzername()
+  /**
+  * Methode zum Prüfen der Benutzername-Eingabe
+  */
+  public function pruefungBenutzername()
   {
     $name = $nameErr = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
@@ -29,8 +32,11 @@ class Pruefen
     }
   }
 
-  function pruefungEmail(){
-    // define variables and set to empty values
+  /**
+  * Methode zum Prüfen der Email-Eingabe
+  */
+  public function pruefungEmail(){
+
     $emailErr = "";
     $email = "";
 
@@ -52,7 +58,10 @@ class Pruefen
       }
     }
 
-    function pruefungPasswort(){
+    /**
+    * Methode zum Prüfen der Passwort-Eingabe
+    */
+    public function pruefungPasswort(){
       // define variables and set to empty values
       $passwortErr = "";
       $passwort = "";
