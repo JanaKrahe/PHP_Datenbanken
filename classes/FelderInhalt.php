@@ -126,8 +126,8 @@ class Pruefen
             echo $stimmenErr;
           } else {
             #Passwort wird hier verschlüsselt, indem die Methode der Klasse PasswortSpeichern aufgerufen wird.
-            $hallo = new PasswortSpeichern;
-            $_POST['passwort'] = $hallo->passwortVerschluesseln($_POST['passwort']);
+            $pwKrypto = new PasswortSpeichern;
+            $_POST['passwort'] = $pwKrypto->passwortVerschluesseln($_POST['passwort']);
 
             $datenbank = new DatenbankAufrufe;
             $result = $datenbank->existBenutzer();
@@ -154,8 +154,8 @@ class Pruefen
           $result = $datenbank->existBenutzer();
           if ($result == true) {
             $dbPasswort = $datenbank->passwortAuslesen();
-            $verschl = new PasswortSpeichern;
-            $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
+            $pwKrypto = new PasswortSpeichern;
+            $result2 = $pwKrypto->passwortAbgleich($_POST['passwort'], $dbPasswort);
             if ($result2 == true) {
               #SESSION
               $session = new sessionClass;
@@ -188,8 +188,8 @@ class Pruefen
           $result = $datenbank->existBenutzer();
           if ($result == true) {
             $dbPasswort = $datenbank->passwortAuslesen();
-            $verschl = new PasswortSpeichern;
-            $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
+            $pwKrypto = new PasswortSpeichern;
+            $result2 = $pwKrypto->passwortAbgleich($_POST['passwort'], $dbPasswort);
             if ($result2 == true) {
               $datenbank->benutzerLoeschen();
               header("Location: index.php?success=loeschen");
@@ -221,10 +221,10 @@ class Pruefen
                 echo $stimmenErr;
               } else {
               $dbPasswort = $datenbank->passwortAuslesen();
-              $verschl = new PasswortSpeichern;
-              $result2 = $verschl->passwortAbgleich($_POST['passwort'], $dbPasswort);
+              $pwKrypto = new PasswortSpeichern;
+              $result2 = $pwKrypto->passwortAbgleich($_POST['passwort'], $dbPasswort);
               if ($result2 == true) {
-                $_POST['passwort2'] = $hashPasswort = $verschl->passwortVerschluesseln($_POST['passwort2']);
+                $_POST['passwort2'] = $hashPasswort = $pwKrypto->passwortVerschluesseln($_POST['passwort2']);
                 $datenbank->kennwortAendern($hashPasswort);
                 header("Location: index.php?success=kennwortAendern");
               }
