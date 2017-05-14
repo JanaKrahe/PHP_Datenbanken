@@ -3,6 +3,7 @@ session_start();
 
 require_once '../classes/datenbank.php';
 
+//Prüfung von Seitenwechsel
 if (!empty($_REQUEST['site'])) {
   switch ($_REQUEST['site']) {
   case 'login':
@@ -27,6 +28,7 @@ if (!empty($_REQUEST['site'])) {
     include '../templates/login.php';break;
   }
 }
+//Prüfung zwischen Wechsel der Benutzerverwaltungs-Seiten
 elseif (!empty($_REQUEST['Registrieren'])) {
   include '../templates/registrierung.php';
 }
@@ -39,6 +41,7 @@ elseif (!empty($_REQUEST['loeschen'])) {
 elseif (!empty($_REQUEST['kennwortAendern'])) {
   include '../templates/kennwortAendern.php';
 }
+//Prüfung ob Nutzer eingeloggt ist
 else {
   if (!empty($_SESSION['eingeloggt'])) {
     switch ($_SESSION['eingeloggt']) {
