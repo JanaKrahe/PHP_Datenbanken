@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * Klasse zum Prüfen von Eingaben in den Seiten der Benutzerverwaltung
  */
 class Pruefen
 {
