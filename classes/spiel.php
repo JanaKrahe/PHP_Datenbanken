@@ -192,7 +192,7 @@ class Spiel
   * Methode zum Aendern des Spielernamen von Spieler2
   */
   public function nameSpieler2Change()  {
-    if (isset($_POST["s2ns"])) {
+    if (isset($_POST["s2ns"]) && strlen(trim($_POST['s2name'])) != 0) {
       $_SESSION['spieler2'] = $_POST['s2name'];
     }
   }
