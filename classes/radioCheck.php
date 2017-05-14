@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Klasse zur Prüfung der Wechsel zwischen den Benutzerverwaltungs-Seiten
  */
 class RadiobuttonAuswerten
 {

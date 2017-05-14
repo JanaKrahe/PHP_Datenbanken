@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Klasse für das Erstellen der Session
  */
 class sessionClass
 {

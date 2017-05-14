@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Klasse zum verschlüsseln der Passwörter
  */
 class PasswortSpeichern
 {
