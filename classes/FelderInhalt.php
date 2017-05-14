@@ -168,9 +168,6 @@ class Pruefen
               echo "Das Passwort ist nicht korrekt";
             }
           } else {
-            //$_POST['site'] = 'registrieren';
-            //header("Location: index.php");
-            //wird nie erreicht/ausgegeben
             echo "Bitte zuerst Registrieren";
           }
         }
