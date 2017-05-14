@@ -99,7 +99,7 @@ $radioAuswertung->auswertung();
               <div class="form-check">
                 <label class="form-check-label">
                   <input type="radio" class="form-check-input" name="gender" value="loeschen" checked>
-                  Account löschen
+                  Benutzer löschen
                 </label>
               </div>
               <div class="form-check">
