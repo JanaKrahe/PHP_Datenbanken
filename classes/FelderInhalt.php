@@ -15,7 +15,7 @@ class Pruefen
   public function pruefungBenutzername()
   {
     $name = $nameErr = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST['site'])) {
       if (empty($_POST["benutzername"])) {
         $nameErr = "Bitte Name angeben";
         $this->error = true;
@@ -40,7 +40,7 @@ class Pruefen
     $emailErr = "";
     $email = "";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST['site'])) {
 
       if (empty($_POST["email"])) {
         $emailErr = "Bitte E-mail angeben";
@@ -66,7 +66,7 @@ class Pruefen
       $passwortErr = "";
       $passwort = "";
 
-      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST['site'])) {
         if (empty($_POST["passwort"])) {
           $passwortErr = "Bitte Passwort angeben";
           $this->error = true;
@@ -85,7 +85,7 @@ class Pruefen
       $passwort2Err = "";
       $passwort2 = "";
 
-      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST['site'])) {
         if (empty($_POST["passwort2"])) {
           $passwort2Err = "Bitte Passwort angeben";
           $this->error = true;
@@ -119,7 +119,7 @@ class Pruefen
     * Methode zum Vergleichen der Passwort-Eingabe
     */
     public function passwortStimmenUeberein(){
-      if ($_SERVER["REQUEST_METHOD"] == "POST" && !$_POST['site']) {
+      if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST['site'])) {
         if ($this->error == false) {
           if ($_POST["passwort"] != $_POST["passwort2"]){
             $stimmenErr = "Passwörter müssen übereinstimmen";
