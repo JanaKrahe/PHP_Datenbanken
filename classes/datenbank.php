@@ -57,10 +57,14 @@ class DatenbankAufrufe
   }
 
   /**
-  * Methode zum Loeschen eines neuen Benutzers
+  * Methode zum Loeschen eines neuen Benutzers und dessen Spielstände
   */
   public function benutzerLoeschen(){
     $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "DELETE FROM spielstand WHERE spielerID = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $spielerid = $this->spielerIdAuslesen2($_POST['email']);
+    $stmt->execute(array($spielerid));
     $sqlStatement = "DELETE FROM user101 WHERE email = ?";
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute(array($_POST['email']));
@@ -96,6 +100,18 @@ class DatenbankAufrufe
     $sqlStatement = "SELECT id FROM user101 WHERE email = ?";
     $stmt = $pdo->prepare($sqlStatement);
     $stmt->execute(array($_SESSION['email']));
+    $ergebnis = $stmt->fetchColumn();
+    return $ergebnis;
+  }
+
+  /**
+  * Methode zum Auslesen der SpielerID
+  */
+  public function spielerIdAuslesen2($email){
+    $pdo = new PDO('mysql:host=localhost;dbname=spiel101','root','');
+    $sqlStatement = "SELECT id FROM user101 WHERE email = ?";
+    $stmt = $pdo->prepare($sqlStatement);
+    $stmt->execute(array($email));
     $ergebnis = $stmt->fetchColumn();
     return $ergebnis;
   }
